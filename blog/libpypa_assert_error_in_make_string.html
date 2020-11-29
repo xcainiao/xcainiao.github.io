@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>libpypa: Assert error in make_string | Hello</title>
+    <meta name="description" content="1">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.153793e6.css" as="style"><link rel="preload" href="/assets/js/app.fb63a1b9.js" as="script"><link rel="preload" href="/assets/js/34.ee5cfb6f.js" as="script"><link rel="prefetch" href="/assets/js/10.6aae25a8.js"><link rel="prefetch" href="/assets/js/11.e5a6ecb1.js"><link rel="prefetch" href="/assets/js/12.e6734d6c.js"><link rel="prefetch" href="/assets/js/13.c45be31f.js"><link rel="prefetch" href="/assets/js/14.7fe2edb8.js"><link rel="prefetch" href="/assets/js/15.7d96271b.js"><link rel="prefetch" href="/assets/js/16.d5c5556b.js"><link rel="prefetch" href="/assets/js/17.1a634ded.js"><link rel="prefetch" href="/assets/js/18.e6787f4e.js"><link rel="prefetch" href="/assets/js/19.a31276f8.js"><link rel="prefetch" href="/assets/js/2.6cf84733.js"><link rel="prefetch" href="/assets/js/20.f1ebd130.js"><link rel="prefetch" href="/assets/js/21.9fd25a7d.js"><link rel="prefetch" href="/assets/js/22.7ec64c15.js"><link rel="prefetch" href="/assets/js/23.a0a7d0ea.js"><link rel="prefetch" href="/assets/js/24.c17f3010.js"><link rel="prefetch" href="/assets/js/25.9bbf45e5.js"><link rel="prefetch" href="/assets/js/26.4f930016.js"><link rel="prefetch" href="/assets/js/27.b6d66343.js"><link rel="prefetch" href="/assets/js/28.ded43c8f.js"><link rel="prefetch" href="/assets/js/29.35b25580.js"><link rel="prefetch" href="/assets/js/3.88ebc755.js"><link rel="prefetch" href="/assets/js/30.a0b7fe3b.js"><link rel="prefetch" href="/assets/js/31.89d75be7.js"><link rel="prefetch" href="/assets/js/32.d7c054e6.js"><link rel="prefetch" href="/assets/js/33.9a5f3e99.js"><link rel="prefetch" href="/assets/js/35.2054ab64.js"><link rel="prefetch" href="/assets/js/36.73bb48c1.js"><link rel="prefetch" href="/assets/js/37.5a1d6d20.js"><link rel="prefetch" href="/assets/js/38.c7d42097.js"><link rel="prefetch" href="/assets/js/39.fd864930.js"><link rel="prefetch" href="/assets/js/4.dc8e7db2.js"><link rel="prefetch" href="/assets/js/40.6c289e11.js"><link rel="prefetch" href="/assets/js/41.0ed23031.js"><link rel="prefetch" href="/assets/js/42.10b887da.js"><link rel="prefetch" href="/assets/js/43.d348e521.js"><link rel="prefetch" href="/assets/js/44.f98660b8.js"><link rel="prefetch" href="/assets/js/45.a141b3d0.js"><link rel="prefetch" href="/assets/js/46.3a3b1b86.js"><link rel="prefetch" href="/assets/js/47.d2f1996d.js"><link rel="prefetch" href="/assets/js/48.0bd12b2f.js"><link rel="prefetch" href="/assets/js/5.6adfd92b.js"><link rel="prefetch" href="/assets/js/6.f9bcea16.js"><link rel="prefetch" href="/assets/js/7.ad2cffde.js"><link rel="prefetch" href="/assets/js/8.8932bce4.js"><link rel="prefetch" href="/assets/js/9.892cc635.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.153793e6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="page-main"><div class="component-nav-menu"><div class="placeholder"></div> <div class="search-wrapper"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-6301" class="el-autocomplete"><div class="el-input el-input--prefix"><!----><input type="text" autocomplete="off" valueKey="title" placeholder="请输入内容" fetchSuggestions="function () { [native code] }" triggerOnFocus="true" debounce="300" placement="bottom-start" popperAppendToBody="true" background-color="#eee" class="el-input__inner"><span class="el-input__prefix"><i class="el-input__icon el-icon-search"></i></span><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div> <ul role="menubar" class="el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Home
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item is-active" style="color:;border-bottom-color:;background-color:;">
+        Blog
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        TimeLine
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Github
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        About
+      </li></ul></div> <div class="page-container"><div class="component-page"><div class="page-content"><!----> <div class="content custom"><h2 id="git-log"><a href="#git-log" aria-hidden="true" class="header-anchor">#</a> git log</h2> <div class="language- extra-class"><pre class="language-text"><code>commit e4b3c359d3d2a9ccbea1cbb0a977af8219dd64ef
+Author: Kai Mast &lt;kaimast@cs.cornell.edu&gt;
+Date:   Wed Mar 7 18:24:57 2018 -0500
+
+    More generic reader interface
+</code></pre></div><h2 id="error"><a href="#error" aria-hidden="true" class="header-anchor">#</a> error</h2> <p>/parser-test ./libpypa_assert_error_in_make_string.py</p> <div class="language- extra-class"><pre class="language-text"><code>parser-test: pypa/parser/make_string.cc:70: pypa::String pypa::make_string(const String&amp;, bool&amp;, bool&amp;, bool): Assertion `string_end != String::npos &amp;&amp; string_start &lt;= string_end' failed.
+Aborted (core dumped)
+</code></pre></div><p>testcase:https://github.com/xcainiao/poc/blob/master/libpypa_assert_error_in_make_string.py</p> <h2 id="analysis"><a href="#analysis" aria-hidden="true" class="header-anchor">#</a> analysis</h2> <p>gdb log</p> <div class="language- extra-class"><pre class="language-text"><code>Legend: code, data, rodata, value
+70	    assert(string_end != String::npos &amp;&amp; string_start &lt;= string_end);
+gdb-peda$ print string_start
+$1 = 0x5
+gdb-peda$ print string_end
+$2 = 0x4
+gdb-peda$ bt
+#0  pypa::make_string (input=&quot;'''''a'''&quot;, unicode=@0x60700000df10: 0x0, raw=@0x7fffffffbb00: 0x0, ignore_escaping=0x0) at pypa/parser/make_string.cc:70
+#1  0x00000000004cd40f in pypa::atom (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60700000dee0) at pypa/parser/parser.cc:841
+#2  0x00000000004d277b in pypa::power (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60700000dee0) at pypa/parser/parser.cc:1355
+#3  0x00000000004d05d3 in pypa::factor (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60700000dee0) at pypa/parser/parser.cc:1173
+#4  0x00000000004d8fa6 in pypa::term (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60700000dee0) at pypa/parser/parser.cc:2006
+#5  0x00000000004ddf1c in pypa::arith_expr (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60700000dee0) at pypa/parser/parser.cc:2529
+#6  0x00000000004cea4f in pypa::shift_expr (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60700000dee0) at pypa/parser/parser.cc:996
+#7  0x00000000004e215a in pypa::generic_binop_expr&lt;bool (*)(pypa::(anonymous namespace)::State&amp;, std::shared_ptr&lt;pypa::AstExpression&gt;&amp;)&gt; (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60700000dee0, 
+    op=pypa::TokenKind::BinAnd, op_type=pypa::AstBinOpType::BitAnd, fun=0x4ce95c &lt;pypa::shift_expr(pypa::(anonymous namespace)::State&amp;, pypa::AstExpr&amp;)&gt;) at pypa/parser/parser.cc:190
+#8  0x00000000004d2363 in pypa::and_expr (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60700000dee0) at pypa/parser/parser.cc:1326
+#9  0x00000000004e215a in pypa::generic_binop_expr&lt;bool (*)(pypa::(anonymous namespace)::State&amp;, std::shared_ptr&lt;pypa::AstExpression&gt;&amp;)&gt; (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60700000dee0, 
+    op=pypa::TokenKind::CircumFlex, op_type=pypa::AstBinOpType::BitXor, fun=0x4d2333 &lt;pypa::and_expr(pypa::(anonymous namespace)::State&amp;, pypa::AstExpr&amp;)&gt;) at pypa/parser/parser.cc:190
+#10 0x00000000004d96ef in pypa::xor_expr (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60700000dee0) at pypa/parser/parser.cc:2046
+#11 0x00000000004e215a in pypa::generic_binop_expr&lt;bool (*)(pypa::(anonymous namespace)::State&amp;, std::shared_ptr&lt;pypa::AstExpression&gt;&amp;)&gt; (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60700000dee0, 
+    op=pypa::TokenKind::BinOr, op_type=pypa::AstBinOpType::BitOr, fun=0x4d96bf &lt;pypa::xor_expr(pypa::(anonymous namespace)::State&amp;, pypa::AstExpr&amp;)&gt;) at pypa/parser/parser.cc:190
+#12 0x00000000004da227 in pypa::expr (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60700000dee0) at pypa/parser/parser.cc:2145
+#13 0x00000000004d8acb in pypa::comparison (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60700000dee0) at pypa/parser/parser.cc:1980
+#14 0x00000000004c9fa1 in pypa::not_test (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60700000dee0) at pypa/parser/parser.cc:461
+#15 0x00000000004e2793 in pypa::generic_boolop_expr&lt;bool (*)(pypa::(anonymous namespace)::State&amp;, std::shared_ptr&lt;pypa::AstExpression&gt;&amp;)&gt; (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60700000dee0, 
+    op=pypa::Token::KeywordAnd, op_type=pypa::AstBoolOpType::And, fun=0x4c9d9f &lt;pypa::not_test(pypa::(anonymous namespace)::State&amp;, pypa::AstExpr&amp;)&gt;) at pypa/parser/parser.cc:209
+#16 0x00000000004d4d79 in pypa::and_test (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60700000dee0) at pypa/parser/parser.cc:1613
+#17 0x00000000004e2793 in pypa::generic_boolop_expr&lt;bool (*)(pypa::(anonymous namespace)::State&amp;, std::shared_ptr&lt;pypa::AstExpression&gt;&amp;)&gt; (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60700000dee0, 
+    op=pypa::Token::KeywordOr, op_type=pypa::AstBoolOpType::Or, fun=0x4d4d49 &lt;pypa::and_test(pypa::(anonymous namespace)::State&amp;, pypa::AstExpr&amp;)&gt;) at pypa/parser/parser.cc:209
+#18 0x00000000004d9721 in pypa::or_test (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60700000dee0) at pypa/parser/parser.cc:2050
+#19 0x00000000004d089a in pypa::test (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60700000dee0) at pypa/parser/parser.cc:1179
+#20 0x00000000004d36e2 in pypa::testlist (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60600000eaf0) at pypa/parser/parser.cc:1462
+#21 0x00000000004d6732 in pypa::expr_stmt (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60400000dfe0) at pypa/parser/parser.cc:1730
+#22 0x00000000004c960e in pypa::small_stmt (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60400000dfe0) at pypa/parser/parser.cc:394
+#23 0x00000000004cf324 in pypa::simple_stmt (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60600000eb50) at pypa/parser/parser.cc:1045
+#24 0x00000000004d3e48 in pypa::stmt (s=..., ast=std::shared_ptr (count 2, weak 0) 0x60600000eb50) at pypa/parser/parser.cc:1516
+#25 0x00000000004dfb61 in pypa::file_input (s=..., ast=std::shared_ptr (count 1, weak 0) 0x60600000ec10) at pypa/parser/parser.cc:2728
+#26 0x00000000004e0a93 in pypa::parse (lexer=..., ast=std::shared_ptr (count 1, weak 0) 0x60600000ec10, symbols=std::shared_ptr (empty) 0x0, options=...) at pypa/parser/parser.cc:2781
+#27 0x00000000004af15f in main (argc=0x2, argv=0x7fffffffdf28) at pypa/parser/test.cc:35
+#28 0x00007ffff6aeb830 in __libc_start_main (main=0x4aef36 &lt;main(int, char const**)&gt;, argc=0x2, argv=0x7fffffffdf28, init=&lt;optimized out&gt;, fini=&lt;optimized out&gt;, rtld_fini=&lt;optimized out&gt;, 
+    stack_end=0x7fffffffdf18) at ../csu/libc-start.c:291
+#29 0x0000000000407de9 in _start ()
+</code></pre></div><h2 id="fuzz"><a href="#fuzz" aria-hidden="true" class="header-anchor">#</a> fuzz</h2> <p>libfuzz</p> <div class="language- extra-class"><pre class="language-text"><code>#include &lt;cstdio&gt;
+
+#include &lt;pypa/parser/parser.hh&gt;
+
+namespace pypa {
+    void dump(AstPtr);
+}
+
+//int main(int argc, char const ** argv) 
+#define filename  &quot;./xxxx.py&quot;
+extern &quot;C&quot; int LLVMFuzzerTestOneInput(char *data, int size)
+{
+    
+    FILE* temfile = fopen(filename,&quot;w&quot;);
+    fwrite(data, 1, size, temfile);
+    fclose(temfile);
+
+    pypa::AstModulePtr ast;
+    pypa::SymbolTablePtr symbols;
+    pypa::ParserOptions options;
+    // options.python3allowed = true;
+    options.printerrors = true;
+    options.printdbgerrors = true;
+    pypa::Lexer lexer(filename);
+    if(pypa::parse(lexer, ast, symbols, options)) {
+        printf(&quot;Parsing successfull\n&quot;);
+        dump(ast);
+    }   
+    else {
+        fprintf(stderr, &quot;Parsing failed\n&quot;);
+        return 0;
+    }   
+    return 0;
+}
+
+</code></pre></div></div></div></div></div></div></div>
+    <script src="/assets/js/app.fb63a1b9.js" defer></script><script src="/assets/js/34.ee5cfb6f.js" defer></script>
+  </body>
+</html>

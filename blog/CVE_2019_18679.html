@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CVE-2019-18679 Squid 敏感信息泄漏 | Hello</title>
+    <meta name="description" content="1">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.153793e6.css" as="style"><link rel="preload" href="/assets/js/app.fb63a1b9.js" as="script"><link rel="preload" href="/assets/js/23.a0a7d0ea.js" as="script"><link rel="prefetch" href="/assets/js/10.6aae25a8.js"><link rel="prefetch" href="/assets/js/11.e5a6ecb1.js"><link rel="prefetch" href="/assets/js/12.e6734d6c.js"><link rel="prefetch" href="/assets/js/13.c45be31f.js"><link rel="prefetch" href="/assets/js/14.7fe2edb8.js"><link rel="prefetch" href="/assets/js/15.7d96271b.js"><link rel="prefetch" href="/assets/js/16.d5c5556b.js"><link rel="prefetch" href="/assets/js/17.1a634ded.js"><link rel="prefetch" href="/assets/js/18.e6787f4e.js"><link rel="prefetch" href="/assets/js/19.a31276f8.js"><link rel="prefetch" href="/assets/js/2.6cf84733.js"><link rel="prefetch" href="/assets/js/20.f1ebd130.js"><link rel="prefetch" href="/assets/js/21.9fd25a7d.js"><link rel="prefetch" href="/assets/js/22.7ec64c15.js"><link rel="prefetch" href="/assets/js/24.c17f3010.js"><link rel="prefetch" href="/assets/js/25.9bbf45e5.js"><link rel="prefetch" href="/assets/js/26.4f930016.js"><link rel="prefetch" href="/assets/js/27.b6d66343.js"><link rel="prefetch" href="/assets/js/28.ded43c8f.js"><link rel="prefetch" href="/assets/js/29.35b25580.js"><link rel="prefetch" href="/assets/js/3.88ebc755.js"><link rel="prefetch" href="/assets/js/30.a0b7fe3b.js"><link rel="prefetch" href="/assets/js/31.89d75be7.js"><link rel="prefetch" href="/assets/js/32.d7c054e6.js"><link rel="prefetch" href="/assets/js/33.9a5f3e99.js"><link rel="prefetch" href="/assets/js/34.ee5cfb6f.js"><link rel="prefetch" href="/assets/js/35.2054ab64.js"><link rel="prefetch" href="/assets/js/36.73bb48c1.js"><link rel="prefetch" href="/assets/js/37.5a1d6d20.js"><link rel="prefetch" href="/assets/js/38.c7d42097.js"><link rel="prefetch" href="/assets/js/39.fd864930.js"><link rel="prefetch" href="/assets/js/4.dc8e7db2.js"><link rel="prefetch" href="/assets/js/40.6c289e11.js"><link rel="prefetch" href="/assets/js/41.0ed23031.js"><link rel="prefetch" href="/assets/js/42.10b887da.js"><link rel="prefetch" href="/assets/js/43.d348e521.js"><link rel="prefetch" href="/assets/js/44.f98660b8.js"><link rel="prefetch" href="/assets/js/45.a141b3d0.js"><link rel="prefetch" href="/assets/js/46.3a3b1b86.js"><link rel="prefetch" href="/assets/js/47.d2f1996d.js"><link rel="prefetch" href="/assets/js/48.0bd12b2f.js"><link rel="prefetch" href="/assets/js/5.6adfd92b.js"><link rel="prefetch" href="/assets/js/6.f9bcea16.js"><link rel="prefetch" href="/assets/js/7.ad2cffde.js"><link rel="prefetch" href="/assets/js/8.8932bce4.js"><link rel="prefetch" href="/assets/js/9.892cc635.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.153793e6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="page-main"><div class="component-nav-menu"><div class="placeholder"></div> <div class="search-wrapper"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-1069" class="el-autocomplete"><div class="el-input el-input--prefix"><!----><input type="text" autocomplete="off" valueKey="title" placeholder="请输入内容" fetchSuggestions="function () { [native code] }" triggerOnFocus="true" debounce="300" placement="bottom-start" popperAppendToBody="true" background-color="#eee" class="el-input__inner"><span class="el-input__prefix"><i class="el-input__icon el-icon-search"></i></span><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div> <ul role="menubar" class="el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Home
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item is-active" style="color:;border-bottom-color:;background-color:;">
+        Blog
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        TimeLine
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Github
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        About
+      </li></ul></div> <div class="page-container"><div class="component-page"><div class="page-content"><!----> <div class="content custom"><h2 id="_0x1-前言"><a href="#_0x1-前言" aria-hidden="true" class="header-anchor">#</a> 0x1 前言</h2> <p>Squid是一个开源的高性能的代理缓存服务器。它接受来自客户端的请求并适当地处理这些请求。例如，如果一个人想下载一web页面，他请求Squid为他取得这个页面。Squid随之连接到远程服务器并向这个页面发出请求。然后，Squid显式地聚集数据到客户端机器，而且同时复制一份。当下一次有人需要同一页面时，Squid可以简单地从磁盘中读到它，那样数据迅即就会传输到客户机上。当前的Squid可以处理HTTP，FTP，GOPHER，SSL和WAIS等协议。</p> <p>几个月之前，Synacktiv teams对Squid的源码进行审计，发现了几个漏洞，其中一个是在Digest authentication过程中触发的敏感信息泄漏漏洞。</p> <h2 id="_0x2-漏洞复现"><a href="#_0x2-漏洞复现" aria-hidden="true" class="header-anchor">#</a> 0x2 漏洞复现</h2> <p>下载Squid有漏洞的版本，这里我选择了squid/3.5.28。
+编译安装</p> <div class="language- extra-class"><pre class="language-text"><code>./configure --enable-auth --enable-auth-digest
+make -j4
+make install
+</code></pre></div><p>安装完成之后squid的主要目录结构如下：</p> <div class="language- extra-class"><pre class="language-text"><code>/usr/local/squid/
+    ├── sbin
+    │   └── squid             //squid程序
+    ├── libexec               //辅助程序
+    │   ├── basic_smb_auth
+    │   └── digest_file_auth
+    └── etc
+    │   └── squid.conf       //配置文件
+    └── logs                 //运行日志
+        ├── access.log
+        └── cache.log
+</code></pre></div><p>修改配置文件，增加一些内容开启digest auth。</p> <div class="language- extra-class"><pre class="language-text"><code>auth_param digest program &lt;path to program&gt;
+auth_param digest children 8
+auth_param digest realm Access to Squid
+auth_param digest nonce_garbage_interval 10 minutes
+auth_param digest nonce_max_duration 45 minutes
+auth_param digest nonce_max_count 100
+auth_param digest nonce_strictness on
+</code></pre></div><p>运行squid程序，通过squid代理，访问某个网站。返回header中nonce字段就是泄漏的内存地址。</p> <div class="language- extra-class"><pre class="language-text"><code>curl -I -x 192.168.6.22:3128 https://xz.aliyun.com/
+
+HTTP/1.1 407 Proxy Authentication Required
+Server: squid/3.5.28
+Mime-Version: 1.0
+Date: Wed, 13 May 2020 13:28:15 GMT
+Content-Type: text/html;charset=utf-8
+Content-Length: 3526
+X-Squid-Error: ERR_CACHE_ACCESS_DENIED 0
+Vary: Accept-Language
+Content-Language: en
+Proxy-Authenticate: Digest realm=&quot;Access to Squid&quot;, nonce=&quot;7/W7XgAAAABwTjQEilUAAE+y+jgAAAAA&quot;, qop=&quot;auth&quot;, stale=false
+X-Cache: MISS from test
+Via: 1.1 test (squid/3.5.28)
+Connection: keep-alive
+</code></pre></div><h2 id="_0x3-漏洞分析"><a href="#_0x3-漏洞分析" aria-hidden="true" class="header-anchor">#</a> 0x3 漏洞分析</h2> <p>漏洞发生在fixHeader函数。nonce变量通过authenticateDigestNonceNew函数申请，authenticateDigestNonceNonceb64取出nonce变量的值，通过httpHeaderPutStrf发送给客户端。</p> <p><img src="https://xzfile.aliyuncs.com/media/upload/picture/20200515143239-df9787b8-9675-1.png" alt></p> <p>authenticateDigestNonceNonceb64函数单纯的取出了nonce-&gt;key的值，重点看下nonce变量和nonce-&gt;key的赋值过程。</p> <p><img src="https://xzfile.aliyuncs.com/media/upload/picture/20200515143257-ea0f43d4-9675-1.png" alt></p> <p>函数authenticateDigestNonceNew申请nonce变量
+<img src="https://xzfile.aliyuncs.com/media/upload/picture/20200515143310-f1e80758-9675-1.png" alt></p> <p>authDigestNonceEncode函数对nonce-&gt;noncedata的地址base64编码，赋值给nonce-&gt;key</p> <p><img src="https://xzfile.aliyuncs.com/media/upload/picture/20200515143324-fab0a822-9675-1.png" alt></p> <p>最后response header中的nonce字段就是base64编码之后的nonce-&gt;noncedata的地址。</p> <h2 id="_0x4-修复方式"><a href="#_0x4-修复方式" aria-hidden="true" class="header-anchor">#</a> 0x4 修复方式</h2> <p>nonce-&gt;noncedata的地址“编码/加密”方式从base64换成了md5。如果把x64地址全部用Md5计算一遍，还是可以通过暴力破解的方式，得到nonce-&gt;noncedata的地址。。。</p> <p><img src="https://xzfile.aliyuncs.com/media/upload/picture/20200515143338-0279c228-9676-1.png" alt></p></div></div></div></div></div></div>
+    <script src="/assets/js/app.fb63a1b9.js" defer></script><script src="/assets/js/23.a0a7d0ea.js" defer></script>
+  </body>
+</html>

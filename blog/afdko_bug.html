@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>afdko hang 漏洞 | Hello</title>
+    <meta name="description" content="1">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.153793e6.css" as="style"><link rel="preload" href="/assets/js/app.fb63a1b9.js" as="script"><link rel="preload" href="/assets/js/7.ad2cffde.js" as="script"><link rel="prefetch" href="/assets/js/10.6aae25a8.js"><link rel="prefetch" href="/assets/js/11.e5a6ecb1.js"><link rel="prefetch" href="/assets/js/12.e6734d6c.js"><link rel="prefetch" href="/assets/js/13.c45be31f.js"><link rel="prefetch" href="/assets/js/14.7fe2edb8.js"><link rel="prefetch" href="/assets/js/15.7d96271b.js"><link rel="prefetch" href="/assets/js/16.d5c5556b.js"><link rel="prefetch" href="/assets/js/17.1a634ded.js"><link rel="prefetch" href="/assets/js/18.e6787f4e.js"><link rel="prefetch" href="/assets/js/19.a31276f8.js"><link rel="prefetch" href="/assets/js/2.6cf84733.js"><link rel="prefetch" href="/assets/js/20.f1ebd130.js"><link rel="prefetch" href="/assets/js/21.9fd25a7d.js"><link rel="prefetch" href="/assets/js/22.7ec64c15.js"><link rel="prefetch" href="/assets/js/23.a0a7d0ea.js"><link rel="prefetch" href="/assets/js/24.c17f3010.js"><link rel="prefetch" href="/assets/js/25.9bbf45e5.js"><link rel="prefetch" href="/assets/js/26.4f930016.js"><link rel="prefetch" href="/assets/js/27.b6d66343.js"><link rel="prefetch" href="/assets/js/28.ded43c8f.js"><link rel="prefetch" href="/assets/js/29.35b25580.js"><link rel="prefetch" href="/assets/js/3.88ebc755.js"><link rel="prefetch" href="/assets/js/30.a0b7fe3b.js"><link rel="prefetch" href="/assets/js/31.89d75be7.js"><link rel="prefetch" href="/assets/js/32.d7c054e6.js"><link rel="prefetch" href="/assets/js/33.9a5f3e99.js"><link rel="prefetch" href="/assets/js/34.ee5cfb6f.js"><link rel="prefetch" href="/assets/js/35.2054ab64.js"><link rel="prefetch" href="/assets/js/36.73bb48c1.js"><link rel="prefetch" href="/assets/js/37.5a1d6d20.js"><link rel="prefetch" href="/assets/js/38.c7d42097.js"><link rel="prefetch" href="/assets/js/39.fd864930.js"><link rel="prefetch" href="/assets/js/4.dc8e7db2.js"><link rel="prefetch" href="/assets/js/40.6c289e11.js"><link rel="prefetch" href="/assets/js/41.0ed23031.js"><link rel="prefetch" href="/assets/js/42.10b887da.js"><link rel="prefetch" href="/assets/js/43.d348e521.js"><link rel="prefetch" href="/assets/js/44.f98660b8.js"><link rel="prefetch" href="/assets/js/45.a141b3d0.js"><link rel="prefetch" href="/assets/js/46.3a3b1b86.js"><link rel="prefetch" href="/assets/js/47.d2f1996d.js"><link rel="prefetch" href="/assets/js/48.0bd12b2f.js"><link rel="prefetch" href="/assets/js/5.6adfd92b.js"><link rel="prefetch" href="/assets/js/6.f9bcea16.js"><link rel="prefetch" href="/assets/js/8.8932bce4.js"><link rel="prefetch" href="/assets/js/9.892cc635.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.153793e6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="page-main"><div class="component-nav-menu"><div class="placeholder"></div> <div class="search-wrapper"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-4291" class="el-autocomplete"><div class="el-input el-input--prefix"><!----><input type="text" autocomplete="off" valueKey="title" placeholder="请输入内容" fetchSuggestions="function () { [native code] }" triggerOnFocus="true" debounce="300" placement="bottom-start" popperAppendToBody="true" background-color="#eee" class="el-input__inner"><span class="el-input__prefix"><i class="el-input__icon el-icon-search"></i></span><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div> <ul role="menubar" class="el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Home
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item is-active" style="color:;border-bottom-color:;background-color:;">
+        Blog
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        TimeLine
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Github
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        About
+      </li></ul></div> <div class="page-container"><div class="component-page"><div class="page-content"><!----> <div class="content custom"><h2 id="_0x1-fuzzing"><a href="#_0x1-fuzzing" aria-hidden="true" class="header-anchor">#</a> 0x1 fuzzing</h2> <p>看了几篇afdko漏洞分析的文章<a href="https://github.com/xinali/AfdkoFuzz/tree/master/CVE-2019-1117" title="github" target="_blank" rel="noopener noreferrer">xinali<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>、<a href="https://bugs.chromium.org/p/project-zero/issues/list?can=1&q=finder%3Amjurczyk+reported%3A2019-apr-26" title="project-zero" target="_blank" rel="noopener noreferrer">project-zero<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。
+了解了afdko一些基础用法，而且afdko核心功能用C写的，如果我要运气好能fuzz出几个漏洞，也搞几个cve岂不美滋滋。
+我也试着用afl对afdko进行fuzz。一晚上之后，没有发现crash，倒是有一个hang。</p> <p><img src="/assets/img/afdko-afl.a1b50208.png" alt></p> <h2 id="_0x2-hang分析"><a href="#_0x2-hang分析" aria-hidden="true" class="header-anchor">#</a> 0x2 hang分析</h2> <p>我简单分析了一下hang产生的原因：</p> <p>函数buildGIDNames, 变量i的类型unsigned short, unsigned short的最大值为65535. 如果numGlyphs比65535大，程序就会一直在此处循环。</p> <div class="language- extra-class"><pre class="language-text"><code>1906 static void buildGIDNames(cfrCtx h) {
+1907     char *p;
+1908     long length;
+1909     long numGlyphs = h-&gt;glyphs.cnt;
+1910     unsigned short i;
+1911 
+1912     if (numGlyphs &lt;= 0)
+1913         fatal(h, cfrErrNoGlyph);
+1914     dnaSET_CNT(h-&gt;post.fmt2.glyphNameIndex, numGlyphs);
+1915     for (i = 0; i &lt; numGlyphs; i++) {
+1916         h-&gt;post.fmt2.glyphNameIndex.array[i] = i;
+1917     }
+</code></pre></div><p>例如</p> <div class="language- extra-class"><pre class="language-text"><code>0x0000555555604929 in buildGIDNames (h=0x62a000000200) at /home/test/github/afdko/c/public/lib/source/cffread/cffread.c:1916
+1916           h-&gt;post.fmt2.glyphNameIndex.array[i] = i;
+gdb-peda$ p /d numGlyphs
+$5 = 66950
+gdb-peda$ p /d i
+$6 = 11499
+</code></pre></div><h2 id="_0x3-漏洞修复"><a href="#_0x3-漏洞修复" aria-hidden="true" class="header-anchor">#</a> 0x3 漏洞修复</h2> <p>我把漏洞报送给psirt@adobe.com，很快漏洞就修复了。根据邮件回复，看起来这种问题只能算bug，不算security bug，就算我fuzz到afdko内存破坏类漏洞，Adobe也不为AFDKO申请CVE。
+<img src="/assets/img/afdko-email.a22886a7.png" alt></p> <p>github修复commit
+https://github.com/adobe-type-tools/afdko/commit/e4c023d4b31515d7f8d0a73b2326d3a043e8668c
+截图
+<img src="/assets/img/afdko-github.9dfaa5e2.png" alt></p> <p>回过头重新看project-zero的文章。</p> <h2 id="_0x4-回头重看利用"><a href="#_0x4-回头重看利用" aria-hidden="true" class="header-anchor">#</a> 0x4 回头重看利用</h2> <p>两个CVE <a href="https://www.exploit-db.com/exploits/47260" title="cve-2019-8017" target="_blank" rel="noopener noreferrer">cve-2019-8017<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>、<a href="https://bugs.chromium.org/p/project-zero/issues/detail?id=1829" title="cve-2019-1117" target="_blank" rel="noopener noreferrer">cve-2019-1117 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。两个产品。</p> <h3 id="_1、cve-2019-8017"><a href="#_1、cve-2019-8017" aria-hidden="true" class="header-anchor">#</a> 1、cve-2019-8017</h3> <p>Adobe Acrobat的漏洞</p> <div class="language- extra-class"><pre class="language-text"><code>For example, it is possible to execute the AFDKO copy in CoolType.dll by opening a PDF file with an embedded font, and exporting it to a PostScript (.ps) or Encapsulated PostScript (.eps) document
+The proof of concept is a PDF file with an embedded Type 1 font, which includes an extra &quot;/FDArray 0&quot; operator to set the length of FDArray to 0, as described above.
+When the poc.pdf file is opened with Adobe Acrobat Pro and converted to a PostScript document via &quot;File &gt; Export To &gt; (Encapsulated) PostScript&quot;, the following crash occurs in Acrobat.exe:
+
+简单理解
+Adobe Acrobat Pro打开构造的pdf文件，导出成PostScript，Adobe Acrobat崩溃。
+</code></pre></div><h3 id="_2、cve-2019-1117"><a href="#_2、cve-2019-1117" aria-hidden="true" class="header-anchor">#</a> 2、cve-2019-1117</h3> <p>Microsoft DirectWrite的漏洞</p> <div class="language- extra-class"><pre class="language-text"><code>Microsoft's DirectWrite library includes parts of AFDKO。
+One example of a client application which uses Direct2D printing is Microsoft Edge. If a user opens a specially crafted website with an embedded OpenType variable font and decides to print it (to PDF, XPS, or another physical or virtual printer), the AFDKO code will execute with the attacker's font file as input. 
+
+简单理解
+Microsoft Edge 支持Direct2D printing.Microsoft Edge打开嵌入了OpenType字体的网页，然后打印网页成PDF、 XPS，AFDKO就会运行嵌入的字体。
+</code></pre></div><p>poc.html</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;html&gt;
+   &lt;head&gt;
+        &lt;style&gt;
+             @font-face { font-family: custom_font; font-weight: 1000; src: url('poc.otf'); } 
+             h1 {
+                 font-family: custom_font
+                }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;The quick brown fox jumps over the lazy dog.&lt;/h1&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div><p>我按照上面的方式进行试验，没有发现任何异常，对afdko的应用理解还不是很深入，无法完成利用。。。。。。。
+最后能利用的洞才是漏洞。。。。</p></div></div></div></div></div></div>
+    <script src="/assets/js/app.fb63a1b9.js" defer></script><script src="/assets/js/7.ad2cffde.js" defer></script>
+  </body>
+</html>

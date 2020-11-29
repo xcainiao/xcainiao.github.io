@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>PHP：heap buffer overflow in zif_sodium_pad | Hello</title>
+    <meta name="description" content="1">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.153793e6.css" as="style"><link rel="preload" href="/assets/js/app.fb63a1b9.js" as="script"><link rel="preload" href="/assets/js/40.6c289e11.js" as="script"><link rel="prefetch" href="/assets/js/10.6aae25a8.js"><link rel="prefetch" href="/assets/js/11.e5a6ecb1.js"><link rel="prefetch" href="/assets/js/12.e6734d6c.js"><link rel="prefetch" href="/assets/js/13.c45be31f.js"><link rel="prefetch" href="/assets/js/14.7fe2edb8.js"><link rel="prefetch" href="/assets/js/15.7d96271b.js"><link rel="prefetch" href="/assets/js/16.d5c5556b.js"><link rel="prefetch" href="/assets/js/17.1a634ded.js"><link rel="prefetch" href="/assets/js/18.e6787f4e.js"><link rel="prefetch" href="/assets/js/19.a31276f8.js"><link rel="prefetch" href="/assets/js/2.6cf84733.js"><link rel="prefetch" href="/assets/js/20.f1ebd130.js"><link rel="prefetch" href="/assets/js/21.9fd25a7d.js"><link rel="prefetch" href="/assets/js/22.7ec64c15.js"><link rel="prefetch" href="/assets/js/23.a0a7d0ea.js"><link rel="prefetch" href="/assets/js/24.c17f3010.js"><link rel="prefetch" href="/assets/js/25.9bbf45e5.js"><link rel="prefetch" href="/assets/js/26.4f930016.js"><link rel="prefetch" href="/assets/js/27.b6d66343.js"><link rel="prefetch" href="/assets/js/28.ded43c8f.js"><link rel="prefetch" href="/assets/js/29.35b25580.js"><link rel="prefetch" href="/assets/js/3.88ebc755.js"><link rel="prefetch" href="/assets/js/30.a0b7fe3b.js"><link rel="prefetch" href="/assets/js/31.89d75be7.js"><link rel="prefetch" href="/assets/js/32.d7c054e6.js"><link rel="prefetch" href="/assets/js/33.9a5f3e99.js"><link rel="prefetch" href="/assets/js/34.ee5cfb6f.js"><link rel="prefetch" href="/assets/js/35.2054ab64.js"><link rel="prefetch" href="/assets/js/36.73bb48c1.js"><link rel="prefetch" href="/assets/js/37.5a1d6d20.js"><link rel="prefetch" href="/assets/js/38.c7d42097.js"><link rel="prefetch" href="/assets/js/39.fd864930.js"><link rel="prefetch" href="/assets/js/4.dc8e7db2.js"><link rel="prefetch" href="/assets/js/41.0ed23031.js"><link rel="prefetch" href="/assets/js/42.10b887da.js"><link rel="prefetch" href="/assets/js/43.d348e521.js"><link rel="prefetch" href="/assets/js/44.f98660b8.js"><link rel="prefetch" href="/assets/js/45.a141b3d0.js"><link rel="prefetch" href="/assets/js/46.3a3b1b86.js"><link rel="prefetch" href="/assets/js/47.d2f1996d.js"><link rel="prefetch" href="/assets/js/48.0bd12b2f.js"><link rel="prefetch" href="/assets/js/5.6adfd92b.js"><link rel="prefetch" href="/assets/js/6.f9bcea16.js"><link rel="prefetch" href="/assets/js/7.ad2cffde.js"><link rel="prefetch" href="/assets/js/8.8932bce4.js"><link rel="prefetch" href="/assets/js/9.892cc635.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.153793e6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="page-main"><div class="component-nav-menu"><div class="placeholder"></div> <div class="search-wrapper"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-5699" class="el-autocomplete"><div class="el-input el-input--prefix"><!----><input type="text" autocomplete="off" valueKey="title" placeholder="请输入内容" fetchSuggestions="function () { [native code] }" triggerOnFocus="true" debounce="300" placement="bottom-start" popperAppendToBody="true" background-color="#eee" class="el-input__inner"><span class="el-input__prefix"><i class="el-input__icon el-icon-search"></i></span><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div> <ul role="menubar" class="el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Home
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Blog
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        TimeLine
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Github
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        About
+      </li></ul></div> <div class="page-container"><div class="component-page"><div class="page-content"><!----> <div class="content custom"><h2 id="php-version"><a href="#php-version" aria-hidden="true" class="header-anchor">#</a> php version</h2> <div class="language- extra-class"><pre class="language-text"><code>/sapi/cli/php -v
+PHP 7.2.10 (cli) (built: Oct  8 2018 05:36:41) ( NTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.2.0, Copyright (c) 1998-2018 Zend Technologies
+</code></pre></div><h2 id="error-log"><a href="#error-log" aria-hidden="true" class="header-anchor">#</a> error log</h2> <p>./sapi/cli/php ../crashxxxx.php</p> <div class="language- extra-class"><pre class="language-text"><code>Warning: ftp_site() expects exactly 2 parameters, 0 given in /home/test/crashxxxx.php on line 6
+=================================================================
+==17594==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x603000001200 at pc 0x556907c879b1 bp 0x7fff74df9c50 sp 0x7fff74df9c40
+READ of size 1 at 0x603000001200 thread T0
+    #0 0x556907c879b0 in zif_sodium_pad /home/test/php-7.2.10_bak/ext/sodium/libsodium.c:3407
+    #1 0x556908282ad3 in ZEND_DO_ICALL_SPEC_RETVAL_USED_HANDLER /home/test/php-7.2.10/Zend/zend_vm_execute.h:617
+    #2 0x556908282ad3 in execute_ex /home/test/php-7.2.10/Zend/zend_vm_execute.h:59750
+    #3 0x5569082a8eba in zend_execute /home/test/php-7.2.10/Zend/zend_vm_execute.h:63776
+    #4 0x556908005795 in zend_execute_scripts /home/test/php-7.2.10/Zend/zend.c:1496
+    #5 0x556907eeddfc in php_execute_script /home/test/php-7.2.10/main/main.c:2590
+    #6 0x5569082ae333 in do_cli /home/test/php-7.2.10/sapi/cli/php_cli.c:1011
+    #7 0x5569073f4025 in main /home/test/php-7.2.10/sapi/cli/php_cli.c:1404
+    #8 0x7f29fae8db96 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x21b96)
+    #9 0x5569073f43b9 in _start (/home/test/php-7.2.10_bak/sapi/cli/php+0x44e3b9)
+
+0x603000001200 is located 0 bytes to the right of 32-byte region [0x6030000011e0,0x603000001200)
+allocated by thread T0 here:
+    #0 0x7f29fea79b50 in __interceptor_malloc (/usr/lib/x86_64-linux-gnu/libasan.so.4+0xdeb50)
+    #1 0x556907f82488 in __zend_malloc /home/test/php-7.2.10/Zend/zend_alloc.c:2829
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/test/php-7.2.10_bak/ext/sodium/libsodium.c:3407 in zif_sodium_pad
+Shadow bytes around the buggy address:
+  0x0c067fff81f0: 04 fa fa fa 00 00 00 06 fa fa 00 00 01 fa fa fa
+  0x0c067fff8200: 00 00 00 07 fa fa 00 00 00 00 fa fa 00 00 00 06
+  0x0c067fff8210: fa fa 00 00 00 07 fa fa 00 00 01 fa fa fa 00 00
+  0x0c067fff8220: 00 fa fa fa 00 00 01 fa fa fa fd fd fd fd fa fa
+  0x0c067fff8230: 00 00 00 00 fa fa 00 00 00 02 fa fa 00 00 00 00
+=&gt;0x0c067fff8240:[fa]fa 00 00 00 00 fa fa 00 00 00 00 fa fa 00 00
+  0x0c067fff8250: 00 00 fa fa 00 00 00 00 fa fa 00 00 00 00 fa fa
+  0x0c067fff8260: 00 00 00 00 fa fa 00 00 00 00 fa fa 00 00 00 00
+  0x0c067fff8270: fa fa 00 00 00 00 fa fa 00 00 00 00 fa fa 00 00
+  0x0c067fff8280: 00 00 fa fa 00 00 00 00 fa fa 00 00 00 00 fa fa
+  0x0c067fff8290: 00 00 00 00 fa fa 00 00 00 00 fa fa 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==17594==ABORTING
+</code></pre></div><p>cat crashxxxx.php</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;?php
+function test()
+{
+        return sodium_pad(NULL, 2097152);
+}
+test();
+?&gt;
+</code></pre></div><h2 id="report"><a href="#report" aria-hidden="true" class="header-anchor">#</a> report</h2> <p>https://bugs.php.net/bug.php?id=77008</p></div></div></div></div></div></div>
+    <script src="/assets/js/app.fb63a1b9.js" defer></script><script src="/assets/js/40.6c289e11.js" defer></script>
+  </body>
+</html>

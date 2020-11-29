@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Python: signed overflow in _pickle | Hello</title>
+    <meta name="description" content="1">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.153793e6.css" as="style"><link rel="preload" href="/assets/js/app.fb63a1b9.js" as="script"><link rel="preload" href="/assets/js/43.d348e521.js" as="script"><link rel="prefetch" href="/assets/js/10.6aae25a8.js"><link rel="prefetch" href="/assets/js/11.e5a6ecb1.js"><link rel="prefetch" href="/assets/js/12.e6734d6c.js"><link rel="prefetch" href="/assets/js/13.c45be31f.js"><link rel="prefetch" href="/assets/js/14.7fe2edb8.js"><link rel="prefetch" href="/assets/js/15.7d96271b.js"><link rel="prefetch" href="/assets/js/16.d5c5556b.js"><link rel="prefetch" href="/assets/js/17.1a634ded.js"><link rel="prefetch" href="/assets/js/18.e6787f4e.js"><link rel="prefetch" href="/assets/js/19.a31276f8.js"><link rel="prefetch" href="/assets/js/2.6cf84733.js"><link rel="prefetch" href="/assets/js/20.f1ebd130.js"><link rel="prefetch" href="/assets/js/21.9fd25a7d.js"><link rel="prefetch" href="/assets/js/22.7ec64c15.js"><link rel="prefetch" href="/assets/js/23.a0a7d0ea.js"><link rel="prefetch" href="/assets/js/24.c17f3010.js"><link rel="prefetch" href="/assets/js/25.9bbf45e5.js"><link rel="prefetch" href="/assets/js/26.4f930016.js"><link rel="prefetch" href="/assets/js/27.b6d66343.js"><link rel="prefetch" href="/assets/js/28.ded43c8f.js"><link rel="prefetch" href="/assets/js/29.35b25580.js"><link rel="prefetch" href="/assets/js/3.88ebc755.js"><link rel="prefetch" href="/assets/js/30.a0b7fe3b.js"><link rel="prefetch" href="/assets/js/31.89d75be7.js"><link rel="prefetch" href="/assets/js/32.d7c054e6.js"><link rel="prefetch" href="/assets/js/33.9a5f3e99.js"><link rel="prefetch" href="/assets/js/34.ee5cfb6f.js"><link rel="prefetch" href="/assets/js/35.2054ab64.js"><link rel="prefetch" href="/assets/js/36.73bb48c1.js"><link rel="prefetch" href="/assets/js/37.5a1d6d20.js"><link rel="prefetch" href="/assets/js/38.c7d42097.js"><link rel="prefetch" href="/assets/js/39.fd864930.js"><link rel="prefetch" href="/assets/js/4.dc8e7db2.js"><link rel="prefetch" href="/assets/js/40.6c289e11.js"><link rel="prefetch" href="/assets/js/41.0ed23031.js"><link rel="prefetch" href="/assets/js/42.10b887da.js"><link rel="prefetch" href="/assets/js/44.f98660b8.js"><link rel="prefetch" href="/assets/js/45.a141b3d0.js"><link rel="prefetch" href="/assets/js/46.3a3b1b86.js"><link rel="prefetch" href="/assets/js/47.d2f1996d.js"><link rel="prefetch" href="/assets/js/48.0bd12b2f.js"><link rel="prefetch" href="/assets/js/5.6adfd92b.js"><link rel="prefetch" href="/assets/js/6.f9bcea16.js"><link rel="prefetch" href="/assets/js/7.ad2cffde.js"><link rel="prefetch" href="/assets/js/8.8932bce4.js"><link rel="prefetch" href="/assets/js/9.892cc635.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.153793e6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="page-main"><div class="component-nav-menu"><div class="placeholder"></div> <div class="search-wrapper"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-6413" class="el-autocomplete"><div class="el-input el-input--prefix"><!----><input type="text" autocomplete="off" valueKey="title" placeholder="请输入内容" fetchSuggestions="function () { [native code] }" triggerOnFocus="true" debounce="300" placement="bottom-start" popperAppendToBody="true" background-color="#eee" class="el-input__inner"><span class="el-input__prefix"><i class="el-input__icon el-icon-search"></i></span><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div> <ul role="menubar" class="el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Home
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Blog
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        TimeLine
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Github
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        About
+      </li></ul></div> <div class="page-container"><div class="component-page"><div class="page-content"><!----> <div class="content custom"><h2 id="git-log"><a href="#git-log" aria-hidden="true" class="header-anchor">#</a> git log</h2> <div class="language- extra-class"><pre class="language-text"><code>commit 4ae8ece5cd4c5853b625381db13429f25512108d
+Author: Gregory P. Smith &lt;greg@krypto.org&gt;
+Date:   Wed Sep 12 17:58:40 2018 -0700
+</code></pre></div><h2 id="error-log"><a href="#error-log" aria-hidden="true" class="header-anchor">#</a> error log</h2> <p>./python pk.py poc</p> <p>cat ./pk.py</p> <div class="language- extra-class"><pre class="language-text"><code>import pickle
+import sys
+filename = sys.argv[1]
+with open(filename, 'rb') as f:
+    aa = pickle.load(f)
+    print(aa)
+</code></pre></div><p>memory exhaustion  and python hang</p> <h2 id="report-and-patch"><a href="#report-and-patch" aria-hidden="true" class="header-anchor">#</a> report and patch</h2> <p>https://bugs.python.org/issue34656</p> <p>https://github.com/python/cpython/pull/9261/commits/59c974e3589c27b9e10bede5bf1a3f75b41087a7</p></div></div></div></div></div></div>
+    <script src="/assets/js/app.fb63a1b9.js" defer></script><script src="/assets/js/43.d348e521.js" defer></script>
+  </body>
+</html>

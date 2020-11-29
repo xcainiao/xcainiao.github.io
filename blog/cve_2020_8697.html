@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CVE-2020-8597 pppd stack buffer overflow in eap_response | Hello</title>
+    <meta name="description" content="1">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.153793e6.css" as="style"><link rel="preload" href="/assets/js/app.fb63a1b9.js" as="script"><link rel="preload" href="/assets/js/12.e6734d6c.js" as="script"><link rel="prefetch" href="/assets/js/10.6aae25a8.js"><link rel="prefetch" href="/assets/js/11.e5a6ecb1.js"><link rel="prefetch" href="/assets/js/13.c45be31f.js"><link rel="prefetch" href="/assets/js/14.7fe2edb8.js"><link rel="prefetch" href="/assets/js/15.7d96271b.js"><link rel="prefetch" href="/assets/js/16.d5c5556b.js"><link rel="prefetch" href="/assets/js/17.1a634ded.js"><link rel="prefetch" href="/assets/js/18.e6787f4e.js"><link rel="prefetch" href="/assets/js/19.a31276f8.js"><link rel="prefetch" href="/assets/js/2.6cf84733.js"><link rel="prefetch" href="/assets/js/20.f1ebd130.js"><link rel="prefetch" href="/assets/js/21.9fd25a7d.js"><link rel="prefetch" href="/assets/js/22.7ec64c15.js"><link rel="prefetch" href="/assets/js/23.a0a7d0ea.js"><link rel="prefetch" href="/assets/js/24.c17f3010.js"><link rel="prefetch" href="/assets/js/25.9bbf45e5.js"><link rel="prefetch" href="/assets/js/26.4f930016.js"><link rel="prefetch" href="/assets/js/27.b6d66343.js"><link rel="prefetch" href="/assets/js/28.ded43c8f.js"><link rel="prefetch" href="/assets/js/29.35b25580.js"><link rel="prefetch" href="/assets/js/3.88ebc755.js"><link rel="prefetch" href="/assets/js/30.a0b7fe3b.js"><link rel="prefetch" href="/assets/js/31.89d75be7.js"><link rel="prefetch" href="/assets/js/32.d7c054e6.js"><link rel="prefetch" href="/assets/js/33.9a5f3e99.js"><link rel="prefetch" href="/assets/js/34.ee5cfb6f.js"><link rel="prefetch" href="/assets/js/35.2054ab64.js"><link rel="prefetch" href="/assets/js/36.73bb48c1.js"><link rel="prefetch" href="/assets/js/37.5a1d6d20.js"><link rel="prefetch" href="/assets/js/38.c7d42097.js"><link rel="prefetch" href="/assets/js/39.fd864930.js"><link rel="prefetch" href="/assets/js/4.dc8e7db2.js"><link rel="prefetch" href="/assets/js/40.6c289e11.js"><link rel="prefetch" href="/assets/js/41.0ed23031.js"><link rel="prefetch" href="/assets/js/42.10b887da.js"><link rel="prefetch" href="/assets/js/43.d348e521.js"><link rel="prefetch" href="/assets/js/44.f98660b8.js"><link rel="prefetch" href="/assets/js/45.a141b3d0.js"><link rel="prefetch" href="/assets/js/46.3a3b1b86.js"><link rel="prefetch" href="/assets/js/47.d2f1996d.js"><link rel="prefetch" href="/assets/js/48.0bd12b2f.js"><link rel="prefetch" href="/assets/js/5.6adfd92b.js"><link rel="prefetch" href="/assets/js/6.f9bcea16.js"><link rel="prefetch" href="/assets/js/7.ad2cffde.js"><link rel="prefetch" href="/assets/js/8.8932bce4.js"><link rel="prefetch" href="/assets/js/9.892cc635.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.153793e6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="page-main"><div class="component-nav-menu"><div class="placeholder"></div> <div class="search-wrapper"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-8473" class="el-autocomplete"><div class="el-input el-input--prefix"><!----><input type="text" autocomplete="off" valueKey="title" placeholder="请输入内容" fetchSuggestions="function () { [native code] }" triggerOnFocus="true" debounce="300" placement="bottom-start" popperAppendToBody="true" background-color="#eee" class="el-input__inner"><span class="el-input__prefix"><i class="el-input__icon el-icon-search"></i></span><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div> <ul role="menubar" class="el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Home
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item is-active" style="color:;border-bottom-color:;background-color:;">
+        Blog
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        TimeLine
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Github
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        About
+      </li></ul></div> <div class="page-container"><div class="component-page"><div class="page-content"><!----> <div class="content custom"><h2 id="_0x0-背景"><a href="#_0x0-背景" aria-hidden="true" class="header-anchor">#</a> 0x0 背景</h2> <p>pppd是一个通过串行接口连接的点对点协议（PPP）</p> <p>github地址 ：https://github.com/paulusmack/ppp</p> <p>在ppp 2.4.2 - 2.4.8版本有一个栈溢出漏洞，我试着分析了整个过程</p> <h2 id="_0x1复现整个过程"><a href="#_0x1复现整个过程" aria-hidden="true" class="header-anchor">#</a> 0x1复现整个过程</h2> <p>准备两台ubuntu的虚拟机(我用的virtualbox)，设置启用串口功能。分别在两台虚拟机上git clone一份ppp，并回滚到有漏洞版本，编译安装。例如</p> <div class="language- extra-class"><pre class="language-text"><code>git clone https://github.com/paulusmack/ppp.git
+cd ppp
+git checkout ppp-2.4.8
+./configure
+make
+make install
+</code></pre></div><p>开启服务端的md5认证(MD5-Challenge)</p> <p>打开文件/etc/ppp/chap-secrets添加下面内容</p> <div class="language- extra-class"><pre class="language-text"><code>admin   *       password        *
+</code></pre></div><p>服务端启动pppd程序</p> <div class="language- extra-class"><pre class="language-text"><code>pppd /dev/ttyS0 9600 auth local lock defaultroute debug nodetach 172.16.1.1:172.16.1.2 ms-dns 8.8.8.8 require-eap
+</code></pre></div><p>客户端启动pppd程序</p> <div class="language- extra-class"><pre class="language-text"><code>pppd noauth local lock defaultroute debug nodetach /dev/ttyS0 9600 user aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb password notpassword
+</code></pre></div><p>下图我们发现程序没有崩溃，服务端打印出的username只有255个字节，我们输入的username255+5个字节，可惜这不是服务端对接收的内容进行的验证，这是在客户端限制了用户输入的用户名长度</p> <p><img src="/assets/img/pppd-1.4d3d50fe.jpg" alt></p> <h2 id="_0x2-漏洞分析"><a href="#_0x2-漏洞分析" aria-hidden="true" class="header-anchor">#</a> 0x2 漏洞分析</h2> <p>pppd进行MD5-Challenge的时候，通过eap_chap_response把密码hash、用户名和用户名长度一起发送到了服务端，用户名保存在一个256大小的栈变量中。</p> <p>所以在我们上边的测试中，其实只发送了255长度的username到服务端。</p> <div class="language- extra-class"><pre class="language-text"><code>   6     typenum = id;
+   5     MD5_Update(&amp;mdContext, &amp;typenum, 1);
+   4     MD5_Update(&amp;mdContext, (u_char *)secret, secret_len);
+   3     BZERO(secret, sizeof (secret));
+   2     MD5_Update(&amp;mdContext, inp, vallen);
+   1     MD5_Final(hash, &amp;mdContext);
+1454     ** eap_chap_response(esp, id, hash, esp-&gt;es_client.ea_name,
+   1         esp-&gt;es_client.ea_namelen);
+   2     break;
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>787    eap_authwithpeer(unit, user);
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>  20 void
+  19 eap_authwithpeer(unit, localname)
+  18 int unit;
+  17 char *localname;
+  16 {
+  15   eap_state *esp = &amp;eap_states[unit];
+  14
+  13   /* Save the peer name we're given */
+  12   esp-&gt;es_client.ea_name = localname;
+  11   esp-&gt;es_client.ea_namelen = strlen(localname);
+  10
+   9   esp-&gt;es_client.ea_state = eapListen;
+   8
+   7   /*
+   6    * Start a timer so that if the other end just goes
+   5    * silent, we don't sit here waiting forever.
+   4    */
+   3   if (esp-&gt;es_client.ea_timeout &gt; 0)
+   2     TIMEOUT(eap_client_timeout, (void *)esp,
+   1         esp-&gt;es_client.ea_timeout);
+257  }
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>extern char user[MAXNAMELEN];/* Our name for authenticating ourselves */
+extern char passwd[MAXSECRETLEN]; /* Password for PAP or CHAP */
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>#define MAXNAMELEN	256	/* max length of hostname or name for auth */
+</code></pre></div><p><strong>服务端接收的时候，vallen是已经处理的长度，len是接收的总长度，sizeof (rhostname)是username最大的长度和客户端一样256的数组，所以if判断手误了？</strong></p> <p>最后MD5-Challenge没处理好长度验证。当发送大于256长度的字符串时，发生益处。</p> <div class="language- extra-class"><pre class="language-text"><code>      if (vallen &gt;= len + sizeof (rhostname)) {
+          dbglog(&quot;EAP: trimming really long peer name down&quot;);
+          BCOPY(inp + vallen, rhostname, sizeof (rhostname) - 1;
+          rhostname[sizeof (rhostname) - 1] = '\0';
+        } else {
+          BCOPY(inp + vallen, rhostname, len - vallen);
+          rhostname[len - vallen] = '\0';
+        }
+</code></pre></div><h2 id="_0x3-其他"><a href="#_0x3-其他" aria-hidden="true" class="header-anchor">#</a> 0x3 其他</h2> <p>想要触发服务端崩溃，可以像参考链接中的博主一样，直接修改eap_chap_response中的username送的内容。也可以像另一位博主一样，wireshark抓包，修改数据包中username内容，在写脚本发包到服务端，</p> <p><img src="/assets/img/pppd-2.c030981e.jpg" alt></p> <h2 id="_0x4一半翻译一半补充的参考链接"><a href="#_0x4一半翻译一半补充的参考链接" aria-hidden="true" class="header-anchor">#</a> 0x4一半翻译一半补充的参考链接</h2> <p>https://gist.github.com/nstarke/551433bcc72ff95588e168a0bb666124</p></div></div></div></div></div></div>
+    <script src="/assets/js/app.fb63a1b9.js" defer></script><script src="/assets/js/12.e6734d6c.js" defer></script>
+  </body>
+</html>

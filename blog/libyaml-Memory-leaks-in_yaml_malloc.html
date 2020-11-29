@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>libyaml: Memory leaks in yaml_malloc | Hello</title>
+    <meta name="description" content="1">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.153793e6.css" as="style"><link rel="preload" href="/assets/js/app.fb63a1b9.js" as="script"><link rel="preload" href="/assets/js/35.2054ab64.js" as="script"><link rel="prefetch" href="/assets/js/10.6aae25a8.js"><link rel="prefetch" href="/assets/js/11.e5a6ecb1.js"><link rel="prefetch" href="/assets/js/12.e6734d6c.js"><link rel="prefetch" href="/assets/js/13.c45be31f.js"><link rel="prefetch" href="/assets/js/14.7fe2edb8.js"><link rel="prefetch" href="/assets/js/15.7d96271b.js"><link rel="prefetch" href="/assets/js/16.d5c5556b.js"><link rel="prefetch" href="/assets/js/17.1a634ded.js"><link rel="prefetch" href="/assets/js/18.e6787f4e.js"><link rel="prefetch" href="/assets/js/19.a31276f8.js"><link rel="prefetch" href="/assets/js/2.6cf84733.js"><link rel="prefetch" href="/assets/js/20.f1ebd130.js"><link rel="prefetch" href="/assets/js/21.9fd25a7d.js"><link rel="prefetch" href="/assets/js/22.7ec64c15.js"><link rel="prefetch" href="/assets/js/23.a0a7d0ea.js"><link rel="prefetch" href="/assets/js/24.c17f3010.js"><link rel="prefetch" href="/assets/js/25.9bbf45e5.js"><link rel="prefetch" href="/assets/js/26.4f930016.js"><link rel="prefetch" href="/assets/js/27.b6d66343.js"><link rel="prefetch" href="/assets/js/28.ded43c8f.js"><link rel="prefetch" href="/assets/js/29.35b25580.js"><link rel="prefetch" href="/assets/js/3.88ebc755.js"><link rel="prefetch" href="/assets/js/30.a0b7fe3b.js"><link rel="prefetch" href="/assets/js/31.89d75be7.js"><link rel="prefetch" href="/assets/js/32.d7c054e6.js"><link rel="prefetch" href="/assets/js/33.9a5f3e99.js"><link rel="prefetch" href="/assets/js/34.ee5cfb6f.js"><link rel="prefetch" href="/assets/js/36.73bb48c1.js"><link rel="prefetch" href="/assets/js/37.5a1d6d20.js"><link rel="prefetch" href="/assets/js/38.c7d42097.js"><link rel="prefetch" href="/assets/js/39.fd864930.js"><link rel="prefetch" href="/assets/js/4.dc8e7db2.js"><link rel="prefetch" href="/assets/js/40.6c289e11.js"><link rel="prefetch" href="/assets/js/41.0ed23031.js"><link rel="prefetch" href="/assets/js/42.10b887da.js"><link rel="prefetch" href="/assets/js/43.d348e521.js"><link rel="prefetch" href="/assets/js/44.f98660b8.js"><link rel="prefetch" href="/assets/js/45.a141b3d0.js"><link rel="prefetch" href="/assets/js/46.3a3b1b86.js"><link rel="prefetch" href="/assets/js/47.d2f1996d.js"><link rel="prefetch" href="/assets/js/48.0bd12b2f.js"><link rel="prefetch" href="/assets/js/5.6adfd92b.js"><link rel="prefetch" href="/assets/js/6.f9bcea16.js"><link rel="prefetch" href="/assets/js/7.ad2cffde.js"><link rel="prefetch" href="/assets/js/8.8932bce4.js"><link rel="prefetch" href="/assets/js/9.892cc635.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.153793e6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="page-main"><div class="component-nav-menu"><div class="placeholder"></div> <div class="search-wrapper"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-7989" class="el-autocomplete"><div class="el-input el-input--prefix"><!----><input type="text" autocomplete="off" valueKey="title" placeholder="请输入内容" fetchSuggestions="function () { [native code] }" triggerOnFocus="true" debounce="300" placement="bottom-start" popperAppendToBody="true" background-color="#eee" class="el-input__inner"><span class="el-input__prefix"><i class="el-input__icon el-icon-search"></i></span><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div> <ul role="menubar" class="el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Home
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Blog
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        TimeLine
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Github
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        About
+      </li></ul></div> <div class="page-container"><div class="component-page"><div class="page-content"><!----> <div class="content custom"><h2 id="git-log"><a href="#git-log" aria-hidden="true" class="header-anchor">#</a> git log</h2> <div class="language- extra-class"><pre class="language-text"><code>commit 01f3a8786127748b5bbd4614880c4484570bbd44
+Author: Roger Peppe &lt;rogpeppe@gmail.com&gt;
+Date:   Mon Jan 8 18:47:02 2018 +0000
+
+    Remove need for PTRDIFF_MAX
+
+    It's just as easy to calculate the maximum value directly.
+
+</code></pre></div><h2 id="compile"><a href="#compile" aria-hidden="true" class="header-anchor">#</a> compile</h2> <div class="language- extra-class"><pre class="language-text"><code>gcc -I./  -I./include -g  -fsanitize=address ./leak.c -o leak ./src/.libs/libyaml.so
+</code></pre></div><h2 id="testcode"><a href="#testcode" aria-hidden="true" class="header-anchor">#</a> testcode</h2> <div class="language- extra-class"><pre class="language-text"><code>#include &quot;yaml.h&quot;
+
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdint.h&gt;
+
+#ifdef NDEBUG
+#undef NDEBUG
+#endif
+#include &lt;assert.h&gt;
+
+#define BUFFER_SIZE 65536
+#define MAX_DOCUMENTS  16
+#define MAX_EVENTS  1024
+
+static int canonical = 0;
+static int unicode = 0;
+static char *curpos = NULL;
+static size_t remainder = 0;
+
+int compare_nodes(yaml_document_t *document1, int index1,
+        yaml_document_t *document2, int index2, int level)
+{
+    if (level++ &gt; 1000) return 0;
+    yaml_node_t *node1 = yaml_document_get_node(document1, index1);
+
+    if(!node1)
+      return 0;
+
+    yaml_node_t *node2 = yaml_document_get_node(document2, index2);
+
+    if(!node2)
+      return 0;
+
+    int k;
+
+    if (node1-&gt;type != node2-&gt;type)
+        return 0;
+
+    if (strcmp((char *)node1-&gt;tag, (char *)node2-&gt;tag) != 0) return 0;
+
+    switch (node1-&gt;type) {
+        case YAML_SCALAR_NODE:
+            if (node1-&gt;data.scalar.length != node2-&gt;data.scalar.length)
+                return 0;
+            if (strncmp((char *)node1-&gt;data.scalar.value, (char *)node2-&gt;data.scalar.value,
+                        node1-&gt;data.scalar.length) != 0) return 0;
+            break;
+        case YAML_SEQUENCE_NODE:
+            if ((node1-&gt;data.sequence.items.top - node1-&gt;data.sequence.items.start) !=
+                    (node2-&gt;data.sequence.items.top - node2-&gt;data.sequence.items.start))
+                return 0;
+            for (k = 0; k &lt; (node1-&gt;data.sequence.items.top - node1-&gt;data.sequence.items.start); k ++) {
+                if (!compare_nodes(document1, node1-&gt;data.sequence.items.start[k],
+                            document2, node2-&gt;data.sequence.items.start[k], level)) return 0;
+            }
+            break;
+        case YAML_MAPPING_NODE:
+            if ((node1-&gt;data.mapping.pairs.top - node1-&gt;data.mapping.pairs.start) !=
+                    (node2-&gt;data.mapping.pairs.top - node2-&gt;data.mapping.pairs.start))
+                return 0;
+            for (k = 0; k &lt; (node1-&gt;data.mapping.pairs.top - node1-&gt;data.mapping.pairs.start); k ++) {
+                if (!compare_nodes(document1, node1-&gt;data.mapping.pairs.start[k].key,
+                            document2, node2-&gt;data.mapping.pairs.start[k].key, level)) return 0;
+                if (!compare_nodes(document1, node1-&gt;data.mapping.pairs.start[k].value,
+                            document2, node2-&gt;data.mapping.pairs.start[k].value, level)) return 0;
+            }
+            break;
+        default:
+            return 0;
+    }
+    return 1;
+}
+
+
+
+int compare_documents(yaml_document_t *document1, yaml_document_t *document2)
+{
+    int k;
+
+    if ((document1-&gt;version_directive &amp;&amp; !document2-&gt;version_directive)
+            || (!document1-&gt;version_directive &amp;&amp; document2-&gt;version_directive)
+            || (document1-&gt;version_directive &amp;&amp; document2-&gt;version_directive
+                &amp;&amp; (document1-&gt;version_directive-&gt;major != document2-&gt;version_directive-&gt;major
+                    || document1-&gt;version_directive-&gt;minor != document2-&gt;version_directive-&gt;minor)))
+        return 0;
+
+    if ((document1-&gt;tag_directives.end - document1-&gt;tag_directives.start) !=
+            (document2-&gt;tag_directives.end - document2-&gt;tag_directives.start))
+        return 0;
+    for (k = 0; k &lt; (document1-&gt;tag_directives.end - document1-&gt;tag_directives.start); k ++) {
+        if ((strcmp((char *)document1-&gt;tag_directives.start[k].handle,
+                        (char *)document2-&gt;tag_directives.start[k].handle) != 0)
+                || (strcmp((char *)document1-&gt;tag_directives.start[k].prefix,
+                    (char *)document2-&gt;tag_directives.start[k].prefix) != 0))
+            return 0;
+    }
+
+    if ((document1-&gt;nodes.top - document1-&gt;nodes.start) !=
+            (document2-&gt;nodes.top - document2-&gt;nodes.start))
+        return 0;
+
+    if (document1-&gt;nodes.top != document1-&gt;nodes.start) {
+        if (!compare_nodes(document1, 1, document2, 1, 0))
+            return 0;
+    }
+
+    return 1;
+}
+
+
+int copy_document(yaml_document_t *document_to, yaml_document_t *document_from)
+{
+    yaml_node_t *node;
+    yaml_node_item_t *item;
+    yaml_node_pair_t *pair;
+
+    if (!yaml_document_initialize(document_to, document_from-&gt;version_directive,
+                document_from-&gt;tag_directives.start,
+                document_from-&gt;tag_directives.end,
+                document_from-&gt;start_implicit, document_from-&gt;end_implicit))
+        return 0;
+
+    for (node = document_from-&gt;nodes.start;
+            node &lt; document_from-&gt;nodes.top; node ++) {
+        switch (node-&gt;type) {
+            case YAML_SCALAR_NODE:
+                if (!yaml_document_add_scalar(document_to, node-&gt;tag,
+                            node-&gt;data.scalar.value, node-&gt;data.scalar.length,
+                            node-&gt;data.scalar.style)) goto error;
+                break;
+            case YAML_SEQUENCE_NODE:
+                if (!yaml_document_add_sequence(document_to, node-&gt;tag,
+                            node-&gt;data.sequence.style)) goto error;
+                break;
+            case YAML_MAPPING_NODE:
+                if (!yaml_document_add_mapping(document_to, node-&gt;tag,
+                            node-&gt;data.mapping.style)) goto error;
+                break;
+            default:
+                goto error;
+        }
+    }
+    for (node = document_from-&gt;nodes.start;
+            node &lt; document_from-&gt;nodes.top; node ++) {
+        switch (node-&gt;type) {
+            case YAML_SEQUENCE_NODE:
+                for (item = node-&gt;data.sequence.items.start;
+                        item &lt; node-&gt;data.sequence.items.top; item ++) {
+                    if (!yaml_document_append_sequence_item(document_to,
+                                node - document_from-&gt;nodes.start + 1,
+                                *item)) goto error;
+                }
+                break;
+            case YAML_MAPPING_NODE:
+                for (pair = node-&gt;data.mapping.pairs.start;
+                        pair &lt; node-&gt;data.mapping.pairs.top; pair ++) {
+                    if (!yaml_document_append_mapping_pair(document_to,
+                                node - document_from-&gt;nodes.start + 1,
+                                pair-&gt;key, pair-&gt;value)) goto error;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    return 1;
+
+error:
+    yaml_document_delete(document_to);
+    return 0;
+}
+
+
+int
+dumper_main(void)
+{
+        yaml_parser_t parser;
+        yaml_emitter_t emitter;
+
+        yaml_document_t document;
+        unsigned char buffer[BUFFER_SIZE+1];
+        size_t written = 0;
+        yaml_document_t documents[MAX_DOCUMENTS];
+        size_t document_number = 0;
+        int done = 0;
+        int count = 0;
+        int error = 0;
+        int k;
+        memset(buffer, 0, BUFFER_SIZE+1);
+        memset(documents, 0, MAX_DOCUMENTS*sizeof(yaml_document_t));
+
+        if(!yaml_parser_initialize(&amp;parser))
+          return 0;
+
+        yaml_parser_set_input_string(&amp;parser, curpos, remainder);
+        if(!yaml_emitter_initialize(&amp;emitter))
+          return 0;
+
+        if (canonical) {
+            yaml_emitter_set_canonical(&amp;emitter, 1);
+        }
+        if (unicode) {
+            yaml_emitter_set_unicode(&amp;emitter, 1);
+        }
+        yaml_emitter_set_output_string(&amp;emitter, buffer, BUFFER_SIZE, &amp;written);
+        yaml_emitter_open(&amp;emitter);
+
+        while (!done)
+        {
+            if (!yaml_parser_load(&amp;parser, &amp;document)) {
+                error = 1;
+                break;
+            }
+
+            done = (!yaml_document_get_root_node(&amp;document));
+            if (!done) {
+                if(document_number &gt;= MAX_DOCUMENTS) {
+                  yaml_document_delete(&amp;document);
+                  error = 1;
+                  break;
+                }
+
+                if(!copy_document(&amp;(documents[document_number++]), &amp;document)) {
+                  yaml_document_delete(&amp;document);
+                  error = 1;
+                  break;
+                }
+                if(!(yaml_emitter_dump(&amp;emitter, &amp;document) || (yaml_emitter_flush(&amp;emitter) &amp;&amp; 0))) {
+                  error = 1;
+                  break;
+                }
+
+                count ++;
+            }
+            else {
+                yaml_document_delete(&amp;document);
+            }
+        }
+
+        yaml_parser_delete(&amp;parser);
+        yaml_emitter_close(&amp;emitter);
+        yaml_emitter_delete(&amp;emitter);
+
+        if (!error)
+        {
+            count = done = 0;
+            if(!yaml_parser_initialize(&amp;parser))
+              return 0;
+
+            yaml_parser_set_input_string(&amp;parser, buffer, written);
+
+            while (!done)
+            {
+                if(!(yaml_parser_load(&amp;parser, &amp;document) || 0)) {
+                  yaml_parser_delete(&amp;parser);
+                  return 0;
+                }
+
+                done = (!yaml_document_get_root_node(&amp;document));
+                if (!done) {
+                    if(!(compare_documents(documents+count, &amp;document) || 0)) {
+                      yaml_parser_delete(&amp;parser);
+                      return 0;
+                    }
+                    count ++;
+                }
+                yaml_document_delete(&amp;document);
+            }
+            yaml_parser_delete(&amp;parser);
+        }
+
+        for (k = 0; k &lt; document_number; k ++) {
+            yaml_document_delete(documents+k);
+        }
+
+        printf(&quot;PASSED (length: %d)\n&quot;, written);
+
+    return 0;
+}
+
+
+int main()
+{
+  int size = 20;
+  char *data = &quot;\xfe\x03\x0d\x21\x0d\x0d\x0d\x0d\x2d\x2d\x2d\x0d\x3b\x47\x0d\x0d\x51\x51\x2d\x31&quot;;
+  canonical = data[0] &amp; 1;
+  unicode = data[1] &amp; 1;
+  curpos = data + 3;
+  remainder = size - 3;
+
+  dumper_main();
+  return 0;
+}
+</code></pre></div><h2 id="error"><a href="#error" aria-hidden="true" class="header-anchor">#</a> error</h2> <div class="language- extra-class"><pre class="language-text"><code>=================================================================
+==10850==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 3072 byte(s) in 2 object(s) allocated from:
+    #0 0x7f7e287af602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
+    #1 0x7f7e2849314c in yaml_malloc /home/fuzz/github/libyaml_g/src/api.c:33
+    #2 0x7f7e2849b639 in yaml_document_initialize /home/fuzz/github/libyaml_g/src/api.c:1059
+    #3 0x40226e in copy_document leak_1.c:119
+    #4 0x402b25 in dumper_main leak_1.c:225
+    #5 0x402ecf in main leak_1.c:293
+    #6 0x7f7e280e282f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+
+Direct leak of 1536 byte(s) in 1 object(s) allocated from:
+    #0 0x7f7e287af602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
+    #1 0x7f7e2849314c in yaml_malloc /home/fuzz/github/libyaml_g/src/api.c:33
+    #2 0x7f7e284e2036 in yaml_parser_load /home/fuzz/github/libyaml_g/src/loader.c:75
+    #3 0x402c4c in dumper_main leak_1.c:256
+    #4 0x402ecf in main leak_1.c:293
+    #5 0x7f7e280e282f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+
+Indirect leak of 44 byte(s) in 2 object(s) allocated from:
+    #0 0x7f7e2877930f in strdup (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x6230f)
+    #1 0x7f7e284931ec in yaml_strdup /home/fuzz/github/libyaml_g/src/api.c:66
+    #2 0x7f7e2849c939 in yaml_document_add_scalar /home/fuzz/github/libyaml_g/src/api.c:1215
+    #3 0x4023d4 in copy_document leak_1.c:129
+    #4 0x402b25 in dumper_main leak_1.c:225
+    #5 0x402ecf in main leak_1.c:293
+    #6 0x7f7e280e282f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+
+Indirect leak of 22 byte(s) in 1 object(s) allocated from:
+    #0 0x7f7e2877930f in strdup (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x6230f)
+    #1 0x7f7e284931ec in yaml_strdup /home/fuzz/github/libyaml_g/src/api.c:66
+    #2 0x7f7e284e3964 in yaml_parser_load_scalar /home/fuzz/github/libyaml_g/src/loader.c:293
+    #3 0x7f7e284e3083 in yaml_parser_load_node /home/fuzz/github/libyaml_g/src/loader.c:207
+    #4 0x7f7e284e2e05 in yaml_parser_load_document /home/fuzz/github/libyaml_g/src/loader.c:184
+    #5 0x7f7e284e2414 in yaml_parser_load /home/fuzz/github/libyaml_g/src/loader.c:98
+    #6 0x402c4c in dumper_main leak_1.c:256
+    #7 0x402ecf in main leak_1.c:293
+    #8 0x7f7e280e282f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+
+Indirect leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0x7f7e287af602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
+    #1 0x7f7e2849314c in yaml_malloc /home/fuzz/github/libyaml_g/src/api.c:33
+    #2 0x7f7e284c4779 in yaml_parser_scan_flow_scalar /home/fuzz/github/libyaml_g/src/scanner.c:3027
+    #3 0x7f7e284acae4 in yaml_parser_fetch_flow_scalar /home/fuzz/github/libyaml_g/src/scanner.c:1872
+    #4 0x7f7e284a343a in yaml_parser_fetch_next_token /home/fuzz/github/libyaml_g/src/scanner.c:999
+    #5 0x7f7e284a107f in yaml_parser_fetch_more_tokens /home/fuzz/github/libyaml_g/src/scanner.c:846
+    #6 0x7f7e284d5b20 in yaml_parser_parse_document_content /home/fuzz/github/libyaml_g/src/parser.c:444
+    #7 0x7f7e284d3c27 in yaml_parser_state_machine /home/fuzz/github/libyaml_g/src/parser.c:240
+    #8 0x7f7e284d3882 in yaml_parser_parse /home/fuzz/github/libyaml_g/src/parser.c:188
+    #9 0x7f7e284e2dde in yaml_parser_load_document /home/fuzz/github/libyaml_g/src/loader.c:182
+    #10 0x7f7e284e2414 in yaml_parser_load /home/fuzz/github/libyaml_g/src/loader.c:98
+    #11 0x402c4c in dumper_main leak_1.c:256
+    #12 0x402ecf in main leak_1.c:293
+    #13 0x7f7e280e282f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+
+Indirect leak of 9 byte(s) in 2 object(s) allocated from:
+    #0 0x7f7e287af602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
+    #1 0x7f7e2849314c in yaml_malloc /home/fuzz/github/libyaml_g/src/api.c:33
+    #2 0x7f7e2849c9a2 in yaml_document_add_scalar /home/fuzz/github/libyaml_g/src/api.c:1223
+    #3 0x4023d4 in copy_document leak_1.c:129
+    #4 0x402b25 in dumper_main leak_1.c:225
+    #5 0x402ecf in main leak_1.c:293
+    #6 0x7f7e280e282f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+
+SUMMARY: AddressSanitizer: 4699 byte(s) leaked in 9 allocation(s).
+</code></pre></div></div></div></div></div></div></div>
+    <script src="/assets/js/app.fb63a1b9.js" defer></script><script src="/assets/js/35.2054ab64.js" defer></script>
+  </body>
+</html>

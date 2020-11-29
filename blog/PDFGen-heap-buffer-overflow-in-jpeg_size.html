@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>PDFGen: Heap buffer overflow in jpeg_size | Hello</title>
+    <meta name="description" content="1">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.153793e6.css" as="style"><link rel="preload" href="/assets/js/app.fb63a1b9.js" as="script"><link rel="preload" href="/assets/js/25.9bbf45e5.js" as="script"><link rel="prefetch" href="/assets/js/10.6aae25a8.js"><link rel="prefetch" href="/assets/js/11.e5a6ecb1.js"><link rel="prefetch" href="/assets/js/12.e6734d6c.js"><link rel="prefetch" href="/assets/js/13.c45be31f.js"><link rel="prefetch" href="/assets/js/14.7fe2edb8.js"><link rel="prefetch" href="/assets/js/15.7d96271b.js"><link rel="prefetch" href="/assets/js/16.d5c5556b.js"><link rel="prefetch" href="/assets/js/17.1a634ded.js"><link rel="prefetch" href="/assets/js/18.e6787f4e.js"><link rel="prefetch" href="/assets/js/19.a31276f8.js"><link rel="prefetch" href="/assets/js/2.6cf84733.js"><link rel="prefetch" href="/assets/js/20.f1ebd130.js"><link rel="prefetch" href="/assets/js/21.9fd25a7d.js"><link rel="prefetch" href="/assets/js/22.7ec64c15.js"><link rel="prefetch" href="/assets/js/23.a0a7d0ea.js"><link rel="prefetch" href="/assets/js/24.c17f3010.js"><link rel="prefetch" href="/assets/js/26.4f930016.js"><link rel="prefetch" href="/assets/js/27.b6d66343.js"><link rel="prefetch" href="/assets/js/28.ded43c8f.js"><link rel="prefetch" href="/assets/js/29.35b25580.js"><link rel="prefetch" href="/assets/js/3.88ebc755.js"><link rel="prefetch" href="/assets/js/30.a0b7fe3b.js"><link rel="prefetch" href="/assets/js/31.89d75be7.js"><link rel="prefetch" href="/assets/js/32.d7c054e6.js"><link rel="prefetch" href="/assets/js/33.9a5f3e99.js"><link rel="prefetch" href="/assets/js/34.ee5cfb6f.js"><link rel="prefetch" href="/assets/js/35.2054ab64.js"><link rel="prefetch" href="/assets/js/36.73bb48c1.js"><link rel="prefetch" href="/assets/js/37.5a1d6d20.js"><link rel="prefetch" href="/assets/js/38.c7d42097.js"><link rel="prefetch" href="/assets/js/39.fd864930.js"><link rel="prefetch" href="/assets/js/4.dc8e7db2.js"><link rel="prefetch" href="/assets/js/40.6c289e11.js"><link rel="prefetch" href="/assets/js/41.0ed23031.js"><link rel="prefetch" href="/assets/js/42.10b887da.js"><link rel="prefetch" href="/assets/js/43.d348e521.js"><link rel="prefetch" href="/assets/js/44.f98660b8.js"><link rel="prefetch" href="/assets/js/45.a141b3d0.js"><link rel="prefetch" href="/assets/js/46.3a3b1b86.js"><link rel="prefetch" href="/assets/js/47.d2f1996d.js"><link rel="prefetch" href="/assets/js/48.0bd12b2f.js"><link rel="prefetch" href="/assets/js/5.6adfd92b.js"><link rel="prefetch" href="/assets/js/6.f9bcea16.js"><link rel="prefetch" href="/assets/js/7.ad2cffde.js"><link rel="prefetch" href="/assets/js/8.8932bce4.js"><link rel="prefetch" href="/assets/js/9.892cc635.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.153793e6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="page-main"><div class="component-nav-menu"><div class="placeholder"></div> <div class="search-wrapper"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-2276" class="el-autocomplete"><div class="el-input el-input--prefix"><!----><input type="text" autocomplete="off" valueKey="title" placeholder="请输入内容" fetchSuggestions="function () { [native code] }" triggerOnFocus="true" debounce="300" placement="bottom-start" popperAppendToBody="true" background-color="#eee" class="el-input__inner"><span class="el-input__prefix"><i class="el-input__icon el-icon-search"></i></span><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div> <ul role="menubar" class="el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Home
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Blog
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        TimeLine
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Github
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        About
+      </li></ul></div> <div class="page-container"><div class="component-page"><div class="page-content"><!----> <div class="content custom"><h2 id="git-log"><a href="#git-log" aria-hidden="true" class="header-anchor">#</a> git log</h2> <div class="language- extra-class"><pre class="language-text"><code>commit 206ef1b560efed48aabcb9374ea0e6e832b59f7e
+Author: Andre Renaud &lt;arenaud@designa-electronics.com&gt;
+Date:   Wed Apr 4 08:59:06 2018 +1200
+</code></pre></div><h2 id="test-code"><a href="#test-code" aria-hidden="true" class="header-anchor">#</a> test code</h2> <div class="language- extra-class"><pre class="language-text"><code>int main(int argc, char *argv[])
+{
+    struct pdf_info info = { 
+     .creator = &quot;hello&quot;,
+     .producer = &quot;world&quot;,
+     .title = &quot;My document&quot;,
+     .author = &quot;My name&quot;,
+     .subject = &quot;My subject&quot;,
+     .date = &quot;Today&quot;
+     };  
+    struct pdf_doc *pdf = pdf_create(PDF_A4_WIDTH, PDF_A4_HEIGHT, &amp;info);
+    pdf_set_font(pdf, &quot;Times-Roman&quot;);
+    pdf_append_page(pdf);
+    pdf_add_jpeg(pdf, NULL, 100, 500, 50, 150, &quot;./poc.jpg&quot;);
+    //pdf_add_text(pdf, NULL, data, 30, 0, 400, PDF_RGB(0xff, 0, 0));
+    pdf_save(pdf, &quot;output.pdf&quot;);
+    pdf_destroy(pdf);
+    return 0;
+}
+</code></pre></div><h2 id="error"><a href="#error" aria-hidden="true" class="header-anchor">#</a> error</h2> <div class="language- extra-class"><pre class="language-text"><code>==6203==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200000efd6 at pc 0x00000040c5a6 bp 0x7ffcbb9c1da0 sp 0x7ffcbb9c1d90
+READ of size 1 at 0x60200000efd6 thread T0
+    #0 0x40c5a5 in jpeg_size /home/github/PDFGen_bak/pdfgen.c:2015
+    #1 0x40c5a5 in pdf_add_raw_jpeg /home/github/PDFGen_bak/pdfgen.c:2079
+    #2 0x40c5a5 in pdf_add_jpeg /home/github/PDFGen_bak/pdfgen.c:2208
+    #3 0x401bd4 in main /home/github/PDFGen_bak/main.c:19
+    #4 0x7fcc3558382f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+    #5 0x401d08 in _start (/home/github/PDFGen_bak/testprog+0x401d08)
+
+0x60200000efd6 is located 0 bytes to the right of 6-byte region [0x60200000efd0,0x60200000efd6)
+allocated by thread T0 here:
+    #0 0x7fcc359cb602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
+    #1 0x40b914 in pdf_add_raw_jpeg /home/github/PDFGen_bak/pdfgen.c:2064
+    #2 0x40b914 in pdf_add_jpeg /home/github/PDFGen_bak/pdfgen.c:2208
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/github/PDFGen_bak/pdfgen.c:2015 jpeg_size
+Shadow bytes around the buggy address:
+  0x0c047fff9da0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9db0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9dc0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9dd0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9de0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=&gt;0x0c047fff9df0: fa fa fa fa fa fa fa fa fa fa[06]fa fa fa 00 fa
+  0x0c047fff9e00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e10: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e20: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e30: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e40: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+==6203==ABORTING
+</code></pre></div><p>testcase: https://github.com/xcainiao/poc/blob/master/PDFGen_heap-buffer-overflow_in_jpeg_size.jpg</p> <h2 id="analysis"><a href="#analysis" aria-hidden="true" class="header-anchor">#</a> analysis</h2> <div class="language- extra-class"><pre class="language-text"><code>static pdf_object *pdf_add_raw_jpeg(struct pdf_doc *pdf,
+                                    const char *jpeg_file)
+{
+    ....
+    if (stat(jpeg_file, &amp;buf) &lt; 0) { 
+        pdf_set_err(pdf, -errno, &quot;Unable to access %s: %s&quot;, jpeg_file,
+                    strerror(errno));
+        return NULL;
+    }    
+
+    len = buf.st_size;
+    ....
+    if (jpeg_size(jpeg_data, len, &amp;width, &amp;height) &lt; 0) { 
+        free(jpeg_data);
+        pdf_set_err(pdf, -EINVAL, &quot;Unable to determine jpeg width/height from %s&quot;,
+                    jpeg_file);
+        return NULL;
+    }    
+    ....
+}
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>static int jpeg_size(unsigned char* data, unsigned int data_size,
+                     int *width, int *height)
+{
+    int i = 0; 
+    if (i + 3 &lt; data_size &amp;&amp; data[i] == 0xFF &amp;&amp; data[i+1] == 0xD8 &amp;&amp;
+            data[i+2] == 0xFF &amp;&amp; data[i+3] == 0xE0) {
+        i += 4;
+        if(data[i+2] == 'J' &amp;&amp; data[i+3] == 'F' &amp;&amp; data[i+4] == 'I'
+                &amp;&amp; data[i+5] == 'F' &amp;&amp; data[i+6] == 0x00) 
+                ....
+  }
+</code></pre></div><p>gdb</p> <div class="language- extra-class"><pre class="language-text"><code>[----------------------------------registers-----------------------------------]
+RAX: 0x6 
+RBX: 0x7fffffffdb50 --&gt; 0x61300000de80 --&gt; 0x0 
+RCX: 0x7ffff6b96be5 (&lt;__GI___xstat+21&gt;:	cmp    rax,0xfffffffffffff000)
+RDX: 0x7fffffffda90 --&gt; 0x80c 
+RSI: 0x410f00 --&gt; 0x6272 ('rb')
+RDI: 0x4122c0 --&gt; 0x67706a2e782f2e ('./x.jpg')
+RBP: 0xffffffffb46 --&gt; 0x0 
+RSP: 0x7fffffffda00 --&gt; 0xffffffffffffffff 
+RIP: 0x40b8f7 (&lt;pdf_add_jpeg+247&gt;:	mov    QWORD PTR [rsp],rax)
+R8 : 0x32 ('2')
+R9 : 0x96 
+R10: 0x7bc 
+R11: 0x246 
+R12: 0x7fffffffda30 --&gt; 0x41b58ab3 
+R13: 0x7fffffffdba0 --&gt; 0x41b58ab3 
+R14: 0x4122c0 --&gt; 0x67706a2e782f2e ('./x.jpg')
+R15: 0x0
+EFLAGS: 0x202 (carry parity adjust zero sign trap INTERRUPT direction overflow)
+[-------------------------------------code-------------------------------------]
+   0x40b8e7 &lt;pdf_add_jpeg+231&gt;:	mov    esi,0x410f00
+   0x40b8ec &lt;pdf_add_jpeg+236&gt;:	mov    rdi,r14
+   0x40b8ef &lt;pdf_add_jpeg+239&gt;:	add    QWORD PTR [rip+0x20fe99],0x1        # 0x61b790 &lt;__gcov0.pdf_add_raw_jpeg+16&gt;
+=&gt; 0x40b8f7 &lt;pdf_add_jpeg+247&gt;:	mov    QWORD PTR [rsp],rax
+   0x40b8fb &lt;pdf_add_jpeg+251&gt;:	call   0x4018e0 &lt;fopen@plt&gt;
+   0x40b900 &lt;pdf_add_jpeg+256&gt;:	test   rax,rax
+   0x40b903 &lt;pdf_add_jpeg+259&gt;:	mov    r13,rax
+   0x40b906 &lt;pdf_add_jpeg+262&gt;:	je     0x40c332 &lt;pdf_add_jpeg+2866&gt;
+[------------------------------------stack-------------------------------------]
+0000| 0x7fffffffda00 --&gt; 0xffffffffffffffff 
+0008| 0x7fffffffda08 --&gt; 0x61300000de80 --&gt; 0x0 
+0016| 0x7fffffffda10 --&gt; 0x0 
+0024| 0x7fffffffda18 --&gt; 0x1f400000064 --&gt; 0x0 
+0032| 0x7fffffffda20 --&gt; 0x9600000032 --&gt; 0x0 
+0040| 0x7fffffffda28 --&gt; 0xffffffffffffffff 
+0048| 0x7fffffffda30 --&gt; 0x41b58ab3 
+0056| 0x7fffffffda38 --&gt; 0x40e744 (&quot;2 32 16 3 str 96 144 3 buf &quot;)
+[------------------------------------------------------------------------------]
+Legend: code, data, rodata, value
+2056	    len = buf.st_size;
+gdb-peda$ print len
+$1 = 0x6
+</code></pre></div><p>len = 6;
+data[i+6] == 0x00       //error</p> <h2 id="fuzz"><a href="#fuzz" aria-hidden="true" class="header-anchor">#</a> fuzz</h2> <p>libfuzz</p> <div class="language- extra-class"><pre class="language-text"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#include &quot;pdfgen.h&quot;
+
+#define filename  &quot;./x.jpg&quot;
+int LLVMFuzzerTestOneInput(char *data, int size)
+{
+    FILE* temfile = fopen(filename,&quot;w&quot;);
+    fwrite(data, 1, size, temfile);
+    fclose(temfile);
+
+    struct pdf_info info = { 
+     .creator = &quot;hello&quot;,
+     .producer = &quot;world&quot;,
+     .title = &quot;My document&quot;,
+     .author = &quot;My name&quot;,
+     .subject = &quot;My subject&quot;,
+     .date = &quot;Today&quot;
+     };  
+    struct pdf_doc *pdf = pdf_create(PDF_A4_WIDTH, PDF_A4_HEIGHT, &amp;info);
+    pdf_set_font(pdf, &quot;Times-Roman&quot;);
+    pdf_append_page(pdf);
+    pdf_add_jpeg(pdf, NULL, 100, 500, 50, 150, filename);
+    //pdf_add_text(pdf, NULL, data, 30, 0, 400, PDF_RGB(0xff, 0, 0));
+    pdf_save(pdf, &quot;output.pdf&quot;);
+    pdf_destroy(pdf);
+    return 0;
+}
+</code></pre></div></div></div></div></div></div></div>
+    <script src="/assets/js/app.fb63a1b9.js" defer></script><script src="/assets/js/25.9bbf45e5.js" defer></script>
+  </body>
+</html>

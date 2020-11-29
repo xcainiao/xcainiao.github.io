@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>关于honggfuzz | Hello</title>
+    <meta name="description" content="1">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.153793e6.css" as="style"><link rel="preload" href="/assets/js/app.fb63a1b9.js" as="script"><link rel="preload" href="/assets/js/32.d7c054e6.js" as="script"><link rel="prefetch" href="/assets/js/10.6aae25a8.js"><link rel="prefetch" href="/assets/js/11.e5a6ecb1.js"><link rel="prefetch" href="/assets/js/12.e6734d6c.js"><link rel="prefetch" href="/assets/js/13.c45be31f.js"><link rel="prefetch" href="/assets/js/14.7fe2edb8.js"><link rel="prefetch" href="/assets/js/15.7d96271b.js"><link rel="prefetch" href="/assets/js/16.d5c5556b.js"><link rel="prefetch" href="/assets/js/17.1a634ded.js"><link rel="prefetch" href="/assets/js/18.e6787f4e.js"><link rel="prefetch" href="/assets/js/19.a31276f8.js"><link rel="prefetch" href="/assets/js/2.6cf84733.js"><link rel="prefetch" href="/assets/js/20.f1ebd130.js"><link rel="prefetch" href="/assets/js/21.9fd25a7d.js"><link rel="prefetch" href="/assets/js/22.7ec64c15.js"><link rel="prefetch" href="/assets/js/23.a0a7d0ea.js"><link rel="prefetch" href="/assets/js/24.c17f3010.js"><link rel="prefetch" href="/assets/js/25.9bbf45e5.js"><link rel="prefetch" href="/assets/js/26.4f930016.js"><link rel="prefetch" href="/assets/js/27.b6d66343.js"><link rel="prefetch" href="/assets/js/28.ded43c8f.js"><link rel="prefetch" href="/assets/js/29.35b25580.js"><link rel="prefetch" href="/assets/js/3.88ebc755.js"><link rel="prefetch" href="/assets/js/30.a0b7fe3b.js"><link rel="prefetch" href="/assets/js/31.89d75be7.js"><link rel="prefetch" href="/assets/js/33.9a5f3e99.js"><link rel="prefetch" href="/assets/js/34.ee5cfb6f.js"><link rel="prefetch" href="/assets/js/35.2054ab64.js"><link rel="prefetch" href="/assets/js/36.73bb48c1.js"><link rel="prefetch" href="/assets/js/37.5a1d6d20.js"><link rel="prefetch" href="/assets/js/38.c7d42097.js"><link rel="prefetch" href="/assets/js/39.fd864930.js"><link rel="prefetch" href="/assets/js/4.dc8e7db2.js"><link rel="prefetch" href="/assets/js/40.6c289e11.js"><link rel="prefetch" href="/assets/js/41.0ed23031.js"><link rel="prefetch" href="/assets/js/42.10b887da.js"><link rel="prefetch" href="/assets/js/43.d348e521.js"><link rel="prefetch" href="/assets/js/44.f98660b8.js"><link rel="prefetch" href="/assets/js/45.a141b3d0.js"><link rel="prefetch" href="/assets/js/46.3a3b1b86.js"><link rel="prefetch" href="/assets/js/47.d2f1996d.js"><link rel="prefetch" href="/assets/js/48.0bd12b2f.js"><link rel="prefetch" href="/assets/js/5.6adfd92b.js"><link rel="prefetch" href="/assets/js/6.f9bcea16.js"><link rel="prefetch" href="/assets/js/7.ad2cffde.js"><link rel="prefetch" href="/assets/js/8.8932bce4.js"><link rel="prefetch" href="/assets/js/9.892cc635.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.153793e6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="page-main"><div class="component-nav-menu"><div class="placeholder"></div> <div class="search-wrapper"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-9821" class="el-autocomplete"><div class="el-input el-input--prefix"><!----><input type="text" autocomplete="off" valueKey="title" placeholder="请输入内容" fetchSuggestions="function () { [native code] }" triggerOnFocus="true" debounce="300" placement="bottom-start" popperAppendToBody="true" background-color="#eee" class="el-input__inner"><span class="el-input__prefix"><i class="el-input__icon el-icon-search"></i></span><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div> <ul role="menubar" class="el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Home
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item is-active" style="color:;border-bottom-color:;background-color:;">
+        Blog
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        TimeLine
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Github
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        About
+      </li></ul></div> <div class="page-container"><div class="component-page"><div class="page-content"><!----> <div class="content custom"><h2 id="_0x1-persistentfuzzing"><a href="#_0x1-persistentfuzzing" aria-hidden="true" class="header-anchor">#</a> 0x1  PersistentFuzzing</h2> <h3 id="first"><a href="#first" aria-hidden="true" class="header-anchor">#</a> first</h3> <p>test.c</p> <div class="language- extra-class"><pre class="language-text"><code>#include &quot;test.h&quot;
+
+int  VulnerableFunction1(char* data, int size) {
+  int result = 0;
+  char tmp[5];
+  if (size &gt;= 3) {
+    tmp[size] = 'a';
+  }
+  return result;
+}
+</code></pre></div><p>test.h</p> <div class="language- extra-class"><pre class="language-text"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+int VulnerableFunction1(char* data, int size);
+</code></pre></div><p>fuzz.c</p> <div class="language- extra-class"><pre class="language-text"><code>#include &quot;test.h&quot;
+
+int LLVMFuzzerTestOneInput(char *data, int size) {
+      VulnerableFunction1(data, size);
+      return 0;
+}
+
+</code></pre></div><p>hfuzz-clang -o fuzz fuzz.c test.c -w
+honggfuzz -f ./tmp/ -P -- ./fuzz</p> <h3 id="second"><a href="#second" aria-hidden="true" class="header-anchor">#</a> second</h3> <p>test.c</p> <div class="language- extra-class"><pre class="language-text"><code>#include &quot;test.h&quot;
+
+int  VulnerableFunction1(char* data, int size) {
+  int result = 0;
+  char tmp[5];
+  if (size &gt;= 3) {
+  tmp[size] = 'a';
+  }
+  return result;
+}
+</code></pre></div><p>test.h</p> <div class="language- extra-class"><pre class="language-text"><code>#include &lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+int VulnerableFunction1(char* data, int size);
+</code></pre></div><p>fuzz.c</p> <div class="language- extra-class"><pre class="language-text"><code>#include &quot;test.h&quot;
+//int LLVMFuzzerTestOneInput(char *data, int size) 
+
+extern HF_ITER(char** buf, int* len);
+int main() 
+{
+    while(1)
+    {
+        int len;
+        char *buf;
+        HF_ITER(&amp;buf, &amp;len);
+        VulnerableFunction1(buf, len);
+    }
+}
+</code></pre></div><p>hfuzz-clang fuzz.c  test.c -o hymodel ~/github/honggfuzz/libhfuzz/libhfuzz.a
+honggfuzz -Q -f ./tmp/ -P -- ./hymodel</p> <h2 id="_0x2-pretend-to-be-what-i-found"><a href="#_0x2-pretend-to-be-what-i-found" aria-hidden="true" class="header-anchor">#</a> 0x2 Pretend to be what I found</h2> <p>https://www.exploit-db.com/exploits/42424/
+fuzz.c</p> <div class="language- extra-class"><pre class="language-text"><code>extern HF_ITER(char** buf, int* len);
+int main()
+{
+    while(1){
+    int     ch;
+    char *  server_name = &quot;127.0.0.1&quot;;
+    char *  server_ip = &quot;0000:0000:0000:0000:0000:0000:0000:0000&quot;;
+    char    ipaddress[NS_MAXDNAME];
+    char    argv0[NS_MAXDNAME];
+    int     server_root = 0;
+    int     ipv6 = 0;
+    char *argv[1];
+
+    int len;
+    char *buf;
+
+    HF_ITER(&amp;buf, &amp;len);
+
+    argv[0] = buf;
+
+    if (argv[0] == NULL) usage();
+
+    // check for a trailing dot
+    strcpy(argv0, argv[0]);
+    if (argv0[strlen(argv[0]) - 1] == '.') argv0[strlen(argv[0]) - 1] = 0;
+
+    printf(&quot;Tracing to %s[%s] via %s, maximum of %d retries\n&quot;,
+    argv0, rr_types[global_querytype], server_name, global_retries);
+
+    srandom(time(NULL));
+
+    {
+    struct hostent *h = NULL;
+
+#ifndef NOIPV6
+    h = gethostbyname2(server_name, AF_INET6);
+#endif
+    if (h == NULL || global_noipv6)
+        h = gethostbyname2(server_name, AF_INET);
+    if (h == NULL) {
+        fprintf(stderr, &quot;Cannot find IP address for %s\n&quot;, server_name);
+        return 1;
+    }
+    if (h-&gt;h_addrtype == AF_INET) {
+        unsigned char *s = h-&gt;h_addr_list[0];
+        sprintf(ipaddress, &quot;%hu.%hu.%hu.%hu&quot;, s[0], s[1], s[2], s[3]);
+        ipv6 = 0;
+    } else {
+        unsigned char *s = h-&gt;h_addr_list[0];
+        sprintf(ipaddress,
+        &quot;%02hx%02hx:%02hx%02hx:%02hx%02hx:%02hx%02hx:&quot;
+        &quot;%02hx%02hx:%02hx%02hx:%02hx%02hx:%02hx%02hx&quot;,
+        s[ 0], s[ 1], s[ 2], s[ 3], s[ 4], s[ 5], s[ 6], s[ 7],
+        s[ 8], s[ 9], s[10], s[11], s[12], s[13], s[14], s[15]);
+        ipv6 = 1;
+    }
+    }
+ create_session(argv0, ipaddress, ipv6, server_name,
+    server_root == 0 ? NULL : &quot;.&quot;, 0, &quot;&quot;, 1);
+
+    printf(&quot;\n&quot;);
+
+    if (global_overview != 0) {
+    printf(&quot;\n&quot;);
+    display_arecords();
+    }
+    }
+    return 0;
+}
+</code></pre></div><p>fuzz output</p> <div class="language- extra-class"><pre class="language-text"><code>------------------------[  0 days 00 hrs 00 mins 55 secs ]----------------------
+  Iterations : 111
+        Mode : [2/2] Feedback Driven Mode
+      Target : ./fuzz
+     Threads : 2, CPUs: 4, CPU%: 65% [16%/CPU]
+       Speed : 0/sec [avg: 2]
+     Crashes : 4 [unique: 1, blacklist: 0, verified: 0]
+    Timeouts : 105 [1 sec]
+ Corpus Size : 4, max size: 8,192 bytes, init dir: 2 files
+  Cov Update : 0 days 00 hrs 00 mins 07 secs ago
+    Coverage : edge: 67 pc: 0 cmp: 699
+---------------------------------- [ LOGS ] ------------------/ honggfuzz 1.5 /-
+=&gt;0x10007fff7ad0: 00 00[01]f2 f2 f2 f2 f2 f2 f2 f2 f2 f2 f2 f2 f2
+  0x10007fff7ae0: f2 f2 f2 f2 00 f2 f2 f2 04 f2 00 f3 f3 f3 f3 f3
+  0x10007fff7af0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x10007fff7b00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x10007fff7b10: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x10007fff7b20: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==15754==ABORTING
+Crash (dup): './SIGABRT.PC.7ffff6efa428.STACK.1b00c4c668.CODE.-6.ADDR.(nil).INSTR.cmp____$0xfffffffffffff000,%rax.fuzz' already exists, skipping
+[2018-04-13T15:41:48+0800][W][15630] subproc_checkTimeLimit():425 PID 15751 took too much time (limit 1 s). Killing it with SIGKILL
+[2018-04-13T15:41:48+0800][W][15631] arch_checkWait():309 Persistent mode: PID 15754 exited with status: SIGNALED, signal: 6 (Aborted)
+Persistent mode: Launched new persistent PID: 15759
+[2018-04-13T15:41:48+0800][W][15630] arch_checkWait():309 Persistent mode: PID 15751 exited with status: SIGNALED, signal: 9 (Killed)
+Persistent mode: Launched new persistent PID: 15760
+Tracing to 11101113...
+                      1
+)�n/��[a] via 127.0.0.1, maximum of 3 retries
+Tracing to 1111133���1���n/�������318n/ƞ1
+31
+
+3
+3
+3�m�K�1111[a] via 127.0.0.1, maximum of 3 retries
+^CSignal 2 (Interrupt) received, terminating
+[2018-04-13T15:41:49+0800][W][15631] subproc_checkTimeLimit():425 PID 15759 took too much time (limit 1 s). Killing it with SIGKILL
+[2018-04-13T15:41:49+0800][W][15630] subproc_checkTimeLimit():425 PID 15760 took too much time (limit 1 s). Killing it with SIGKILL
+Terminating thread no. #1
+Terminating thread no. #0
+All threads done
+</code></pre></div></div></div></div></div></div></div>
+    <script src="/assets/js/app.fb63a1b9.js" defer></script><script src="/assets/js/32.d7c054e6.js" defer></script>
+  </body>
+</html>

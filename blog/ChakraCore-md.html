@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ChakraCore null dereference in BindPidRefsInScope | Hello</title>
+    <meta name="description" content="1">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.153793e6.css" as="style"><link rel="preload" href="/assets/js/app.fb63a1b9.js" as="script"><link rel="preload" href="/assets/js/17.1a634ded.js" as="script"><link rel="prefetch" href="/assets/js/10.6aae25a8.js"><link rel="prefetch" href="/assets/js/11.e5a6ecb1.js"><link rel="prefetch" href="/assets/js/12.e6734d6c.js"><link rel="prefetch" href="/assets/js/13.c45be31f.js"><link rel="prefetch" href="/assets/js/14.7fe2edb8.js"><link rel="prefetch" href="/assets/js/15.7d96271b.js"><link rel="prefetch" href="/assets/js/16.d5c5556b.js"><link rel="prefetch" href="/assets/js/18.e6787f4e.js"><link rel="prefetch" href="/assets/js/19.a31276f8.js"><link rel="prefetch" href="/assets/js/2.6cf84733.js"><link rel="prefetch" href="/assets/js/20.f1ebd130.js"><link rel="prefetch" href="/assets/js/21.9fd25a7d.js"><link rel="prefetch" href="/assets/js/22.7ec64c15.js"><link rel="prefetch" href="/assets/js/23.a0a7d0ea.js"><link rel="prefetch" href="/assets/js/24.c17f3010.js"><link rel="prefetch" href="/assets/js/25.9bbf45e5.js"><link rel="prefetch" href="/assets/js/26.4f930016.js"><link rel="prefetch" href="/assets/js/27.b6d66343.js"><link rel="prefetch" href="/assets/js/28.ded43c8f.js"><link rel="prefetch" href="/assets/js/29.35b25580.js"><link rel="prefetch" href="/assets/js/3.88ebc755.js"><link rel="prefetch" href="/assets/js/30.a0b7fe3b.js"><link rel="prefetch" href="/assets/js/31.89d75be7.js"><link rel="prefetch" href="/assets/js/32.d7c054e6.js"><link rel="prefetch" href="/assets/js/33.9a5f3e99.js"><link rel="prefetch" href="/assets/js/34.ee5cfb6f.js"><link rel="prefetch" href="/assets/js/35.2054ab64.js"><link rel="prefetch" href="/assets/js/36.73bb48c1.js"><link rel="prefetch" href="/assets/js/37.5a1d6d20.js"><link rel="prefetch" href="/assets/js/38.c7d42097.js"><link rel="prefetch" href="/assets/js/39.fd864930.js"><link rel="prefetch" href="/assets/js/4.dc8e7db2.js"><link rel="prefetch" href="/assets/js/40.6c289e11.js"><link rel="prefetch" href="/assets/js/41.0ed23031.js"><link rel="prefetch" href="/assets/js/42.10b887da.js"><link rel="prefetch" href="/assets/js/43.d348e521.js"><link rel="prefetch" href="/assets/js/44.f98660b8.js"><link rel="prefetch" href="/assets/js/45.a141b3d0.js"><link rel="prefetch" href="/assets/js/46.3a3b1b86.js"><link rel="prefetch" href="/assets/js/47.d2f1996d.js"><link rel="prefetch" href="/assets/js/48.0bd12b2f.js"><link rel="prefetch" href="/assets/js/5.6adfd92b.js"><link rel="prefetch" href="/assets/js/6.f9bcea16.js"><link rel="prefetch" href="/assets/js/7.ad2cffde.js"><link rel="prefetch" href="/assets/js/8.8932bce4.js"><link rel="prefetch" href="/assets/js/9.892cc635.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.153793e6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="page-main"><div class="component-nav-menu"><div class="placeholder"></div> <div class="search-wrapper"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-5241" class="el-autocomplete"><div class="el-input el-input--prefix"><!----><input type="text" autocomplete="off" valueKey="title" placeholder="请输入内容" fetchSuggestions="function () { [native code] }" triggerOnFocus="true" debounce="300" placement="bottom-start" popperAppendToBody="true" background-color="#eee" class="el-input__inner"><span class="el-input__prefix"><i class="el-input__icon el-icon-search"></i></span><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div> <ul role="menubar" class="el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Home
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item is-active" style="color:;border-bottom-color:;background-color:;">
+        Blog
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        TimeLine
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Github
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        About
+      </li></ul></div> <div class="page-container"><div class="component-page"><div class="page-content"><!----> <div class="content custom"><h2 id="_0x1-漏洞信息"><a href="#_0x1-漏洞信息" aria-hidden="true" class="header-anchor">#</a> 0x1 漏洞信息</h2> <div class="language- extra-class"><pre class="language-text"><code>test@ubuntu:~/Desktop/browser-code$ ./Release/ch ~/Desktop/jsfuzz/bugdir/ch-address.js 
+ASAN:DEADLYSIGNAL
+=================================================================
+==26378==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000060 (pc 0x55997ca0b0a2 bp 0x7ffd850decb0 sp 0x7ffd850debf0 T0)
+==26378==The signal is caused by a READ memory access.
+==26378==Hint: address points to the zero page.
+    #0 0x55997ca0b0a1 in Parser::BindPidRefsInScope(Ident*, Symbol*, int, unsigned int) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x14f70a1)
+    #1 0x55997ca37aa1 in void Parser::ParseFncDeclHelper&lt;false&gt;(ParseNodeFnc*, char16_t const*, unsigned short, bool, bool, bool*, bool, Ident**, bool) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x1523aa1)
+    #2 0x55997ca3565c in ParseNodeFnc* Parser::ParseFncDeclInternal&lt;false&gt;(unsigned short, char16_t const*, bool, bool, bool, SuperRestrictionState::State, bool) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x152165c)
+    #3 0x55997ca3ad59 in ParseNode* Parser::ParseTerm&lt;false&gt;(int, char16_t const*, unsigned int*, unsigned int*, Parser::IdentToken*, bool, int, int*, int*, bool*, unsigned int*) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x1526d59)
+    #4 0x55997ca25454 in ParseNode* Parser::ParseExpr&lt;false&gt;(int, int*, int, int, char16_t const*, unsigned int*, unsigned int*, Parser::IdentToken*, bool, bool*, unsigned int*) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x1511454)
+    #5 0x55997ca3a195 in ParseNode* Parser::ParseTerm&lt;false&gt;(int, char16_t const*, unsigned int*, unsigned int*, Parser::IdentToken*, bool, int, int*, int*, bool*, unsigned int*) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x1526195)
+    #6 0x55997ca25454 in ParseNode* Parser::ParseExpr&lt;false&gt;(int, int*, int, int, char16_t const*, unsigned int*, unsigned int*, Parser::IdentToken*, bool, bool*, unsigned int*) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x1511454)
+    #7 0x55997ca67a43 in void Parser::ParseFncFormals&lt;true&gt;(ParseNodeFnc*, ParseNodeFnc*, unsigned short, bool) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x1553a43)
+    #8 0x55997ca63cf8 in void Parser::ParseFncDeclHelper&lt;true&gt;(ParseNodeFnc*, char16_t const*, unsigned short, bool, bool, bool*, bool, Ident**, bool) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x154fcf8)
+    #9 0x55997ca61f2d in ParseNodeFnc* Parser::ParseFncDeclInternal&lt;true&gt;(unsigned short, char16_t const*, bool, bool, bool, SuperRestrictionState::State, bool) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x154df2d)
+    #10 0x55997ca4c7f3 in ParseNode* Parser::ParseTerm&lt;true&gt;(int, char16_t const*, unsigned int*, unsigned int*, Parser::IdentToken*, bool, int, int*, int*, bool*, unsigned int*) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x15387f3)
+    #11 0x55997ca4598e in ParseNode* Parser::ParseExpr&lt;true&gt;(int, int*, int, int, char16_t const*, unsigned int*, unsigned int*, Parser::IdentToken*, bool, bool*, unsigned int*) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x153198e)
+    #12 0x55997ca4cde7 in ParseNode* Parser::ParseTerm&lt;true&gt;(int, char16_t const*, unsigned int*, unsigned int*, Parser::IdentToken*, bool, int, int*, int*, bool*, unsigned int*) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x1538de7)
+    #13 0x55997ca4598e in ParseNode* Parser::ParseExpr&lt;true&gt;(int, int*, int, int, char16_t const*, unsigned int*, unsigned int*, Parser::IdentToken*, bool, bool*, unsigned int*) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x153198e)
+    #14 0x55997ca69a3d in ParseNode* Parser::ParseStatement&lt;true&gt;() (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x1555a3d)
+    #15 0x55997ca7278b in ParseNodeBlock* Parser::ParseBlock&lt;true&gt;(LabelId*) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x155e78b)
+    #16 0x55997ca6b881 in ParseNode* Parser::ParseStatement&lt;true&gt;() (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x1557881)
+    #17 0x55997ca6f1e4 in ParseNode* Parser::ParseStatement&lt;true&gt;() (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x155b1e4)
+    #18 0x55997ca28fdb in void Parser::ParseStmtList&lt;true&gt;(ParseNode**, ParseNode***, Parser::StrictModeEnvironment, bool, bool*) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x1514fdb)
+    #19 0x55997ca00abc in Parser::Parse(unsigned char const*, unsigned long, unsigned long, unsigned int, bool, unsigned int, unsigned int, unsigned int*, CompileScriptException*) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x14ecabc)
+    #20 0x55997c9ff93c in Parser::ParseSourceInternal(ParseNodeProg**, unsigned char const*, unsigned long, unsigned long, unsigned int, bool, unsigned int, CompileScriptException*, unsigned int*, unsigned int, SourceContextInfo*) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x14eb93c)
+    #21 0x55997ca1bf14 in Parser::ParseUtf8Source(ParseNodeProg**, unsigned char const*, unsigned long, unsigned int, CompileScriptException*, unsigned int*, SourceContextInfo*) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x1507f14)
+    #22 0x55997bc1bde5 in Js::ScriptContext::ParseScript(Parser*, unsigned char const*, unsigned long, SRCINFO const*, CompileScriptException*, Js::Utf8SourceInfo**, char16_t const*, LoadScriptFlag, unsigned int*, void*) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x707de5)
+    #23 0x55997bc1d89f in Js::ScriptContext::LoadScriptInternal(Parser*, unsigned char const*, unsigned long, SRCINFO const*, CompileScriptException*, Js::Utf8SourceInfo**, char16_t const*, LoadScriptFlag, void*) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x70989f)
+    #24 0x55997bc1e3ca in Js::ScriptContext::LoadScript(unsigned char const*, unsigned long, SRCINFO const*, CompileScriptException*, Js::Utf8SourceInfo**, char16_t const*, LoadScriptFlag, void*) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x70a3ca)
+    #25 0x55997b9c5e45 in RunScriptCore(void*, unsigned char const*, unsigned long, LoadScriptFlag, unsigned long, char16_t const*, bool, _JsParseScriptAttributes, bool, void**) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x4b1e45)
+    #26 0x55997b9cf162 in JsRun (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x4bb162)
+    #27 0x55997b8ca01e in RunScript(char const*, char const*, unsigned long, void (*)(void*), void*, char*, void*) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x3b601e)
+    #28 0x55997b8cccf2 in ExecuteTest(char const*) (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x3b8cf2)
+    #29 0x55997b8cda6a in main (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x3b9a6a)
+    #30 0x7f0b37f52b96 in __libc_start_main /build/glibc-OTsEL5/glibc-2.27/csu/../csu/libc-start.c:310
+    #31 0x55997b7d0f19 in _start (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x2bcf19)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV (/home/test/Desktop/browser-code/ch-release-version/Release/ch+0x14f70a1) in Parser::BindPidRefsInScope(Ident*, Symbol*, int, unsigned int)
+==26378==ABORTING
+</code></pre></div><h2 id="_0x2-漏洞修复"><a href="#_0x2-漏洞修复" aria-hidden="true" class="header-anchor">#</a> 0x2 漏洞修复</h2> <p>增加了判断。。。</p> <p><img src="/assets/img/ChakraCore-1.7f411735.png" alt="avatar"></p> <p>https://github.com/microsoft/ChakraCore/commit/b278ab759c4fa065f9343273a1d2adc0e34f9c66</p></div></div></div></div></div></div>
+    <script src="/assets/js/app.fb63a1b9.js" defer></script><script src="/assets/js/17.1a634ded.js" defer></script>
+  </body>
+</html>

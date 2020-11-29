@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>md4c: Heap buffer overflow in md_build_attribute | Hello</title>
+    <meta name="description" content="1">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.153793e6.css" as="style"><link rel="preload" href="/assets/js/app.fb63a1b9.js" as="script"><link rel="preload" href="/assets/js/36.73bb48c1.js" as="script"><link rel="prefetch" href="/assets/js/10.6aae25a8.js"><link rel="prefetch" href="/assets/js/11.e5a6ecb1.js"><link rel="prefetch" href="/assets/js/12.e6734d6c.js"><link rel="prefetch" href="/assets/js/13.c45be31f.js"><link rel="prefetch" href="/assets/js/14.7fe2edb8.js"><link rel="prefetch" href="/assets/js/15.7d96271b.js"><link rel="prefetch" href="/assets/js/16.d5c5556b.js"><link rel="prefetch" href="/assets/js/17.1a634ded.js"><link rel="prefetch" href="/assets/js/18.e6787f4e.js"><link rel="prefetch" href="/assets/js/19.a31276f8.js"><link rel="prefetch" href="/assets/js/2.6cf84733.js"><link rel="prefetch" href="/assets/js/20.f1ebd130.js"><link rel="prefetch" href="/assets/js/21.9fd25a7d.js"><link rel="prefetch" href="/assets/js/22.7ec64c15.js"><link rel="prefetch" href="/assets/js/23.a0a7d0ea.js"><link rel="prefetch" href="/assets/js/24.c17f3010.js"><link rel="prefetch" href="/assets/js/25.9bbf45e5.js"><link rel="prefetch" href="/assets/js/26.4f930016.js"><link rel="prefetch" href="/assets/js/27.b6d66343.js"><link rel="prefetch" href="/assets/js/28.ded43c8f.js"><link rel="prefetch" href="/assets/js/29.35b25580.js"><link rel="prefetch" href="/assets/js/3.88ebc755.js"><link rel="prefetch" href="/assets/js/30.a0b7fe3b.js"><link rel="prefetch" href="/assets/js/31.89d75be7.js"><link rel="prefetch" href="/assets/js/32.d7c054e6.js"><link rel="prefetch" href="/assets/js/33.9a5f3e99.js"><link rel="prefetch" href="/assets/js/34.ee5cfb6f.js"><link rel="prefetch" href="/assets/js/35.2054ab64.js"><link rel="prefetch" href="/assets/js/37.5a1d6d20.js"><link rel="prefetch" href="/assets/js/38.c7d42097.js"><link rel="prefetch" href="/assets/js/39.fd864930.js"><link rel="prefetch" href="/assets/js/4.dc8e7db2.js"><link rel="prefetch" href="/assets/js/40.6c289e11.js"><link rel="prefetch" href="/assets/js/41.0ed23031.js"><link rel="prefetch" href="/assets/js/42.10b887da.js"><link rel="prefetch" href="/assets/js/43.d348e521.js"><link rel="prefetch" href="/assets/js/44.f98660b8.js"><link rel="prefetch" href="/assets/js/45.a141b3d0.js"><link rel="prefetch" href="/assets/js/46.3a3b1b86.js"><link rel="prefetch" href="/assets/js/47.d2f1996d.js"><link rel="prefetch" href="/assets/js/48.0bd12b2f.js"><link rel="prefetch" href="/assets/js/5.6adfd92b.js"><link rel="prefetch" href="/assets/js/6.f9bcea16.js"><link rel="prefetch" href="/assets/js/7.ad2cffde.js"><link rel="prefetch" href="/assets/js/8.8932bce4.js"><link rel="prefetch" href="/assets/js/9.892cc635.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.153793e6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="page-main"><div class="component-nav-menu"><div class="placeholder"></div> <div class="search-wrapper"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-2475" class="el-autocomplete"><div class="el-input el-input--prefix"><!----><input type="text" autocomplete="off" valueKey="title" placeholder="请输入内容" fetchSuggestions="function () { [native code] }" triggerOnFocus="true" debounce="300" placement="bottom-start" popperAppendToBody="true" background-color="#eee" class="el-input__inner"><span class="el-input__prefix"><i class="el-input__icon el-icon-search"></i></span><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div> <ul role="menubar" class="el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Home
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Blog
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        TimeLine
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Github
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        About
+      </li></ul></div> <div class="page-container"><div class="component-page"><div class="page-content"><!----> <div class="content custom"><h2 id="git-log"><a href="#git-log" aria-hidden="true" class="header-anchor">#</a> git log</h2> <div class="language- extra-class"><pre class="language-text"><code>commit e0002e2b52e0c6877d196a16488692b5dbfd7ac9
+Author: Martin Mitas &lt;mity@morous.org&gt;
+Date:   Wed Dec 27 09:45:34 2017 +0100
+
+    md4c.h: Fix some copy&amp;paste errors in comments.
+</code></pre></div><h2 id="error"><a href="#error" aria-hidden="true" class="header-anchor">#</a> error</h2> <p>./md2html md4c_heap-buffer-overflow_md4c</p> <div class="language- extra-class"><pre class="language-text"><code>==26370==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60300000f000 at pc 0x7f8e75e343ca bp 0x7fff7ec8b0f0 sp 0x7fff7ec8b0e0
+WRITE of size 4 at 0x60300000f000 thread T0
+    #0 0x7f8e75e343c9 in md_build_attribute /home/github/md4cg/md4c/md4c.c:1491
+    #1 0x7f8e75e4e584 in md_setup_fenced_code_detail /home/github/md4cg/md4c/md4c.c:4377
+    #2 0x7f8e75e4ea94 in md_process_leaf_block /home/github/md4cg/md4c/md4c.c:4419
+    #3 0x7f8e75e4fb28 in md_process_all_blocks /home/github/md4cg/md4c/md4c.c:4528
+    #4 0x7f8e75e5b574 in md_process_doc /home/github/md4cg/md4c/md4c.c:5854
+    #5 0x7f8e75e5b99c in md_parse /home/github/md4cg/md4c/md4c.c:5915
+    #6 0x4045ac in md_render_html /home/github/md4cg/md2html/render_html.c:488
+    #7 0x401b4a in process_file /home/github/md4cg/md2html/md2html.c:139
+    #8 0x402394 in main /home/github/md4cg/md2html/md2html.c:343
+    #9 0x7f8e75a7b82f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+    #10 0x4012c8 in _start (/home//github/md4cg/md2html/md2html+0x4012c8)
+
+0x60300000f000 is located 0 bytes to the right of 32-byte region [0x60300000efe0,0x60300000f000)
+allocated by thread T0 here:
+    #0 0x7f8e760fb961 in realloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98961)
+    #1 0x7f8e75e3327f in md_build_attr_append_substr /home/github/md4cg/md4c/md4c.c:1392
+    #2 0x7f8e75e33e6b in md_build_attribute /home/github/md4cg/md4c/md4c.c:1482
+    #3 0x7f8e75e4e584 in md_setup_fenced_code_detail /home/github/md4cg/md4c/md4c.c:4377
+    #4 0x7f8e75e4ea94 in md_process_leaf_block /home/github/md4cg/md4c/md4c.c:4419
+    #5 0x7f8e75e4fb28 in md_process_all_blocks /home/github/md4cg/md4c/md4c.c:4528
+    #6 0x7f8e75e5b574 in md_process_doc /home/github/md4cg/md4c/md4c.c:5854
+    #7 0x7f8e75e5b99c in md_parse /home/github/md4cg/md4c/md4c.c:5915
+    #8 0x4045ac in md_render_html /home/github/md4cg/md2html/render_html.c:488
+    #9 0x401b4a in process_file /home/github/md4cg/md2html/md2html.c:139
+    #10 0x402394 in main /home//github/md4cg/md2html/md2html.c:343
+    #11 0x7f8e75a7b82f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/github/md4cg/md4c/md4c.c:1491 md_build_attribute
+Shadow bytes around the buggy address:
+  0x0c067fff9db0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff9dc0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff9dd0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff9de0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff9df0: fa fa fa fa fa fa fa fa fa fa fa fa 00 00 00 00
+=&gt;0x0c067fff9e00:[fa]fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff9e10: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff9e20: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff9e30: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff9e40: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff9e50: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+==26370==ABORTING
+</code></pre></div><p>testcase: https://github.com/xcainiao/poc/blob/master/md4c_heap-buffer-overflow_md4c</p> <h2 id="analysis"><a href="#analysis" aria-hidden="true" class="header-anchor">#</a> analysis</h2> <div class="language- extra-class"><pre class="language-text"><code>Breakpoint 3, md_build_attr_append_substr (ctx=0x7fffffffd8a0, build=0x7fffffffd560, type=MD_TEXT_NORMAL, off=0x0) at md4c.c:1392
+1392	        new_substr_offsets = (OFF*) realloc(build-&gt;substr_offsets, build-&gt;substr_alloc * sizeof(OFF));
+gdb-peda$ print build-&gt;substr_alloc
+$4 = 0x8
+
+Breakpoint 2, md_build_attribute (ctx=0x7fffffffd8a0, raw_text=0x62d00000a411 &quot;\001&quot;, raw_size=0x8, flags=0x0, attr=0x7fffffffd500, build=0x7fffffffd560) at md4c.c:1491
+1491	        build-&gt;substr_offsets[build-&gt;substr_count] = off;
+gdb-peda$ print build-&gt;substr_count
+$3 = 0x8
+gdb-peda$ 
+</code></pre></div><h2 id="fuzz"><a href="#fuzz" aria-hidden="true" class="header-anchor">#</a> fuzz</h2> <p>libfuzz</p> <div class="language- extra-class"><pre class="language-text"><code>#define filename  &quot;./x.md&quot;
+int LLVMFuzzerTestOneInput(char *data, int size)
+{
+    FILE* in = stdin;
+    FILE* out = stdout;
+    int ret = 0;
+    FILE* temfile = fopen(filename,&quot;w&quot;);
+    fwrite(data, 1, size, temfile);
+    fclose(temfile);
+
+    if(input_path != NULL &amp;&amp; strcmp(input_path, &quot;-&quot;) != 0) {
+        in = fopen(input_path, &quot;rb&quot;);
+        if(in == NULL) {
+            fprintf(stderr, &quot;Cannot open %s.\n&quot;, input_path);
+            exit(1);
+        }
+    }   
+    if(output_path != NULL &amp;&amp; strcmp(output_path, &quot;-&quot;) != 0) {
+        out = fopen(output_path, &quot;wt&quot;);
+        if(out == NULL) {
+            fprintf(stderr, &quot;Cannot open %s.\n&quot;, input_path);
+            exit(1);
+        }
+    }   
+
+    ret = process_file(in, out);
+    if(in != stdin)
+        fclose(in);
+    if(out != stdout)
+        fclose(out);
+
+    return ret;
+}
+</code></pre></div></div></div></div></div></div></div>
+    <script src="/assets/js/app.fb63a1b9.js" defer></script><script src="/assets/js/36.73bb48c1.js" defer></script>
+  </body>
+</html>

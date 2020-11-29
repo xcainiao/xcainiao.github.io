@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>QuickJS 漏洞挖掘 | Hello</title>
+    <meta name="description" content="1">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.153793e6.css" as="style"><link rel="preload" href="/assets/js/app.fb63a1b9.js" as="script"><link rel="preload" href="/assets/js/44.f98660b8.js" as="script"><link rel="prefetch" href="/assets/js/10.6aae25a8.js"><link rel="prefetch" href="/assets/js/11.e5a6ecb1.js"><link rel="prefetch" href="/assets/js/12.e6734d6c.js"><link rel="prefetch" href="/assets/js/13.c45be31f.js"><link rel="prefetch" href="/assets/js/14.7fe2edb8.js"><link rel="prefetch" href="/assets/js/15.7d96271b.js"><link rel="prefetch" href="/assets/js/16.d5c5556b.js"><link rel="prefetch" href="/assets/js/17.1a634ded.js"><link rel="prefetch" href="/assets/js/18.e6787f4e.js"><link rel="prefetch" href="/assets/js/19.a31276f8.js"><link rel="prefetch" href="/assets/js/2.6cf84733.js"><link rel="prefetch" href="/assets/js/20.f1ebd130.js"><link rel="prefetch" href="/assets/js/21.9fd25a7d.js"><link rel="prefetch" href="/assets/js/22.7ec64c15.js"><link rel="prefetch" href="/assets/js/23.a0a7d0ea.js"><link rel="prefetch" href="/assets/js/24.c17f3010.js"><link rel="prefetch" href="/assets/js/25.9bbf45e5.js"><link rel="prefetch" href="/assets/js/26.4f930016.js"><link rel="prefetch" href="/assets/js/27.b6d66343.js"><link rel="prefetch" href="/assets/js/28.ded43c8f.js"><link rel="prefetch" href="/assets/js/29.35b25580.js"><link rel="prefetch" href="/assets/js/3.88ebc755.js"><link rel="prefetch" href="/assets/js/30.a0b7fe3b.js"><link rel="prefetch" href="/assets/js/31.89d75be7.js"><link rel="prefetch" href="/assets/js/32.d7c054e6.js"><link rel="prefetch" href="/assets/js/33.9a5f3e99.js"><link rel="prefetch" href="/assets/js/34.ee5cfb6f.js"><link rel="prefetch" href="/assets/js/35.2054ab64.js"><link rel="prefetch" href="/assets/js/36.73bb48c1.js"><link rel="prefetch" href="/assets/js/37.5a1d6d20.js"><link rel="prefetch" href="/assets/js/38.c7d42097.js"><link rel="prefetch" href="/assets/js/39.fd864930.js"><link rel="prefetch" href="/assets/js/4.dc8e7db2.js"><link rel="prefetch" href="/assets/js/40.6c289e11.js"><link rel="prefetch" href="/assets/js/41.0ed23031.js"><link rel="prefetch" href="/assets/js/42.10b887da.js"><link rel="prefetch" href="/assets/js/43.d348e521.js"><link rel="prefetch" href="/assets/js/45.a141b3d0.js"><link rel="prefetch" href="/assets/js/46.3a3b1b86.js"><link rel="prefetch" href="/assets/js/47.d2f1996d.js"><link rel="prefetch" href="/assets/js/48.0bd12b2f.js"><link rel="prefetch" href="/assets/js/5.6adfd92b.js"><link rel="prefetch" href="/assets/js/6.f9bcea16.js"><link rel="prefetch" href="/assets/js/7.ad2cffde.js"><link rel="prefetch" href="/assets/js/8.8932bce4.js"><link rel="prefetch" href="/assets/js/9.892cc635.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.153793e6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="page-main"><div class="component-nav-menu"><div class="placeholder"></div> <div class="search-wrapper"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-1018" class="el-autocomplete"><div class="el-input el-input--prefix"><!----><input type="text" autocomplete="off" valueKey="title" placeholder="请输入内容" fetchSuggestions="function () { [native code] }" triggerOnFocus="true" debounce="300" placement="bottom-start" popperAppendToBody="true" background-color="#eee" class="el-input__inner"><span class="el-input__prefix"><i class="el-input__icon el-icon-search"></i></span><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div> <ul role="menubar" class="el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Home
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item is-active" style="color:;border-bottom-color:;background-color:;">
+        Blog
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        TimeLine
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Github
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        About
+      </li></ul></div> <div class="page-container"><div class="component-page"><div class="page-content"><!----> <div class="content custom"><h2 id="quickjs-version：-2019-07-28"><a href="#quickjs-version：-2019-07-28" aria-hidden="true" class="header-anchor">#</a> quickjs version： 2019-07-28</h2> <h2 id="漏洞一-invalid-address-reference"><a href="#漏洞一-invalid-address-reference" aria-hidden="true" class="header-anchor">#</a> 漏洞一 invalid address reference</h2> <div class="language- extra-class"><pre class="language-text"><code>test@ubuntu:~/Desktop/jsfuzz$ ./quickjs-2019-07-28/qjs ./qjs-null-pointer-reference
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==105212==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000006 (pc 0x000000564ce5 bp 0x7fffb547f1c0 sp 0x7fffb547ed40 T0)
+==105212==The signal is caused by a READ memory access.
+==105212==Hint: address points to the zero page.
+    #0 0x564ce4 in JS_SetPropertyInternal /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:7485:31
+    #1 0x56e81c in JS_SetPropertyValue /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:7753:15
+    #2 0x5489c6 in JS_CallInternal /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:15913:23
+    #3 0x53b231 in JS_CallInternal /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:14821:27
+    #4 0x522411 in JS_CallFree /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:16805:19
+    #5 0x5a3dfe in JS_EvalFunctionInternal /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:29951:19
+    #6 0x69d169 in __JS_EvalInternal /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:30096:19
+    #7 0x5abf2b in JS_EvalInternal /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:30114:12
+    #8 0x6ea134 in JS_Eval /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:30144:11
+    #9 0x517f0d in eval_buf /home/test/Desktop/jsfuzz/quickjs-2019-07-28/qjs.c:57:11
+    #10 0x5181cd in eval_file /home/test/Desktop/jsfuzz/quickjs-2019-07-28/qjs.c:79:11
+    #11 0x5176c7 in main /home/test/Desktop/jsfuzz/quickjs-2019-07-28/qjs.c:417:17
+    #12 0x7faf41f51b96 in __libc_start_main /build/glibc-OTsEL5/glibc-2.27/csu/../csu/libc-start.c:310
+    #13 0x41d919 in _start (/home/test/Desktop/jsfuzz/quickjs-2019-07-28/qjs+0x41d919)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:7485:31 in JS_SetPropertyInternal
+==105212==ABORTING
+</code></pre></div><h2 id="漏洞二-memory-leaks"><a href="#漏洞二-memory-leaks" aria-hidden="true" class="header-anchor">#</a> 漏洞二 memory leaks</h2> <div class="language- extra-class"><pre class="language-text"><code>test@ubuntu:~/Desktop/jsfuzz$ ./quickjs-2019-07-28/qjs ./qjs-memory-leaks
+
+=================================================================
+==129197==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 17 byte(s) in 1 object(s) allocated from:
+    #0 0x4dd7d0 in malloc (/home/test/Desktop/jsfuzz/quickjs-2019-07-28/qjs+0x4dd7d0)
+    #1 0x67a8f5 in js_def_malloc /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:1312:11
+    #2 0x52e221 in js_malloc_rt /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:1033:12
+    #3 0x52f6a3 in js_alloc_string_rt /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:1483:11
+    #4 0x52f55c in js_alloc_string /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:1501:9
+    #5 0x5991d4 in string_buffer_init2 /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:3049:14
+    #6 0x5b4a22 in string_buffer_init /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:3063:12
+    #7 0x5f9f85 in js_string_replace /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:36592:5
+    #8 0x553924 in js_call_c_function /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:14237:19
+    #9 0x5363a4 in JS_CallInternal /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:14442:20
+    #10 0x53b91e in JS_CallInternal /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:14857:27
+    #11 0x53b231 in JS_CallInternal /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:14821:27
+    #12 0x522411 in JS_CallFree /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:16805:19
+    #13 0x5a3dfe in JS_EvalFunctionInternal /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:29951:19
+    #14 0x69d169 in __JS_EvalInternal /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:30096:19
+    #15 0x5abf2b in JS_EvalInternal /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:30114:12
+    #16 0x6ea134 in JS_Eval /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:30144:11
+    #17 0x517f0d in eval_buf /home/test/Desktop/jsfuzz/quickjs-2019-07-28/qjs.c:57:11
+    #18 0x5181cd in eval_file /home/test/Desktop/jsfuzz/quickjs-2019-07-28/qjs.c:79:11
+    #19 0x5176c7 in main /home/test/Desktop/jsfuzz/quickjs-2019-07-28/qjs.c:417:17
+    #20 0x7f0a5a978b96 in __libc_start_main /build/glibc-OTsEL5/glibc-2.27/csu/../csu/libc-start.c:310
+
+SUMMARY: AddressSanitizer: 17 byte(s) leaked in 1 allocation(s).
+</code></pre></div><h2 id="漏洞三-stack-overflow"><a href="#漏洞三-stack-overflow" aria-hidden="true" class="header-anchor">#</a> 漏洞三 stack overflow</h2> <div class="language- extra-class"><pre class="language-text"><code>AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==35065==ERROR: AddressSanitizer: stack-overflow on address 0x7ffe148dcff8 (pc 0x000000594508 bp 0x7ffe148dd010 sp 0x7ffe148dd000 T0)
+    #0 0x594507 in JS_GetOpaque /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:8765
+    #1 0x594069 in get_proxy_method /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:40442:22
+    #2 0x67692b in js_proxy_get /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:40655:9
+    #3 0x520433 in JS_GetPropertyInternal /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:6413:32
+    #4 0x594253 in JS_GetProperty /home/test/Desktop/jsfuzz/quickjs-2019-07-28/./quickjs.h:631:12
+    #5 0x594253 in get_proxy_method /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:40450
+    #6 0x67692b in js_proxy_get /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:40655:9
+    #7 0x520433 in JS_GetPropertyInternal /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:6413:32
+    #8 0x594253 in JS_GetProperty /home/test/Desktop/jsfuzz/quickjs-2019-07-28/./quickjs.h:631:12
+    #9 0x594253 in get_proxy_method /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:40450
+    #10 0x67692b in js_proxy_get /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:40655:9
+    #11 0x520433 in JS_GetPropertyInternal /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:6413:32
+    #12 0x594253 in JS_GetProperty /home/test/Desktop/jsfuzz/quickjs-2019-07-28/./quickjs.h:631:12
+    #13 0x594253 in get_proxy_method /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:40450
+    #14 0x67692b in js_proxy_get /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:40655:9
+    #15 0x520433 in JS_GetPropertyInternal /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:6413:32
+    #16 0x594253 in JS_GetProperty /home/test/Desktop/jsfuzz/quickjs-2019-07-28/./quickjs.h:631:12
+    #17 0x594253 in get_proxy_method /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:40450
+    #18 0x67692b in js_proxy_get /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:40655:9
+    #19 0x520433 in JS_GetPropertyInternal /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:6413:32
+    #20 0x594253 in JS_GetProperty /home/test/Desktop/jsfuzz/quickjs-2019-07-28/./quickjs.h:631:12
+    #21 0x594253 in get_proxy_method /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:40450
+    #22 0x67692b in js_proxy_get /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:40655:9
+    #23 0x520433 in JS_GetPropertyInternal /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:6413:32
+    #24 0x594253 in JS_GetProperty /home/test/Desktop/jsfuzz/quickjs-2019-07-28/./quickjs.h:631:12
+    #25 0x594253 in get_proxy_method /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:40450
+    #26 0x67692b in js_proxy_get /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:40655:9
+    #27 0x520433 in JS_GetPropertyInternal /home/test/Desktop/jsfuzz/quickjs-2019-07-28/quickjs.c:6413:32
+</code></pre></div></div></div></div></div></div></div>
+    <script src="/assets/js/app.fb63a1b9.js" defer></script><script src="/assets/js/44.f98660b8.js" defer></script>
+  </body>
+</html>

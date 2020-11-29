@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Numpy: NULL pointer derference in PyArray_ConvertToCommonType | Hello</title>
+    <meta name="description" content="1">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.153793e6.css" as="style"><link rel="preload" href="/assets/js/app.fb63a1b9.js" as="script"><link rel="preload" href="/assets/js/24.c17f3010.js" as="script"><link rel="prefetch" href="/assets/js/10.6aae25a8.js"><link rel="prefetch" href="/assets/js/11.e5a6ecb1.js"><link rel="prefetch" href="/assets/js/12.e6734d6c.js"><link rel="prefetch" href="/assets/js/13.c45be31f.js"><link rel="prefetch" href="/assets/js/14.7fe2edb8.js"><link rel="prefetch" href="/assets/js/15.7d96271b.js"><link rel="prefetch" href="/assets/js/16.d5c5556b.js"><link rel="prefetch" href="/assets/js/17.1a634ded.js"><link rel="prefetch" href="/assets/js/18.e6787f4e.js"><link rel="prefetch" href="/assets/js/19.a31276f8.js"><link rel="prefetch" href="/assets/js/2.6cf84733.js"><link rel="prefetch" href="/assets/js/20.f1ebd130.js"><link rel="prefetch" href="/assets/js/21.9fd25a7d.js"><link rel="prefetch" href="/assets/js/22.7ec64c15.js"><link rel="prefetch" href="/assets/js/23.a0a7d0ea.js"><link rel="prefetch" href="/assets/js/25.9bbf45e5.js"><link rel="prefetch" href="/assets/js/26.4f930016.js"><link rel="prefetch" href="/assets/js/27.b6d66343.js"><link rel="prefetch" href="/assets/js/28.ded43c8f.js"><link rel="prefetch" href="/assets/js/29.35b25580.js"><link rel="prefetch" href="/assets/js/3.88ebc755.js"><link rel="prefetch" href="/assets/js/30.a0b7fe3b.js"><link rel="prefetch" href="/assets/js/31.89d75be7.js"><link rel="prefetch" href="/assets/js/32.d7c054e6.js"><link rel="prefetch" href="/assets/js/33.9a5f3e99.js"><link rel="prefetch" href="/assets/js/34.ee5cfb6f.js"><link rel="prefetch" href="/assets/js/35.2054ab64.js"><link rel="prefetch" href="/assets/js/36.73bb48c1.js"><link rel="prefetch" href="/assets/js/37.5a1d6d20.js"><link rel="prefetch" href="/assets/js/38.c7d42097.js"><link rel="prefetch" href="/assets/js/39.fd864930.js"><link rel="prefetch" href="/assets/js/4.dc8e7db2.js"><link rel="prefetch" href="/assets/js/40.6c289e11.js"><link rel="prefetch" href="/assets/js/41.0ed23031.js"><link rel="prefetch" href="/assets/js/42.10b887da.js"><link rel="prefetch" href="/assets/js/43.d348e521.js"><link rel="prefetch" href="/assets/js/44.f98660b8.js"><link rel="prefetch" href="/assets/js/45.a141b3d0.js"><link rel="prefetch" href="/assets/js/46.3a3b1b86.js"><link rel="prefetch" href="/assets/js/47.d2f1996d.js"><link rel="prefetch" href="/assets/js/48.0bd12b2f.js"><link rel="prefetch" href="/assets/js/5.6adfd92b.js"><link rel="prefetch" href="/assets/js/6.f9bcea16.js"><link rel="prefetch" href="/assets/js/7.ad2cffde.js"><link rel="prefetch" href="/assets/js/8.8932bce4.js"><link rel="prefetch" href="/assets/js/9.892cc635.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.153793e6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="page-main"><div class="component-nav-menu"><div class="placeholder"></div> <div class="search-wrapper"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-3708" class="el-autocomplete"><div class="el-input el-input--prefix"><!----><input type="text" autocomplete="off" valueKey="title" placeholder="请输入内容" fetchSuggestions="function () { [native code] }" triggerOnFocus="true" debounce="300" placement="bottom-start" popperAppendToBody="true" background-color="#eee" class="el-input__inner"><span class="el-input__prefix"><i class="el-input__icon el-icon-search"></i></span><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div> <ul role="menubar" class="el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Home
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Blog
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        TimeLine
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Github
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        About
+      </li></ul></div> <div class="page-container"><div class="component-page"><div class="page-content"><!----> <div class="content custom"><h2 id="version"><a href="#version" aria-hidden="true" class="header-anchor">#</a> version</h2> <div class="language- extra-class"><pre class="language-text"><code>numpy.version.version
+'1.15.2'
+
+Python 3.8.0a0 (heads/master:f6c8007, Sep 25 2018, 12:42:29)
+[GCC 5.4.0 20160609] on linux
+</code></pre></div><h2 id="error"><a href="#error" aria-hidden="true" class="header-anchor">#</a> error</h2> <p>python poc.py</p> <div class="language- extra-class"><pre class="language-text"><code>import numpy
+numpy.half(-1).choose(numpy.void(1), numpy.broadcast_arrays((1,)))
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>[----------------------------------registers-----------------------------------]
+RAX: 0xc0400001756 --&gt; 0x0 
+RBX: 0x0 
+RCX: 0x0 
+RDX: 0xffffdad7614 --&gt; 0x0 
+RSI: 0x2 
+RDI: 0xc03700 --&gt; 0x24c3 
+RBP: 0x7fffed6bb0a0 --&gt; 0x3 
+RSP: 0x7fffffffcf30 --&gt; 0xffffffff9ec --&gt; 0x0 
+RIP: 0x7ffff2803769 (&lt;PyArray_ConvertToCommonType+1865&gt;:	add    QWORD PTR [rbx],0x1)
+R8 : 0x501 
+R9 : 0x7ffff3ac653d --&gt; 0xfff7eafeb000006e 
+R10: 0x5 
+R11: 0x7fffffffce30 --&gt; 0xbe90a0 --&gt; 0xb ('\x0b')
+R12: 0x0 
+R13: 0x60200000bab0 --&gt; 0x0 
+R14: 0x0 
+R15: 0x0
+EFLAGS: 0x10246 (carry PARITY adjust ZERO sign trap INTERRUPT direction overflow)
+[-------------------------------------code-------------------------------------]
+   0x7ffff2803755 &lt;PyArray_ConvertToCommonType+1845&gt;:	je     0x7ffff28039f0 &lt;PyArray_ConvertToCommonType+2512&gt;
+   0x7ffff280375b &lt;PyArray_ConvertToCommonType+1851&gt;:	cmp    BYTE PTR [r15+0x7fff8000],0x0
+   0x7ffff2803763 &lt;PyArray_ConvertToCommonType+1859&gt;:	jne    0x7ffff2804188 &lt;PyArray_ConvertToCommonType+4456&gt;
+=&gt; 0x7ffff2803769 &lt;PyArray_ConvertToCommonType+1865&gt;:	add    QWORD PTR [rbx],0x1
+   0x7ffff280376d &lt;PyArray_ConvertToCommonType+1869&gt;:	xor    ecx,ecx
+   0x7ffff280376f &lt;PyArray_ConvertToCommonType+1871&gt;:	xor    r9d,r9d
+   0x7ffff2803772 &lt;PyArray_ConvertToCommonType+1874&gt;:	xor    edx,edx
+   0x7ffff2803774 &lt;PyArray_ConvertToCommonType+1876&gt;:	mov    rsi,rbx
+[------------------------------------stack-------------------------------------]
+0000| 0x7fffffffcf30 --&gt; 0xffffffff9ec --&gt; 0x0 
+0008| 0x7fffffffcf38 --&gt; 0x7fffffffd040 --&gt; 0x7fff00000002 
+0016| 0x7fffffffcf40 --&gt; 0x7ffff3ace0b0 --&gt; 0x1 
+0024| 0x7fffffffcf48 --&gt; 0x7fff00000005 
+0032| 0x7fffffffcf50 --&gt; 0x60200000bab0 --&gt; 0x0 
+0040| 0x7fffffffcf58 --&gt; 0x0 
+0048| 0x7fffffffcf60 --&gt; 0x100000002 --&gt; 0x0 
+0056| 0x7fffffffcf68 --&gt; 0x7fffed70f210 --&gt; 0x2 
+[------------------------------------------------------------------------------]
+Legend: code, data, rodata, value
+Stopped reason: SIGSEGV
+0x00007ffff2803769 in PyArray_ConvertToCommonType (op=op@entry=0x7ffff3ace0b0, retn=retn@entry=0x7fffffffd040) at numpy/core/src/multiarray/convert_datatype.c:2135
+2135	numpy/core/src/multiarray/convert_datatype.c: No such file or directory.
+gdb-peda$ bt
+#0  0x00007ffff2803769 in PyArray_ConvertToCommonType (op=op@entry=0x7ffff3ace0b0, retn=retn@entry=0x7fffffffd040) at numpy/core/src/multiarray/convert_datatype.c:2135
+#1  0x00007ffff28d3ed3 in PyArray_Choose (ip=ip@entry=0x7fffedb85c10, op=0x7ffff3ace0b0, out=0x0, clipmode=&lt;optimized out&gt;) at numpy/core/src/multiarray/item_selection.c:671
+#2  0x00007ffff294f51d in array_choose (self=&lt;optimized out&gt;, args=0x7ffff3ace0b0, kwds=0x0) at numpy/core/src/multiarray/methods.c:1124
+#3  0x000000000046da0e in cfunction_call_varargs (kwargs=&lt;optimized out&gt;, args=&lt;optimized out&gt;, func=0x7fffedb90380) at Objects/call.c:753
+#4  PyCFunction_Call (func=0x7fffedb90380, args=&lt;optimized out&gt;, kwargs=&lt;optimized out&gt;) at Objects/call.c:784
+#5  0x00007ffff29c333b in gentype_generic_method (self=&lt;optimized out&gt;, args=0x7ffff3ace0b0, kwds=0x0, str=&lt;optimized out&gt;) at numpy/core/src/multiarray/scalartypes.c.src:187
+#6  0x000000000046b310 in _PyMethodDef_RawFastCallKeywords (method=0x7ffff2cffde0 &lt;gentype_methods+832&gt;, self=self@entry=0x7ffff00cec78, args=args@entry=0x7ffff7eb11b8, nargs=nargs@entry=0x2, 
+    kwnames=kwnames@entry=0x0) at Objects/call.c:690
+#7  0x000000000081403d in _PyMethodDescr_FastCallKeywords (descrobj=descrobj@entry=0x7ffff3a452c0, args=args@entry=0x7ffff7eb11b0, nargs=nargs@entry=0x3, kwnames=kwnames@entry=0x0)
+    at Objects/descrobject.c:288
+#8  0x00000000004416b2 in call_function (kwnames=0x0, oparg=0x3, pp_stack=&lt;synthetic pointer&gt;) at Python/ceval.c:4600
+#9  _PyEval_EvalFrameDefault (f=&lt;optimized out&gt;, throwflag=&lt;optimized out&gt;) at Python/ceval.c:3186
+#10 0x00000000005ecfbc in PyEval_EvalFrameEx (throwflag=0x0, f=0x7ffff7eb1040) at Python/ceval.c:536
+#11 _PyEval_EvalCodeWithName (_co=_co@entry=0x7ffff7eb7b70, globals=globals@entry=0x7ffff7eb11a8, locals=locals@entry=0x7ffff7eb7bc8, args=args@entry=0x0, argcount=argcount@entry=0x0, 
+    kwnames=kwnames@entry=0x0, kwargs=0x0, kwcount=0x0, kwstep=0x2, defs=0x0, defcount=0x0, kwdefs=0x0, closure=0x0, name=0x0, qualname=0x0) at Python/ceval.c:3951
+#12 0x00000000005ed4d3 in PyEval_EvalCodeEx (closure=0x0, kwdefs=0x0, defcount=0x0, defs=0x0, kwcount=0x0, kws=0x0, argcount=0x0, args=0x0, locals=locals@entry=0x7ffff7eb7bc8, 
+    globals=globals@entry=0x7ffff7eb11a8, _co=_co@entry=0x7ffff7eb7b70) at Python/ceval.c:3980
+#13 PyEval_EvalCode (co=co@entry=0x7ffff7eb7b70, globals=globals@entry=0x7ffff7ef6080, locals=locals@entry=0x7ffff7ef6080) at Python/ceval.c:513
+#14 0x0000000000687cdd in run_mod (arena=0x7ffff7f72078, flags=0x7fffffffda60, locals=0x7ffff7ef6080, globals=0x7ffff7ef6080, filename=0x7ffff7e6cb90, mod=0x625000020ce0) at Python/pythonrun.c:1031
+#15 PyRun_FileExFlags (fp=&lt;optimized out&gt;, filename_str=&lt;optimized out&gt;, start=&lt;optimized out&gt;, globals=&lt;optimized out&gt;, locals=&lt;optimized out&gt;, closeit=&lt;optimized out&gt;, flags=0x7fffffffda60)
+    at Python/pythonrun.c:984
+#16 0x000000000068817b in PyRun_SimpleFileExFlags (fp=&lt;optimized out&gt;, filename=0x7ffff7e88f50 &quot;poc2.py&quot;, closeit=0x1, flags=&lt;optimized out&gt;) at Python/pythonrun.c:425
+#17 0x000000000044d9a4 in pymain_run_file (config=0x61e00000f108, cf=0x7fffffffda60, pymain=0x7fffffffdc60) at Modules/main.c:1159
+#18 pymain_run_python (interp=0x61e00000f080, pymain=0x7fffffffdc60) at Modules/main.c:1607
+#19 pymain_main (pymain=pymain@entry=0x7fffffffdc60) at Modules/main.c:1755
+#20 0x000000000044e39c in _Py_UnixMain (argc=0x2, argv=0x7fffffffdde8) at Modules/main.c:1792
+#21 0x00007ffff6193830 in __libc_start_main (main=0x424060 &lt;main&gt;, argc=0x2, argv=0x7fffffffdde8, init=&lt;optimized out&gt;, fini=&lt;optimized out&gt;, rtld_fini=&lt;optimized out&gt;, stack_end=0x7fffffffddd8)
+    at ../csu/libc-start.c:291
+#22 0x0000000000446229 in _start ()
+</code></pre></div><h2 id="report"><a href="#report" aria-hidden="true" class="header-anchor">#</a> report</h2> <p>https://github.com/numpy/numpy/issues/12031</p></div></div></div></div></div></div>
+    <script src="/assets/js/app.fb63a1b9.js" defer></script><script src="/assets/js/24.c17f3010.js" defer></script>
+  </body>
+</html>

